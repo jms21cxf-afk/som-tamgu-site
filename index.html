@@ -56,7 +56,8 @@
     background: var(--paper);
   }
   header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
-  .brand{ display:flex; align-items:center; gap:8px; font-weight:700; font-size:17px; }
+  /* 로고는 본문과 같은 고운돋움으로 맞춤 */
+  .brand{ display:flex; align-items:center; gap:8px; font-family:'Gowun Dodum', sans-serif; font-weight:700; font-size:17px; }
   .brand .dot{ width:10px; height:10px; border-radius:50%; background: var(--coral); }
   nav.site a{ font-size:13.5px; color: var(--ink-soft); margin-left:18px; }
   nav.site a:hover{ color: var(--coral-dark); }
@@ -135,7 +136,7 @@
 
 <header class="site">
   <div class="wrap">
-    <div class="brand"><span class="dot"></span><span class="display">썸 탐구생활</span></div>
+    <div class="brand"><span class="dot"></span><span>썸 탐구생활</span></div>
     <nav class="site">
       <a href="index.html" class="active">홈</a>
       <a href="articles.html">읽을거리</a>
@@ -168,6 +169,34 @@
 
 <section class="articles wrap" id="articles">
   <h2 class="display">읽을거리</h2>
+  <a class="card" href="read-receipt.html">
+    <div class="emoji">👀</div>
+    <div>
+      <div class="title">카톡 읽씹당했을 때, 너무 깊게 해석하지 않는 법</div>
+      <div class="desc">한 번의 공백을 거절로 단정하기 전에 보면 좋은 것들</div>
+    </div>
+  </a>
+  <a class="card" href="contact-fades.html">
+    <div class="emoji">📉</div>
+    <div>
+      <div class="title">갑자기 연락이 뜸해졌을 때 점검해볼 것</div>
+      <div class="desc">마음이 식은 건지, 생활 리듬이 바뀐 건지 가늠해보기</div>
+    </div>
+  </a>
+  <a class="card" href="confession-timing.html">
+    <div class="emoji">🎤</div>
+    <div>
+      <div class="title">고백 타이밍, 너무 이르면 vs 너무 늦으면</div>
+      <div class="desc">말 꺼내기 전에 스스로 점검해볼 수 있는 기준</div>
+    </div>
+  </a>
+  <a class="card" href="green-flags.html">
+    <div class="emoji">🌿</div>
+    <div>
+      <div class="title">썸에서 놓치기 쉬운 좋은 신호 6가지</div>
+      <div class="desc">나쁜 신호만 찾다가 놓치기 쉬운 건강한 호감</div>
+    </div>
+  </a>
   <a class="card" href="mbti-compatibility.html">
     <div class="emoji">🔍</div>
     <div>
