@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>연애할 때 MBTI보다 중요한 것들 — 썸 탐구생활</title>
 <meta name="description" content="유형 궁합 너머에서 실제 관계의 질을 좌우하는 요소들을 정리했습니다.">
+<meta name="keywords" content="썸탐구생활, MBTI 궁합, 연애 스타일, 연애 심리테스트">
+<meta name="author" content="썸 탐구생활">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="썸 탐구생활">
+<meta property="og:title" content="연애할 때 MBTI보다 중요한 것들 — 썸 탐구생활">
+<meta property="og:description" content="유형 궁합 너머에서 실제 관계의 질을 좌우하는 요소들을 정리했습니다.">
+<meta property="og:image" content="https://som-tamgu-site.vercel.app/og-image.jpg">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/beyond-mbti.html">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="연애할 때 MBTI보다 중요한 것들 — 썸 탐구생활">
+<meta name="twitter:description" content="유형 궁합 너머에서 실제 관계의 질을 좌우하는 요소들을 정리했습니다.">
+<meta name="twitter:image" content="https://som-tamgu-site.vercel.app/og-image.jpg">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/beyond-mbti.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <style>
@@ -16,11 +31,14 @@
   body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
   .display{ font-family:'Gaegu','Gowun Dodum',sans-serif; }
   a{ color: var(--coral-dark); }
-  .wrap{ max-width: 640px; margin:0 auto; padding: 0 20px; }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 36px; }
   header.site{ padding:22px 0; border-bottom:1px solid var(--line); background:var(--paper); }
   header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
-  .brand{ font-weight:700; font-size:17px; }
+  .brand{ display:flex; align-items:center; gap:8px; font-weight:700; font-size:17px; }
+  .brand .dot{ width:10px; height:10px; border-radius:50%; background: var(--coral); flex-shrink:0; }
   nav a{ font-size:13.5px; color: var(--ink-soft); margin-left:18px; text-decoration:none; }
+  /* 현재 보고 있는 탭은 본문 색으로 더 진하게 표시 */
+  nav a.active{ color: var(--ink); font-weight:700; }
   /* 휴대폰에서는 로고 한 줄, 그 아래 메뉴가 한 줄로 보이도록 */
   @media (max-width: 720px){
     header.site{ padding: 16px 0 14px; }
@@ -44,8 +62,8 @@
 <body>
 <header class="site">
   <div class="wrap">
-    <div class="brand display">썸 탐구생활</div>
-    <nav><a href="index.html">홈</a><a href="articles.html">읽을거리</a><a href="about.html">소개</a><a href="privacy.html">개인정보처리방침</a></nav>
+    <div class="brand"><span class="dot"></span><span class="display">썸 탐구생활</span></div>
+    <nav><a href="index.html">홈</a><a href="articles.html" class="active">읽을거리</a><a href="about.html">소개</a><a href="privacy.html">개인정보처리방침</a></nav>
   </div>
 </header>
 
