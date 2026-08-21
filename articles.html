@@ -35,6 +35,28 @@
   nav.site a{ font-size:13.5px; color: var(--ink-soft); margin-left:18px; }
   nav.site a:hover{ color: var(--coral-dark); }
 
+  /* 휴대폰에서는 로고 한 줄, 그 아래 메뉴가 한 줄로 보이도록 */
+  @media (max-width: 720px){
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .brand{ white-space: nowrap; }
+    nav.site{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    nav.site a{
+      margin-left: 0;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+  }
+
   /* 홈 하단 읽을거리와 같은 카드 목록 레이아웃 */
   section.articles{ padding: 36px 0 60px; }
   section h1{ font-size:28px; margin-bottom:18px; }
