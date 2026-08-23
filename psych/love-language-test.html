@@ -6,6 +6,7 @@
 <title>나의 사랑의 언어는? — 썸 탐구생활</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #FFF6F1; --paper: #FFFFFF; --line: #F0DED8;
@@ -89,13 +90,26 @@
   .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
   .copy-toast{ position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%); background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px; opacity:0; transition: opacity 0.25s ease; white-space:nowrap; }
   .copy-toast.show{ opacity:1; }
+  /* 페이지 위치 표시 줄 */
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#A87E3F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
 </style>
 </head>
 <body>
 
 <div style="width:100%; display:flex; justify-content:center;">
 <div style="width:100%; max-width:400px;">
-<div class="top-nav"><a href="index.html">← 썸 탐구생활 홈</a></div>
+<div class="crumb-bar">
+  <a href="../index.html">탐구소</a>
+  <span>/</span>
+  <span class="current">심리</span>
+</div>
 <div class="phone">
   <div class="phone-header">
     <div class="avatar">💛</div>

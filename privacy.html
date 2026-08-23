@@ -22,6 +22,7 @@
 <link rel="canonical" href="https://som-tamgu-site.vercel.app/privacy.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FFF6F1; --paper:#FFFFFF; --line:#F0DED8;
@@ -54,13 +55,22 @@
   p, li{ font-size:14px; color: var(--ink); margin-bottom: 8px; }
   ul{ padding-left: 20px; margin-bottom: 10px; }
   .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+  /* 페이지 위치 표시 줄 */
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#A87E3F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
 </style>
 </head>
 <body>
 <header class="site">
   <div class="wrap">
     <div class="brand"><span class="dot"></span><span class="display">썸 탐구생활</span></div>
-    <nav><a href="index.html">홈</a><a href="articles.html">읽을거리</a><a href="about.html">소개</a><a href="privacy.html" class="active">개인정보처리방침</a></nav>
+    <nav><a href="index.html">홈</a><a href="psych/articles/index.html">읽을거리</a><a href="about.html">소개</a><a href="privacy.html" class="active">개인정보처리방침</a></nav>
   </div>
 </header>
 

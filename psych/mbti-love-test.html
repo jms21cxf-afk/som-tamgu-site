@@ -11,13 +11,14 @@
 <meta property="og:title" content="썸 탐구생활 | 나의 연애 스타일, MBTI로 알아볼까?">
 <meta property="og:description" content="썸 상황 8가지에 답하면 나의 연애 유형과 찰떡궁합을 알려줄게요. (소요시간 40초)">
 <meta property="og:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
-<meta property="og:url" content="https://som-tamgu-site.vercel.app/mbti-love-test.html">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/psych/mbti-love-test.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="썸 탐구생활 | 나의 연애 스타일, MBTI로 알아볼까?">
 <meta name="twitter:description" content="썸 상황 8가지에 답하면 나의 연애 유형과 찰떡궁합을 알려줄게요!">
 <meta name="twitter:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #FFF6F1;
@@ -247,13 +248,26 @@
     font-family:'Gowun Dodum', sans-serif; font-size: 13px;
   }
   .top-nav a{ color: var(--ink-soft); text-decoration:none; }
+  /* 페이지 위치 표시 줄 */
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#A87E3F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
 </style>
 </head>
 <body>
 
 <div style="width:100%; display:flex; justify-content:center;">
 <div style="width:100%; max-width:400px;">
-<div class="top-nav"><a href="index.html">← 썸 탐구생활 홈</a></div>
+<div class="crumb-bar">
+  <a href="../index.html">탐구소</a>
+  <span>/</span>
+  <span class="current">심리</span>
+</div>
 <div class="phone">
   <div class="phone-header">
     <div class="avatar">💌</div>
