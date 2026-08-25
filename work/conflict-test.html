@@ -118,42 +118,43 @@
 </div>
 <script>
 
+// 갈등 앞에서 — 선택지를 ‘그때 내가 하는 짓’으로
 const questions = [
-  { text: "동료랑 의견이 갈리면?", options: [
-    { text: "바로 맞춰보고 합의점 찾는다", val:"talk" },
-    { text: "자료 더 준비한 뒤 다시 말한다", val:"logic" },
-    { text: "일단 피하고 시간이 지나길 기다린다", val:"avoid" },
-    { text: "내 쪽 선을 분명히 말한다", val:"assert" }
+  { text: "동료랑 의견이 갈리면 너는?", options: [
+    { text: "바로 맞춰보고 합의점 찾음", val:"talk" },
+    { text: "자료 더 준비한 뒤 다시 말함", val:"logic" },
+    { text: "일단 피하고 시간이 지나길 바람", val:"avoid" },
+    { text: "내 쪽 선을 짧게 분명히 말함", val:"assert" }
   ]},
-  { text: "상사가 무리한 요청하면?", options: [
-    { text: "솔직히 어렵다고 말한다", val:"talk" },
-    { text: "일정·인원을 숫자로 설명한다", val:"logic" },
-    { text: "일단 받고 혼자 버틴다", val:"avoid" },
-    { text: "가능한 것 / 아닌 걸 나눈다", val:"assert" }
+  { text: "상사가 ‘이것도 부탁’ 하면?", options: [
+    { text: "솔직히 어렵다고 말로 풂", val:"talk" },
+    { text: "일정·인원을 숫자로 설명함", val:"logic" },
+    { text: "일단 받고 혼자 버팀", val:"avoid" },
+    { text: "가능한 것 / 아닌 걸 나눔", val:"assert" }
   ]},
   { text: "팀 분위기랑 내 생각이 다르면?", options: [
-    { text: "중간에서 조율하려 한다", val:"talk" },
-    { text: "근거 정리해서 설득한다", val:"logic" },
-    { text: "겉으론 맞추고 속은 남긴다", val:"avoid" },
-    { text: "다른 의견이라고 남긴다", val:"assert" }
+    { text: "중간에서 조율하려 함", val:"talk" },
+    { text: "근거 정리해서 설득함", val:"logic" },
+    { text: "겉으론 맞추고 속은 남김", val:"avoid" },
+    { text: "‘다른 의견입니다’로 남김", val:"assert" }
   ]},
-  { text: "갈등이 커지면?", options: [
-    { text: "대화로 풀고 싶다", val:"talk" },
-    { text: "사실부터 정리하고 싶다", val:"logic" },
-    { text: "거리를 두고 싶다", val:"avoid" },
-    { text: "핵심만 짧게 정리하고 싶다", val:"assert" }
+  { text: "갈등이 커질수록 몸이 원하는 건?", options: [
+    { text: "앉아서라도 대화로 풀고 싶음", val:"talk" },
+    { text: "사실부터 화이트보드에 정리하고 싶음", val:"logic" },
+    { text: "자리 비우고 거리를 두고 싶음", val:"avoid" },
+    { text: "핵심만 짧게 끊고 싶음", val:"assert" }
   ]},
-  { text: "상처받았을 때?", options: [
-    { text: "상대에게 말로 전한다", val:"talk" },
-    { text: "뭐가 문제였는지 정리한다", val:"logic" },
-    { text: "티 안 내고 삼킨다", val:"avoid" },
-    { text: "같은 일 없게 선을 긋는다", val:"assert" }
+  { text: "상처받았을 때 진짜 하는 짓은?", options: [
+    { text: "상대에게 말로 전함", val:"talk" },
+    { text: "뭐가 문제였는지 혼자 정리함", val:"logic" },
+    { text: "티 안 내고 삼킴", val:"avoid" },
+    { text: "같은 일 없게 선을 그음", val:"assert" }
   ]},
   { text: "회의에서 한 소리 들으면?", options: [
-    { text: "의도 확인하고 대화 이어간다", val:"talk" },
-    { text: "말이 맞는지부터 본다", val:"logic" },
-    { text: "표정 숨기고 넘어간다", val:"avoid" },
-    { text: "존중은 하되 부당한 건 짚는다", val:"assert" }
+    { text: "의도 확인하고 대화 이어감", val:"talk" },
+    { text: "말이 맞는지부터 머릿속에서 검증함", val:"logic" },
+    { text: "표정 숨기고 일단 넘어감", val:"avoid" },
+    { text: "존중은 하되 부당한 건 짚음", val:"assert" }
   ]},
   { text: "‘잘 풀렸다’의 기준은?", options: [
     { text: "관계가 회복된 것", val:"talk" },
@@ -161,25 +162,25 @@ const questions = [
     { text: "더 이상 말이 안 나온 것", val:"avoid" },
     { text: "내 경계가 지켜진 것", val:"assert" }
   ]},
-  { text: "갈등 끝나면 남는 기분은?", options: [
+  { text: "갈등 끝난 뒤 남는 기분은?", options: [
     { text: "통했으면 후련함", val:"talk" },
     { text: "정리됐으면 안심", val:"logic" },
-    { text: "오래 묵혀짐", val:"avoid" },
-    { text: "선 지켰으면 괜찮음", val:"assert" }
+    { text: "입 안 열었는데도 오래 묵혀짐", val:"avoid" },
+    { text: "선 지켰으면 그걸로 괜찮음", val:"assert" }
   ]}
 ];
 const results = {
-  talk:{ name:"말로 푸는 쪽", level:"대화형",
-    desc:"갈등이 생기면 이야기해서 풀고 싶은 편이에요. 팀이 싸늘해지는 걸 막는 데 강합니다. 다만 모든 걸 말로 풀려다 보면 본인이 더 지칠 수 있어요.",
+  talk:{ name:"말로 풀어야 직성이 풀리는 사람", level:"대화형",
+    desc: "갈등이 생기면 이야기해서 풀고 싶은 편이에요. 팀이 싸늘해지는 걸 막는 데 강하죠. ‘그냥 말해보면 되잖아’가 본인 기본값. 다만 모든 걸 말로 풀려다 보면 본인이 더 지칠 수 있어요.",
     tip: "지금 당장 대화가 어려우면, ‘언제 이야기할지’만 먼저 말해도 충분해요." },
-  logic:{ name:"정리해서 푸는 쪽", level:"근거형",
-    desc:"감정 싸움보다 기준이랑 사실로 정리하고 싶어 해요. 공정한 결론을 만드는 데 도움이 됩니다. 대신 상대는 먼저 ‘알아줬으면’ 할 때도 있어요.",
+  logic:{ name:"감정 전에 정리부터 하는 사람", level:"근거형",
+    desc: "감정 싸움보다 기준이랑 사실로 정리하고 싶어 해요. 공정한 결론을 만드는 데 도움이 됩니다. 상대는 먼저 ‘알아줬으면’ 할 때도 있는데, 본인은 ‘그게 해결이잖아요’ 쪽에 가깝죠.",
     tip: "논리 꺼내기 전에 ‘상황 이해했다’ 한 마디가 생각보다 먹혀요." },
-  avoid:{ name:"일단 피하는 쪽", level:"거리두기형",
-    desc:"확전되기 전에 한발 물러서는 편이에요. 불필요한 싸움을 줄이는 장점이 있습니다. 다만 미뤄둔 게 쌓이면 나중에 더 크게 터질 수 있어요.",
+  avoid:{ name:"일단 피하고 보는 사람", level:"거리두기형",
+    desc: "확전되기 전에 한발 물러서는 편이에요. 불필요한 싸움을 줄이는 장점이 있습니다. 겉으론 괜찮은데 속은 쌓여 있을 때가 많고, 미뤄둔 게 나중에 더 크게 터질 수 있어요.",
     tip: "‘나중에’를 ‘이번 주 금요일 전에’처럼 날짜로만 바꿔보세요." },
-  assert:{ name:"선 긋는 쪽", level:"경계형",
-    desc:"할 말과 못 하는 일을 분명히 하는 편이에요. 오래 버티는 데 도움이 됩니다. 다만 말투가 세면 공격적으로 들릴 수 있어요.",
+  assert:{ name:"선부터 긋는 사람", level:"경계형",
+    desc: "할 말과 못 하는 일을 분명히 하는 편이에요. 오래 버티는 데 도움이 됩니다. ‘착한 척’보다 ‘명확한 척’이 본인에겐 편하죠. 다만 말투가 세면 공격적으로 들릴 수 있어요.",
     tip: "‘안 됩니다’보다 ‘여기까지는 가능해요’가 관계를 덜 깨뜨려요." }
 };
 
