@@ -20,6 +20,7 @@
     --brass-soft:#F1E8D8;
 
     --psy:#FF6F59;    --psy-bg:#FFF1EC;
+    --work:#2F6F8F;   --work-bg:#E3F0F6;
     --ppl:#D9A400;    --ppl-bg:#FFF8E3;
     --toon:#8B5FBF;   --toon-bg:#F4EEFB;
     --tech:#2E8B7C;   --tech-bg:#E9F6F3;
@@ -79,11 +80,6 @@
   }
   .hero .stamp b{ color: var(--brass); font-weight:700; }
 
-  .ad-slot{
-    margin: 34px 0; border: 1px dashed var(--line); border-radius:12px; padding:14px;
-    text-align:center; font-size:11px; color:#C9BDC2; letter-spacing:0.03em;
-  }
-
   .catalog{ padding: 20px 0 50px; }
   .catalog-head{
     display:flex; align-items:baseline; justify-content:space-between;
@@ -120,6 +116,7 @@
     width: 30px; height: 6px; border-radius: 0 0 4px 4px;
   }
   .card[data-cat="psy"] .tab{ background: var(--psy); }
+  .card[data-cat="work"] .tab{ background: var(--work); }
   .card[data-cat="ppl"] .tab{ background: var(--ppl); }
   .card[data-cat="toon"] .tab{ background: var(--toon); }
   .card[data-cat="tech"] .tab{ background: var(--tech); }
@@ -128,6 +125,7 @@
   .card .row1{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
   .card .code{ font-size:10.5px; letter-spacing:0.06em; padding:3px 8px; border-radius:999px; }
   .card[data-cat="psy"] .code{ background: var(--psy-bg); color: var(--psy); }
+  .card[data-cat="work"] .code{ background: var(--work-bg); color: var(--work); }
   .card[data-cat="ppl"] .code{ background: var(--ppl-bg); color: var(--ppl); }
   .card[data-cat="toon"] .code{ background: var(--toon-bg); color: var(--toon); }
   .card[data-cat="tech"] .code{ background: var(--tech-bg); color: var(--tech); }
@@ -171,16 +169,14 @@
   <div class="hero">
     <div class="kicker mono">RESEARCH INDEX</div>
     <h1>가볍게 시작해서,<br><span class="accent">진지하게</span> 알아가는 곳</h1>
-    <p>심리, 인물, 웹툰, 테크, 여행 — 흥미로 시작한 궁금증이 쓸모 있는 정보로 남도록, 분야별로 나눠 기록합니다.</p>
-    <div class="stamp mono">현재 열람 가능 · <b>1 / 5</b> 분야</div>
+    <p>심리, 직장, 인물, 웹툰, 테크, 여행 — 흥미로 시작한 궁금증이 쓸모 있는 정보로 남도록, 분야별로 나눠 기록합니다.</p>
+    <div class="stamp mono">현재 열람 가능 · <b>2 / 6</b> 분야</div>
   </div>
-
-  <div class="ad-slot">광고 영역 (AdSense/애드핏 삽입 위치)</div>
 
   <div class="catalog">
     <div class="catalog-head">
       <h2>탐구 분야</h2>
-      <span class="count mono">5 FIELDS</span>
+      <span class="count mono">6 FIELDS</span>
     </div>
 
     <div class="catalog-grid">
@@ -196,10 +192,21 @@
         <div class="arrow">들어가기 →</div>
       </a>
 
+      <a class="card active" data-cat="work" href="work/index.html">
+        <div class="tab"></div>
+        <div class="row1">
+          <span class="code mono">WORK · 02</span>
+          <span class="status open">열람 가능</span>
+        </div>
+        <h3>직장</h3>
+        <p>번아웃·직장 유형·갈등·워라밸 테스트. 썸심리와는 다른 톤으로 일의 피로를 들여다봅니다.</p>
+        <div class="arrow">들어가기 →</div>
+      </a>
+
       <div class="card locked" data-cat="ppl">
         <div class="tab"></div>
         <div class="row1">
-          <span class="code mono">PPL · 02</span>
+          <span class="code mono">PPL · 03</span>
           <span class="status">준비 중</span>
         </div>
         <h3>인물</h3>
@@ -209,7 +216,7 @@
       <div class="card locked" data-cat="toon">
         <div class="tab"></div>
         <div class="row1">
-          <span class="code mono">TOON · 03</span>
+          <span class="code mono">TOON · 04</span>
           <span class="status">준비 중</span>
         </div>
         <h3>웹툰</h3>
@@ -219,7 +226,7 @@
       <div class="card locked" data-cat="tech">
         <div class="tab"></div>
         <div class="row1">
-          <span class="code mono">TECH · 04</span>
+          <span class="code mono">TECH · 05</span>
           <span class="status">준비 중</span>
         </div>
         <h3>물건</h3>
@@ -229,7 +236,7 @@
       <div class="card locked" data-cat="trvl">
         <div class="tab"></div>
         <div class="row1">
-          <span class="code mono">TRVL · 05</span>
+          <span class="code mono">TRVL · 06</span>
           <span class="status">준비 중</span>
         </div>
         <h3>여행</h3>

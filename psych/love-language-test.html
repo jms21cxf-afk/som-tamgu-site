@@ -84,12 +84,20 @@
   .type-desc{ font-size: 13.8px; line-height:1.65; color: var(--ink); text-align:left; }
   .match-box{ margin-top:16px; background: var(--paper); border: 1px dashed var(--line); border-radius: 14px; padding: 12px 14px; text-align:left; font-size: 12.8px; }
   .match-box b{ color: var(--mustard-dark); }
+  .empty-line{
+    margin-top:10px; text-align:left; font-size:12px; color: var(--coral-dark);
+    background: #FFF1EC; border-radius:10px; padding:10px 12px;
+  }
+  .read-more{
+    margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline;
+  }
   .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
   .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-family:'Gowun Dodum', sans-serif; font-weight:700; cursor:pointer; border: none; }
   .action-btn.share{ background: var(--ink); color:white; }
   .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
   .copy-toast{ position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%); background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px; opacity:0; transition: opacity 0.25s ease; white-space:nowrap; }
   .copy-toast.show{ opacity:1; }
+
   /* 페이지 위치 표시 줄 */
   .crumb-bar{
     width:100%; max-width:400px; margin: 0 auto 12px;
@@ -99,6 +107,7 @@
   .crumb-bar a{ color:#A87E3F; text-decoration:none; }
   .crumb-bar span{ color:#B4ABA0; }
   .crumb-bar .current{ color:#3A2E39; }
+
 </style>
 </head>
 <body>
@@ -127,7 +136,6 @@
     <p>둘 중 더 끌리는 걸 10번 골라보면<br>나의 사랑의 언어를 알려줄게요.</p>
     <button class="cta-btn" onclick="startQuiz()">대화 시작하기 →</button>
     <div class="meta-note">약 40초 소요 · 결과는 저장해서 공유할 수 있어요</div>
-    <div class="ad-slot">광고 영역 (AdSense/애드핏 삽입 위치)</div>
   </div>
 
   <!-- QUIZ -->
@@ -141,13 +149,14 @@
       <div class="type-sub" id="rSub"></div>
       <div class="type-desc" id="rDesc"></div>
       <div class="match-box" id="rMatch"></div>
+      <div class="empty-line" id="rEmpty"></div>
+      <a class="read-more" href="articles/beyond-mbti.html">연애할 때 유형보다 중요한 것들 →</a>
       <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
     </div>
     <div class="action-row">
       <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
       <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
     </div>
-    <div class="ad-slot">광고 영역 (AdSense/애드핏 삽입 위치)</div>
   </div>
 </div>
 </div>
@@ -200,19 +209,24 @@ const questions = [
 const results = {
   words:{ name:"말 한마디로 채워지는 사람", sub:"인정하는 말 (Words of Affirmation)",
     desc:"\"고생했어\", \"잘하고 있어\" 같은 말 한마디에 마음이 꽉 차는 타입이에요. 반대로 무심한 말투나 칭찬 없는 관계에서는 쉽게 서운함을 느껴요. 연인에게 표현을 자주 요청해도 괜찮아요 — 그게 당신에게는 사랑을 확인하는 가장 확실한 방법이니까요.",
-    match:"연인에게 \"그냥 말로 해줘도 충분해\"라고 솔직하게 알려주는 게 서로에게 좋아요." },
+    match:"연인에게 \"그냥 말로 해줘도 충분해\"라고 솔직하게 알려주는 게 서로에게 좋아요.",
+    empty:"이 언어가 채워지지 않으면: 아무리 잘해줘도 사랑받는다는 확신이 안 서고, 자꾸 확인하고 싶어져요." },
   time:{ name:"함께 있는 시간이 사랑인 사람", sub:"함께하는 시간 (Quality Time)",
     desc:"무엇을 하느냐보다, 온전히 집중해서 함께 있는 시간 자체가 사랑으로 느껴지는 타입이에요. 휴대폰을 보면서 옆에 있는 것보다, 짧아도 눈을 맞추고 대화하는 시간이 훨씬 소중해요. 바쁜 연인이라면 '짧고 온전한 시간'을 요청해보는 게 도움이 돼요.",
-    match:"물리적으로 함께하는 시간을 꾸준히 만드는 연인과 특히 잘 맞아요." },
+    match:"물리적으로 함께하는 시간을 꾸준히 만드는 연인과 특히 잘 맞아요.",
+    empty:"이 언어가 채워지지 않으면: 같은 공간에 있어도 마음은 딴 데 가 있는 것 같아 외로워져요." },
   acts:{ name:"행동으로 증명해야 믿는 사람", sub:"봉사 (Acts of Service)",
     desc:"말보다 행동이 더 크게 와닿는 타입이에요. 힘들 때 옆에서 챙겨주거나, 말하지 않아도 알아서 도와주는 작은 행동들에서 사랑을 느껴요. 이 유형은 상대의 사소한 배려를 알아채는 눈이 밝다는 장점이 있어요.",
-    match:"세심하게 챙겨주는 연인과 함께라면 사랑을 자주, 크게 느낄 수 있어요." },
+    match:"세심하게 챙겨주는 연인과 함께라면 사랑을 자주, 크게 느낄 수 있어요.",
+    empty:"이 언어가 채워지지 않으면: 말로는 사랑한다면서 행동이 안 따라오면, 그 진심이 자꾸 의심스러워져요." },
   gifts:{ name:"마음을 담은 선물에 설레는 사람", sub:"선물 (Receiving Gifts)",
     desc:"선물의 가격보다 '나를 생각하며 골랐다'는 마음 자체에 감동받는 타입이에요. 작은 메모나 소소한 선물 하나에도 사랑이 느껴진다면 이 유형일 가능성이 높아요. 오해받기 쉬운 유형이지만, 핵심은 물건이 아니라 그 안의 정성이라는 걸 기억해두면 좋아요.",
-    match:"작은 것 하나도 세심하게 챙기는 연인과 궁합이 좋아요." },
+    match:"작은 것 하나도 세심하게 챙기는 연인과 궁합이 좋아요.",
+    empty:"이 언어가 채워지지 않으면: 기념일이나 특별한 날을 그냥 넘기면 서운함이 유독 오래 남아요." },
   touch:{ name:"스킨십으로 사랑을 확인받는 사람", sub:"스킨십 (Physical Touch)",
     desc:"손을 잡거나 안아주는 것처럼, 신체적인 접촉을 통해 사랑을 가장 크게 느끼는 타입이에요. 말보다 스킨십이 있을 때 더 안정감을 느끼고, 반대로 스킨십이 줄어들면 관계에 문제가 있는 건 아닌지 불안해지기도 해요.",
-    match:"애정 표현에 적극적인 연인과 함께일 때 특히 편안함을 느껴요." }
+    match:"애정 표현에 적극적인 연인과 함께일 때 특히 편안함을 느껴요.",
+    empty:"이 언어가 채워지지 않으면: 다른 건 다 괜찮아도 스킨십이 줄면 마음 한켠이 계속 허전해요." }
 };
 
 let current = 0;
@@ -280,6 +294,7 @@ function showResult(){
   document.getElementById('rSub').textContent = r.sub;
   document.getElementById('rDesc').textContent = r.desc;
   document.getElementById('rMatch').innerHTML = '💛 ' + r.match;
+  document.getElementById('rEmpty').textContent = r.empty;
 
   document.getElementById('quiz').classList.add('hidden');
   document.getElementById('result').classList.remove('hidden');

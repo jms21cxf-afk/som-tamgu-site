@@ -85,12 +85,20 @@
   .type-desc{ font-size: 13.8px; line-height:1.65; color: var(--ink); text-align:left; }
   .match-box{ margin-top:16px; background: var(--paper); border: 1px dashed var(--line); border-radius: 14px; padding: 12px 14px; text-align:left; font-size: 12.8px; }
   .match-box b{ color: var(--plum-dark); }
+  .friend-line{
+    margin-top:10px; text-align:left; font-size:12px; color: var(--ink-soft);
+    background: var(--bubble-me); border-radius:10px; padding:10px 12px;
+  }
+  .read-more{
+    margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline;
+  }
   .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
   .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-family:'Gowun Dodum', sans-serif; font-weight:700; cursor:pointer; border: none; }
   .action-btn.share{ background: var(--ink); color:white; }
   .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
   .copy-toast{ position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%); background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px; opacity:0; transition: opacity 0.25s ease; white-space:nowrap; }
   .copy-toast.show{ opacity:1; }
+
   /* 페이지 위치 표시 줄 */
   .crumb-bar{
     width:100%; max-width:400px; margin: 0 auto 12px;
@@ -100,6 +108,7 @@
   .crumb-bar a{ color:#A87E3F; text-decoration:none; }
   .crumb-bar span{ color:#B4ABA0; }
   .crumb-bar .current{ color:#3A2E39; }
+
 </style>
 </head>
 <body>
@@ -128,7 +137,6 @@
     <p>썸 상황 9가지에 답하면<br>나의 밀당 스타일을 진단해줄게요.</p>
     <button class="cta-btn" onclick="startQuiz()">대화 시작하기 →</button>
     <div class="meta-note">약 40초 소요 · 결과는 저장해서 공유할 수 있어요</div>
-    <div class="ad-slot">광고 영역 (AdSense/애드핏 삽입 위치)</div>
   </div>
 
   <!-- QUIZ -->
@@ -142,13 +150,14 @@
       <div class="type-sub" id="rSub"></div>
       <div class="type-desc" id="rDesc"></div>
       <div class="match-box" id="rMatch"></div>
+      <div class="friend-line" id="rFriend"></div>
+      <a class="read-more" href="articles/some-signals.html">썸 탈 때 나타나는 심리 신호 5가지 →</a>
       <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
     </div>
     <div class="action-row">
       <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
       <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
     </div>
-    <div class="ad-slot">광고 영역 (AdSense/애드핏 삽입 위치)</div>
   </div>
 </div>
 </div>
@@ -215,16 +224,20 @@ const questions = [
 const results = {
   direct:{ name:"직진 어뢰형", sub:"직진형 (Direct)",
     desc:"마음이 생기면 참지 못하고 바로 표현하는 타입이에요. 밀당보다는 진심을 있는 그대로 보여주는 게 편하고, 그 솔직함이 오히려 상대에게 신뢰를 줘요. 다만 상대의 속도를 배려하는 여유도 함께 가지면 관계가 더 편안해질 거예요.",
-    match:"비슷하게 솔직한 <b>직진형</b>이나, 천천히 다가오는 <b>신중형</b>과도 잘 맞아요." },
+    match:"비슷하게 솔직한 <b>직진형</b>이나, 천천히 다가오는 <b>신중형</b>과도 잘 맞아요.",
+    friend:"친구들 사이에서 \"쟤 누구 좋아하나 보다\" 티가 제일 먼저 나는 사람이에요." },
   careful:{ name:"신중한 관찰자형", sub:"신중형 (Careful)",
     desc:"확신이 서기 전까진 마음을 함부로 드러내지 않는 타입이에요. 상대를 충분히 알아가면서 관계를 천천히 쌓아가는 걸 선호해요. 신중함이 장점이지만, 때로는 마음을 조금 더 적극적으로 표현해도 상대에게 좋은 신호가 될 수 있어요.",
-    match:"믿음직한 <b>직진형</b>이나 여유로운 <b>밀당러</b>와 특히 잘 맞아요." },
+    match:"믿음직한 <b>직진형</b>이나 여유로운 <b>밀당러</b>와 특히 잘 맞아요.",
+    friend:"친구들도 좀처럼 눈치 못 챌 만큼, 마음을 들키지 않는 데는 도가 텄어요." },
   tactician:{ name:"밀당 전략가형", sub:"밀당러 (Tactician)",
     desc:"관계의 긴장감과 주도권을 즐기는 타입이에요. 너무 쉽게 마음을 보이기보다, 적당한 밀고 당기기로 상대의 관심을 오래 붙잡아두는 데 능해요. 다만 밀당이 길어지면 상대가 지칠 수 있으니, 적절한 순간엔 진심을 보여주는 것도 중요해요.",
-    match:"눈치가 빠른 <b>직진형</b>과는 티키타카가 잘 맞고, <b>도망가는형</b>과는 서로 눈치싸움이 길어질 수 있어요." },
+    match:"눈치가 빠른 <b>직진형</b>과는 티키타카가 잘 맞고, <b>도망가는형</b>과는 서로 눈치싸움이 길어질 수 있어요.",
+    friend:"\"쟤 진짜 그 사람 좋아하는 거 맞아?\" 친구들도 매번 헷갈려해요." },
   runner:{ name:"살며시 도망가는형", sub:"회피 도주형 (Runner)",
     desc:"마음이 커질수록 오히려 부담스러워서 한 발 물러서게 되는 타입이에요. 관심이 없어서가 아니라, 확실해지는 것 자체가 두려운 경우가 많아요. 스스로도 이 패턴을 인식하고 있다면, 작은 표현부터 조금씩 연습해보는 게 도움이 될 거예요.",
-    match:"안정적으로 기다려주는 <b>신중형</b>과 함께라면 편안하게 마음을 열어갈 수 있어요." }
+    match:"안정적으로 기다려주는 <b>신중형</b>과 함께라면 편안하게 마음을 열어갈 수 있어요.",
+    friend:"친구들은 \"그렇게 좋다면서 왜 자꾸 피해?\" 하고 답답해하기도 해요." }
 };
 
 let current = 0;
@@ -292,6 +305,7 @@ function showResult(){
   document.getElementById('rSub').textContent = r.sub;
   document.getElementById('rDesc').textContent = r.desc;
   document.getElementById('rMatch').innerHTML = '🎣 ' + r.match;
+  document.getElementById('rFriend').textContent = r.friend;
 
   document.getElementById('quiz').classList.add('hidden');
   document.getElementById('result').classList.remove('hidden');

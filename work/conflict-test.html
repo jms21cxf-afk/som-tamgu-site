@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>직장 갈등 대처 스타일 테스트 — 탐구소</title>
+<meta name="description" content="의견 충돌·무리한 요청 앞에서 나는 어떻게 반응할까. 8문항 직장 갈등 스타일 테스트.">
+<meta name="keywords" content="직장 갈등 테스트, 갈등 대처 스타일, 직장인 커뮤니케이션 테스트">
+<meta property="og:title" content="직장 갈등 대처 스타일 테스트 — 탐구소">
+<meta property="og:description" content="갈등 앞에서 나는 어떤 타입일까?">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/conflict-test.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/conflict-test.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74; --ok:#3D7A6A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 0%, rgba(47,111,143,0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 100%, rgba(61,122,106,0.07) 0%, transparent 40%);
+    font-family:'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height:100vh; padding: 20px 14px 40px;
+  }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .shell{ width:100%; max-width:440px; margin:0 auto; }
+  .crumb-bar{ display:flex; align-items:center; gap:6px; font-family:'Do Hyeon', sans-serif; font-size:13px; margin-bottom:14px; }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: var(--ink); }
+  .panel{ background: var(--paper); border: 1.5px solid var(--line); border-radius: 18px; overflow:hidden; box-shadow: 0 12px 28px -18px rgba(26,34,40,0.35); }
+  .panel-head{ padding: 16px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:10px; }
+  .panel-head .mark{ width:36px; height:36px; border-radius:10px; background: var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:16px; }
+  .panel-head .title{ font-weight:700; font-size:14.5px; }
+  .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
+  .progress{ height:3px; background: var(--line); }
+  .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
+  .screen{ padding: 22px 18px 24px; min-height: 420px; }
+  .hidden{ display:none !important; }
+  .intro .eyebrow{ font-size:11px; letter-spacing:0.1em; color: var(--accent); margin-bottom:12px; }
+  .intro h1{ font-size:28px; line-height:1.35; margin-bottom:12px; }
+  .intro p{ font-size:14px; color: var(--ink-soft); margin-bottom:10px; }
+  .intro .note{ font-size:12px; color: var(--ink-faint); margin: 16px 0 22px; padding:10px 12px; border-left:3px solid var(--line); }
+  .cta{ display:block; width:100%; background: var(--accent); color:#fff; border:none; border-radius:12px; padding:14px 16px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; }
+  .cta:hover{ background: var(--accent-dark); }
+  .q-num{ font-size:11.5px; color: var(--accent); letter-spacing:0.06em; margin-bottom:8px; }
+  .q-text{ font-size:18px; line-height:1.45; margin-bottom:18px; }
+  .opts{ display:flex; flex-direction:column; gap:8px; }
+  .opt{ text-align:left; width:100%; background: #F4F7F9; border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:14px; font-family:inherit; color: var(--ink); cursor:pointer; }
+  .opt:hover{ border-color: var(--accent); background: #EEF5F9; }
+  .result .tag{ display:inline-block; font-size:11px; letter-spacing:0.08em; color: var(--accent); border:1px solid var(--line); border-radius:999px; padding:4px 10px; margin-bottom:12px; }
+  .result .name{ font-size:26px; line-height:1.3; margin-bottom:6px; }
+  .result .level{ font-size:13px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .desc{ font-size:14px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .tip{ background:#F4F7F9; border-radius:12px; padding:12px 14px; font-size:13.5px; margin-bottom:12px; }
+  .result .warn{ font-size:12px; color: var(--ink-faint); margin-bottom:18px; }
+  .actions{ display:flex; gap:8px; }
+  .actions button{ flex:1; border-radius:12px; padding:12px; font-size:13.5px; font-family:inherit; font-weight:700; cursor:pointer; }
+  .actions .share{ background: var(--accent); color:#fff; border:none; }
+  .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
+  .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
+  .toast.show{ display:block; }
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="crumb-bar">
+    <a href="../index.html">탐구소</a>
+    <span>/</span>
+    <a href="index.html">직장</a>
+    <span>/</span>
+    <span class="current">갈등</span>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="mark">⚡</div>
+      <div>
+        <div class="title">갈등 앞에서</div>
+        <div class="sub" id="statusText">시작 전</div>
+      </div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+    <div id="intro" class="screen intro">
+      <div class="eyebrow">솔직히</div>
+      <h1 class="serif">싸울 일 생기면<br>너는 어떻게 해?</h1>
+      <p>의견 갈리고, 무리한 요청 오고, 회의에서 한 소리 들을 때. 그때 손에 잡히는 습관.</p>
+      <div class="note">정답 유형은 없어요. 팀마다 통하는 방식이 다릅니다.</div>
+      <button class="cta" onclick="startQuiz()">시작 →</button>
+    </div>
+    <div id="quiz" class="screen hidden">
+      <div class="q-num mono" id="qNum"></div>
+      <div class="q-text serif" id="qText"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+    <div id="result" class="screen result hidden">
+      <span class="tag">결과</span>
+      <div class="name serif" id="rName"></div>
+      <div class="level" id="rLevel"></div>
+      <div class="desc" id="rDesc"></div>
+      <div class="tip" id="rTip"></div>
+      <div class="warn">회사 분위기마다 ‘잘 통하는 방식’이 달라요. 여기 나온 게 항상 최선은 아닙니다.</div>
+      <div class="actions">
+        <button class="share" onclick="copyResult()">결과 링크 복사</button>
+        <button class="again" onclick="restartQuiz()">다시하기</button>
+      </div>
+      <div class="toast" id="toast">링크가 복사됐어요</div>
+    </div>
+  </div>
+</div>
+<script>
+
+const questions = [
+  { text: "동료랑 의견이 갈리면?", options: [
+    { text: "바로 맞춰보고 합의점 찾는다", val:"talk" },
+    { text: "자료 더 준비한 뒤 다시 말한다", val:"logic" },
+    { text: "일단 피하고 시간이 지나길 기다린다", val:"avoid" },
+    { text: "내 쪽 선을 분명히 말한다", val:"assert" }
+  ]},
+  { text: "상사가 무리한 요청하면?", options: [
+    { text: "솔직히 어렵다고 말한다", val:"talk" },
+    { text: "일정·인원을 숫자로 설명한다", val:"logic" },
+    { text: "일단 받고 혼자 버틴다", val:"avoid" },
+    { text: "가능한 것 / 아닌 걸 나눈다", val:"assert" }
+  ]},
+  { text: "팀 분위기랑 내 생각이 다르면?", options: [
+    { text: "중간에서 조율하려 한다", val:"talk" },
+    { text: "근거 정리해서 설득한다", val:"logic" },
+    { text: "겉으론 맞추고 속은 남긴다", val:"avoid" },
+    { text: "다른 의견이라고 남긴다", val:"assert" }
+  ]},
+  { text: "갈등이 커지면?", options: [
+    { text: "대화로 풀고 싶다", val:"talk" },
+    { text: "사실부터 정리하고 싶다", val:"logic" },
+    { text: "거리를 두고 싶다", val:"avoid" },
+    { text: "핵심만 짧게 정리하고 싶다", val:"assert" }
+  ]},
+  { text: "상처받았을 때?", options: [
+    { text: "상대에게 말로 전한다", val:"talk" },
+    { text: "뭐가 문제였는지 정리한다", val:"logic" },
+    { text: "티 안 내고 삼킨다", val:"avoid" },
+    { text: "같은 일 없게 선을 긋는다", val:"assert" }
+  ]},
+  { text: "회의에서 한 소리 들으면?", options: [
+    { text: "의도 확인하고 대화 이어간다", val:"talk" },
+    { text: "말이 맞는지부터 본다", val:"logic" },
+    { text: "표정 숨기고 넘어간다", val:"avoid" },
+    { text: "존중은 하되 부당한 건 짚는다", val:"assert" }
+  ]},
+  { text: "‘잘 풀렸다’의 기준은?", options: [
+    { text: "관계가 회복된 것", val:"talk" },
+    { text: "합리적인 결론이 난 것", val:"logic" },
+    { text: "더 이상 말이 안 나온 것", val:"avoid" },
+    { text: "내 경계가 지켜진 것", val:"assert" }
+  ]},
+  { text: "갈등 끝나면 남는 기분은?", options: [
+    { text: "통했으면 후련함", val:"talk" },
+    { text: "정리됐으면 안심", val:"logic" },
+    { text: "오래 묵혀짐", val:"avoid" },
+    { text: "선 지켰으면 괜찮음", val:"assert" }
+  ]}
+];
+const results = {
+  talk:{ name:"말로 푸는 쪽", level:"대화형",
+    desc:"갈등이 생기면 이야기해서 풀고 싶은 편이에요. 팀이 싸늘해지는 걸 막는 데 강합니다. 다만 모든 걸 말로 풀려다 보면 본인이 더 지칠 수 있어요.",
+    tip: "지금 당장 대화가 어려우면, ‘언제 이야기할지’만 먼저 말해도 충분해요." },
+  logic:{ name:"정리해서 푸는 쪽", level:"근거형",
+    desc:"감정 싸움보다 기준이랑 사실로 정리하고 싶어 해요. 공정한 결론을 만드는 데 도움이 됩니다. 대신 상대는 먼저 ‘알아줬으면’ 할 때도 있어요.",
+    tip: "논리 꺼내기 전에 ‘상황 이해했다’ 한 마디가 생각보다 먹혀요." },
+  avoid:{ name:"일단 피하는 쪽", level:"거리두기형",
+    desc:"확전되기 전에 한발 물러서는 편이에요. 불필요한 싸움을 줄이는 장점이 있습니다. 다만 미뤄둔 게 쌓이면 나중에 더 크게 터질 수 있어요.",
+    tip: "‘나중에’를 ‘이번 주 금요일 전에’처럼 날짜로만 바꿔보세요." },
+  assert:{ name:"선 긋는 쪽", level:"경계형",
+    desc:"할 말과 못 하는 일을 분명히 하는 편이에요. 오래 버티는 데 도움이 됩니다. 다만 말투가 세면 공격적으로 들릴 수 있어요.",
+    tip: "‘안 됩니다’보다 ‘여기까지는 가능해요’가 관계를 덜 깨뜨려요." }
+};
+
+let current = 0;
+const scores = Object.fromEntries(Object.keys(results).map(k => [k, 0]));
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  current = 0;
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  renderQuestion();
+}
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById('statusText').textContent = (current + 1) + ' / ' + questions.length;
+  document.getElementById('qNum').textContent = (current + 1) + '번째';
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.val);
+    opts.appendChild(btn);
+  });
+}
+function selectAnswer(val){
+  scores[val]++;
+  current++;
+  if (current < questions.length) renderQuestion();
+  else { document.getElementById('progressBar').style.width = '100%'; showResult(); }
+}
+function showResult(){
+  const top = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+  const r = results[top];
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '결과';
+  document.getElementById('rName').textContent = r.name;
+  document.getElementById('rLevel').textContent = r.level;
+  document.getElementById('rDesc').textContent = r.desc;
+  document.getElementById('rTip').textContent = r.tip;
+}
+function restartQuiz(){
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '시작 전';
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('toast').classList.remove('show');
+}
+function copyResult(){
+  navigator.clipboard.writeText(location.href).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  });
+}
+
+</script>
+</body>
+</html>

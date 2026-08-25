@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>번아웃 / 직장 멘탈 테스트 — 탐구소</title>
+<meta name="description" content="퇴근해도 일이 머리에 남는지, 8문항으로 가볍게 체크. 병원 진단이 아닙니다.">
+<meta name="keywords" content="번아웃 테스트, 직장 멘탈 테스트, 번아웃 자가진단, 직장인 스트레스 테스트">
+<meta property="og:title" content="번아웃 / 직장 멘탈 테스트 — 탐구소">
+<meta property="og:description" content="요즘 일 때문에 얼마나 닳아 있는지, 40초 만에 가늠해보기">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/burnout-test.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/burnout-test.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2;
+    --paper:#FFFFFF;
+    --line:#C5D0D8;
+    --ink:#1A2228;
+    --ink-soft:#4A5863;
+    --ink-faint:#8A97A1;
+    --accent:#2F6F8F;
+    --accent-dark:#245A74;
+    --warn:#C45C3E;
+    --ok:#3D7A6A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 0%, rgba(47,111,143,0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 100%, rgba(61,122,106,0.07) 0%, transparent 40%);
+    font-family:'Gowun Dodum', sans-serif;
+    color: var(--ink);
+    min-height:100vh;
+    padding: 20px 14px 40px;
+  }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+
+  .shell{ width:100%; max-width:440px; margin:0 auto; }
+
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size:13px;
+    margin-bottom:14px;
+  }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: var(--ink); }
+
+  .panel{
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 18px;
+    overflow:hidden;
+    box-shadow: 0 12px 28px -18px rgba(26,34,40,0.35);
+  }
+  .panel-head{
+    padding: 16px 18px;
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .panel-head .mark{
+    width:36px; height:36px; border-radius:10px;
+    background: var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px;
+  }
+  .panel-head .title{ font-weight:700; font-size:14.5px; }
+  .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
+  .progress{ height:3px; background: var(--line); }
+  .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
+
+  .screen{ padding: 22px 18px 24px; min-height: 420px; }
+  .hidden{ display:none !important; }
+
+  .intro .eyebrow{
+    font-size:11px; letter-spacing:0.1em; color: var(--accent);
+    margin-bottom:12px;
+  }
+  .intro h1{
+    font-size:28px; line-height:1.35; margin-bottom:12px;
+  }
+  .intro p{ font-size:14px; color: var(--ink-soft); margin-bottom:10px; }
+  .intro .note{
+    font-size:12px; color: var(--ink-faint); margin: 16px 0 22px;
+    padding:10px 12px; border-left:3px solid var(--line);
+  }
+  .cta{
+    display:block; width:100%;
+    background: var(--accent); color:#fff;
+    border:none; border-radius:12px;
+    padding:14px 16px; font-size:15px; font-weight:700;
+    font-family:inherit; cursor:pointer;
+  }
+  .cta:hover{ background: var(--accent-dark); }
+
+  .q-num{ font-size:11.5px; color: var(--accent); letter-spacing:0.06em; margin-bottom:8px; }
+  .q-text{ font-size:18px; line-height:1.45; margin-bottom:18px; }
+  .opts{ display:flex; flex-direction:column; gap:8px; }
+  .opt{
+    text-align:left; width:100%;
+    background: #F4F7F9; border:1px solid var(--line);
+    border-radius:12px; padding:12px 14px;
+    font-size:14px; font-family:inherit; color: var(--ink);
+    cursor:pointer; transition: border-color .15s, background .15s;
+  }
+  .opt:hover{ border-color: var(--accent); background: #EEF5F9; }
+
+  .result .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:12px;
+  }
+  .result .name{ font-size:26px; line-height:1.3; margin-bottom:6px; }
+  .result .level{ font-size:13px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .desc{ font-size:14px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .tip{
+    background:#F4F7F9; border-radius:12px; padding:12px 14px;
+    font-size:13.5px; margin-bottom:12px;
+  }
+  .result .warn{
+    font-size:12px; color: var(--ink-faint); margin-bottom:18px;
+  }
+  .actions{ display:flex; gap:8px; }
+  .actions button{
+    flex:1; border-radius:12px; padding:12px;
+    font-size:13.5px; font-family:inherit; font-weight:700; cursor:pointer;
+  }
+  .actions .share{ background: var(--accent); color:#fff; border:none; }
+  .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
+  .toast{
+    display:none; text-align:center; font-size:12px; color: var(--ok);
+    margin-top:10px;
+  }
+  .toast.show{ display:block; }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="crumb-bar">
+    <a href="../index.html">탐구소</a>
+    <span>/</span>
+    <a href="index.html">직장</a>
+    <span>/</span>
+    <span class="current">번아웃</span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="mark">🔋</div>
+      <div>
+        <div class="title">번아웃 체크</div>
+        <div class="sub" id="statusText">시작 전</div>
+      </div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+
+    <!-- INTRO -->
+    <div id="intro" class="screen intro">
+      <div class="eyebrow">직장인 한정</div>
+      <h1 class="serif">요즘 일 때문에<br>얼마나 닳았지?</h1>
+      <p>퇴근했는데도 카톡이 남고, 일요일만 되면 월요일이 먼저 떠오를 때. 한 번쯤 짚어보면 좋아요.</p>
+      <div class="note">병원 진단이 아니에요. 그냥 “지금 내 상태 어느 쪽이지?” 정도만 보는 테스트예요. 오래 힘들면 사람 도움을 받는 게 맞아요.</div>
+      <button class="cta" onclick="startQuiz()">해볼래 →</button>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quiz" class="screen hidden">
+      <div class="q-num mono" id="qNum"></div>
+      <div class="q-text serif" id="qText"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result" class="screen result hidden">
+      <span class="tag">결과</span>
+      <div class="name serif" id="rName"></div>
+      <div class="level" id="rLevel"></div>
+      <div class="desc" id="rDesc"></div>
+      <div class="tip" id="rTip"></div>
+      <div class="warn">점수에 너무 매달리진 마세요. 잠이 안 오거나 아무것도 하기 싫다면, 그건 테스트 결과가 아니라 몸이 보내는 신호일 수 있어요.</div>
+      <div class="actions">
+        <button class="share" onclick="copyResult()">결과 링크 복사</button>
+        <button class="again" onclick="restartQuiz()">다시하기</button>
+      </div>
+      <div class="toast" id="toast">링크가 복사됐어요</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// 점수가 높을수록 번아웃에 가깝다 (0~3)
+const questions = [
+  {
+    text: "내일 출근 생각하면 제일 먼저 뭐가 와?",
+    options: [
+      { text: "그냥 담담함", score: 0 },
+      { text: "살짝 귀찮음", score: 1 },
+      { text: "한숨이나 배 불편함", score: 2 },
+      { text: "가기 싫어서 몸이 먼저 거부함", score: 3 }
+    ]
+  },
+  {
+    text: "샤워하거나 누웠는데도 회사 일이 떠올라?",
+    options: [
+      { text: "거의 안 떠올라", score: 0 },
+      { text: "가끔", score: 1 },
+      { text: "자주. 쉬기가 어려움", score: 2 },
+      { text: "쉬는 중에도 계속 돌아감", score: 3 }
+    ]
+  },
+  {
+    text: "예전엔 그냥 하던 일인데, 지금은?",
+    options: [
+      { text: "크게 안 달라", score: 0 },
+      { text: "가끔 귀찮아짐", score: 1 },
+      { text: "자주 귀찮고 미루게 됨", score: 2 },
+      { text: "웬만한 게 다 귀찮음", score: 3 }
+    ]
+  },
+  {
+    text: "잠은?",
+    options: [
+      { text: "대체로 잘 자", score: 0 },
+      { text: "가끔 뒤척여", score: 1 },
+      { text: "잠들기 어렵거나 자주 깨", score: 2 },
+      { text: "자도 개운한 날이 잘 없음", score: 3 }
+    ]
+  },
+  {
+    text: "사소한 피드백에도 예민해져?",
+    options: [
+      { text: "별로", score: 0 },
+      { text: "가끔", score: 1 },
+      { text: "자주", score: 2 },
+      { text: "거의 매번", score: 3 }
+    ]
+  },
+  {
+    text: "주말에 ‘월요일이…’ 하는 타이밍은?",
+    options: [
+      { text: "거의 안 떠올라", score: 0 },
+      { text: "일요일 밤쯤", score: 1 },
+      { text: "토요일부터 슬슬", score: 2 },
+      { text: "쉬는 내내 깔려 있음", score: 3 }
+    ]
+  },
+  {
+    text: "나를 위한 시간은?",
+    options: [
+      { text: "어떻게든 챙기는 편", score: 0 },
+      { text: "애쓰면 챙김", score: 1 },
+      { text: "남는 시간이 거의 없음", score: 2 },
+      { text: "있어도 아무것도 하기 싫음", score: 3 }
+    ]
+  },
+  {
+    text: "지금 상태를 고르면?",
+    options: [
+      { text: "피곤해도 회복은 됨", score: 0 },
+      { text: "지쳤지만 아직 버팀", score: 1 },
+      { text: "계속 닳는 느낌", score: 2 },
+      { text: "슬슬 한계", score: 3 }
+    ]
+  }
+];
+
+const bands = [
+  {
+    max: 6,
+    name: "아직 배터리는 남았어",
+    level: "괜찮은 쪽에 가까움",
+    desc: "안 피곤한 건 아닌데, 그래도 쉬면 돌아오는 편이에요. 지금 지키는 퇴근·휴식 습관이 사실 꽤 중요한 방패예요.",
+    tip: "이 상태일 때 미리 ‘나만의 쉬는 루틴’을 고정해두면, 나중에 바쁠 때 덜 무너져요."
+  },
+  {
+    max: 12,
+    name: "살짝 빨간불 직전",
+    level: "조심할 타이밍",
+    desc: "스트레스가 쌓이고 있는데, 아직은 숨 돌릴 구멍은 있어요. 여기서 무시하면 갑자기 확 무거워지는 경우가 많아요.",
+    tip: "할 일 줄이려고 애쓰기보다, 이번 주에 ‘비우는 시간’ 하나만 먼저 막아보세요."
+  },
+  {
+    max: 18,
+    name: "닳는 속도가 더 빠른 중",
+    level: "위험 구간",
+    desc: "의지가 약해서가 아니라, 들어오는 에너지보다 나가는 게 큰 상태예요. 버티는 게 미덕처럼 느껴질 때일수록 더 위험해요.",
+    tip: "거창한 해결책보다 잠·밥·사람 한 명이라도. 혼자 버티는 선택지만 남기지 마세요."
+  },
+  {
+    max: 99,
+    name: "몸이 이미 손 들었음",
+    level: "번아웃에 가까움",
+    desc: "더 밀어붙이기 전에 속도를 줄여야 하는 쪽에 가깝습니다. ‘약한 거 아닌가’보다 ‘오래 과하게 썼다’에 가까워요.",
+    tip: "가능하면 쉬기, 업무량 말하기, 상담 같은 걸 같이 보세요. 이건 포기 선언이 아니라 보호에 가깝습니다."
+  }
+];
+
+let current = 0;
+let total = 0;
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  current = 0;
+  total = 0;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById('statusText').textContent = (current + 1) + ' / ' + questions.length;
+  document.getElementById('qNum').textContent = (current + 1) + '번째';
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
+
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = opt.text;
+    // 선택 시 점수만 누적하고 다음 문항으로
+    btn.onclick = () => selectAnswer(opt.score);
+    opts.appendChild(btn);
+  });
+}
+
+function selectAnswer(score){
+  total += score;
+  current++;
+  if (current < questions.length) {
+    renderQuestion();
+  } else {
+    document.getElementById('progressBar').style.width = '100%';
+    showResult();
+  }
+}
+
+function showResult(){
+  const band = bands.find(b => total <= b.max);
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '결과';
+  document.getElementById('rName').textContent = band.name;
+  document.getElementById('rLevel').textContent = band.level + ' · 점수 ' + total;
+  document.getElementById('rDesc').textContent = band.desc;
+  document.getElementById('rTip').textContent = band.tip;
+}
+
+function restartQuiz(){
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '시작 전';
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('toast').classList.remove('show');
+}
+
+function copyResult(){
+  const text = location.href;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  });
+}
+</script>
+</body>
+</html>

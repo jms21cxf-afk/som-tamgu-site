@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>직장 — 탐구소</title>
+<meta name="description" content="번아웃·직장 멘탈을 가볍게 점검하는 테스트. 진단이 아니라 자기 이해용입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2;
+    --paper:#FFFFFF;
+    --line:#C5D0D8;
+    --ink:#1A2228;
+    --ink-soft:#4A5863;
+    --ink-faint:#8A97A1;
+    --accent:#2F6F8F;
+    --accent-soft:#E3F0F6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    font-family:'Gowun Dodum', sans-serif;
+    color: var(--ink);
+    line-height:1.6;
+  }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width: 760px; margin:0 auto; padding: 0 22px; }
+
+  header.site{
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-size:17px; }
+  nav.site a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; }
+
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size:13px;
+    margin: 22px 0 8px;
+  }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: var(--ink); }
+
+  .hero{ padding: 18px 0 28px; }
+  .hero .code{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    background: var(--accent-soft); color: var(--accent);
+    padding:4px 10px; border-radius:999px; margin-bottom:12px;
+  }
+  .hero h1{ font-size: clamp(26px, 5vw, 34px); margin-bottom:10px; line-height:1.35; }
+  .hero p{ font-size:14.5px; color: var(--ink-soft); max-width:460px; }
+
+  .card{
+    display:block;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 12px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  .card .row{ display:flex; align-items:flex-start; gap:14px; }
+  .card .emoji{ font-size:26px; }
+  .card .title{ font-weight:700; font-size:16px; margin-bottom:4px; }
+  .card .desc{ font-size:13px; color: var(--ink-soft); }
+  .card .badge{
+    margin-left:auto; flex-shrink:0;
+    font-size:11px; color: var(--ink-soft);
+    border:1px solid var(--line); border-radius:999px; padding:4px 10px;
+  }
+
+  footer.site{
+    border-top:1px solid var(--line); padding: 26px 0 44px; margin-top:40px;
+  }
+  footer.site .copy{ font-size:11px; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../index.html">탐구소</a>
+    <nav class="site">
+      <a href="../about.html">소개</a>
+      <a href="../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../index.html">탐구소</a>
+    <span>/</span>
+    <span class="current">직장</span>
+  </div>
+
+  <div class="hero">
+    <span class="code mono">WORK · 02</span>
+    <h1 class="serif">직장</h1>
+    <p>일하다 보면 닳고, 부딪히고, 선을 못 긋게 되잖아요. 그런 거 잠깐 짚어보는 곳이에요.</p>
+  </div>
+
+  <a class="card" href="burnout-test.html">
+    <div class="row">
+      <div class="emoji">🔋</div>
+      <div>
+        <div class="title">번아웃 체크</div>
+        <div class="desc">퇴근해도 머리가 일 생각이면, 한 번 체크해보기</div>
+      </div>
+      <div class="badge">약 40초</div>
+    </div>
+  </a>
+  <a class="card" href="work-style-test.html">
+    <div class="row">
+      <div class="emoji">🧭</div>
+      <div>
+        <div class="title">회사에서의 나</div>
+        <div class="desc">일 끝내는 쪽인지, 사람 맞추는 쪽인지</div>
+      </div>
+      <div class="badge">약 40초</div>
+    </div>
+  </a>
+  <a class="card" href="conflict-test.html">
+    <div class="row">
+      <div class="emoji">⚡</div>
+      <div>
+        <div class="title">갈등 앞에서</div>
+        <div class="desc">싸울 일 생기면 너는 어떻게 해?</div>
+      </div>
+      <div class="badge">약 40초</div>
+    </div>
+  </a>
+  <a class="card" href="boundary-test.html">
+    <div class="row">
+      <div class="emoji">🧱</div>
+      <div>
+        <div class="title">선 긋기</div>
+        <div class="desc">퇴근 후 카톡, 거절, 주말 노트북 — 선이 있긴 해?</div>
+      </div>
+      <div class="badge">약 40초</div>
+    </div>
+  </a>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="copy mono">© 2026 TAMGUSO · 재미용 콘텐츠이며 전문 상담을 대체하지 않습니다.</div>
+  </div>
+</footer>
+
+</body>
+</html>

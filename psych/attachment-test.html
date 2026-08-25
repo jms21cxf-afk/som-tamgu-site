@@ -131,6 +131,10 @@
     padding: 12px 14px; text-align:left; font-size: 12.8px;
   }
   .match-box b{ color: var(--teal); }
+  .voice-line{
+    margin-top:10px; text-align:left; font-size:12.5px; color: var(--ink-soft);
+    font-style: italic; padding: 10px 12px; background: var(--bg); border-radius:10px;
+  }
   .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
   .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-family:'Gowun Dodum', sans-serif; font-weight:700; cursor:pointer; border: none; }
   .action-btn.share{ background: var(--ink); color:white; }
@@ -144,6 +148,7 @@
   .read-more{
     margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline;
   }
+
   /* 페이지 위치 표시 줄 */
   .crumb-bar{
     width:100%; max-width:400px; margin: 0 auto 12px;
@@ -153,6 +158,7 @@
   .crumb-bar a{ color:#A87E3F; text-decoration:none; }
   .crumb-bar span{ color:#B4ABA0; }
   .crumb-bar .current{ color:#3A2E39; }
+
 </style>
 </head>
 <body>
@@ -181,7 +187,6 @@
     <p>연애 상황 9가지에 답하면<br>나의 애착 유형과 관계 패턴을 알려줄게요.</p>
     <button class="cta-btn" onclick="startQuiz()">대화 시작하기 →</button>
     <div class="meta-note">약 40초 소요 · 결과는 저장해서 공유할 수 있어요</div>
-    <div class="ad-slot">광고 영역 (AdSense/애드핏 삽입 위치)</div>
   </div>
 
   <!-- QUIZ -->
@@ -195,6 +200,7 @@
       <div class="type-sub" id="rSub"></div>
       <div class="type-desc" id="rDesc"></div>
       <div class="match-box" id="rMatch"></div>
+      <div class="voice-line" id="rVoice"></div>
       <a class="read-more" href="articles/attachment-style.html">애착 유형에 대해 더 알아보기 →</a>
       <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
     </div>
@@ -202,7 +208,6 @@
       <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
       <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
     </div>
-    <div class="ad-slot">광고 영역 (AdSense/애드핏 삽입 위치)</div>
   </div>
 </div>
 </div>
@@ -270,26 +275,30 @@ const results = {
   secure:{
     name:"흔들림 없는 닻",
     sub:"안정형 (Secure)",
-    desc:"관계에서 신뢰를 기본값으로 두는 타입이에요. 연락이 뜸해지거나 갈등이 생겨도 쉽게 불안해하지 않고, 감정을 대화로 풀어가려는 태도를 가지고 있어요. 연인에게도, 스스로에게도 안정감을 주는 사람이에요.",
-    match:"어떤 유형과도 비교적 잘 맞지만, 특히 <b>불안형</b>에게는 안정감을, <b>회피형</b>에게는 편안한 거리를 줄 수 있어요."
+    desc:"관계에서 신뢰를 기본값으로 두는 타입이에요. 연락이 뜸해지거나 갈등이 생겨도 쉽게 불안해하지 않고, 감정을 대화로 풀어가려는 태도를 가지고 있어요. 주변 사람들이 '연애할 때 참 편해 보인다'는 말을 자주 하는 편일 거예요.",
+    match:"어떤 유형과도 비교적 잘 맞지만, 특히 <b>불안형</b>에게는 안정감을, <b>회피형</b>에게는 편안한 거리를 줄 수 있어요.",
+    voice:"\"연락 안 와도 괜찮아, 바쁜가 보다\" — 이런 생각이 자연스럽게 드는 편이에요."
   },
   anxious:{
     name:"레이더가 늘 켜진 사람",
     sub:"불안형 (Anxious)",
-    desc:"상대의 반응 하나하나에 예민하게 반응하고, 관계의 확신을 얻기 위해 연락이나 표현을 자주 확인하고 싶어지는 타입이에요. 사랑이 클수록 불안도 함께 커지는 편이라, 스스로 마음을 다독이는 연습이 관계에 큰 도움이 돼요.",
-    match:"<b>안정형</b>과 만나면 서서히 안정을 찾아가는 경우가 많고, <b>회피형</b>과는 서로 다른 리듬 때문에 노력이 필요해요."
+    desc:"상대의 반응 하나하나에 예민하게 반응하고, 관계의 확신을 얻기 위해 연락이나 표현을 자주 확인하고 싶어져요. 좋아하는 마음이 클수록 그만큼 불안도 함께 커지는 편이라, 정작 스스로를 다독이는 게 제일 어려운 숙제일 수 있어요.",
+    match:"<b>안정형</b>과 만나면 서서히 안정을 찾아가는 경우가 많고, <b>회피형</b>과는 서로 다른 리듬 때문에 노력이 필요해요.",
+    voice:"\"혹시 나한테 화났나?\" — 별일 아닌데도 이런 생각이 먼저 들 때가 많아요."
   },
   avoidant:{
     name:"혼자만의 방이 필요한 사람",
     sub:"회피형 (Avoidant)",
-    desc:"가까워지는 것도 좋지만 나만의 공간과 거리가 있어야 편안함을 느끼는 타입이에요. 애정 표현이 적은 게 마음이 없어서가 아니라, 그렇게 안정감을 느끼는 방식일 뿐이에요. 상대에게 이 성향을 솔직히 설명해주는 게 오해를 줄이는 열쇠예요.",
-    match:"<b>안정형</b>과 함께라면 편안한 거리를 존중받으며 관계를 이어갈 수 있어요."
+    desc:"가까워지는 것도 좋지만, 나만의 공간과 거리가 있어야 비로소 편안함을 느끼는 타입이에요. 애정 표현이 적은 게 마음이 없어서가 아니라, 그렇게 안정감을 느끼는 방식일 뿐이라는 걸 상대가 알아주면 관계가 한결 편해져요.",
+    match:"<b>안정형</b>과 함께라면 편안한 거리를 존중받으며 관계를 이어갈 수 있어요.",
+    voice:"\"오늘은 그냥 혼자 있고 싶다\" — 사랑해도 이 마음이 자주 들어요."
   },
   fearful:{
     name:"다가가고 싶은데 무서운 사람",
     sub:"혼란형 (Fearful-Avoidant)",
-    desc:"가까워지고 싶은 마음과, 그만큼 상처받을까 두려운 마음이 동시에 있는 타입이에요. 관계에서 마음이 자주 오락가락해서 스스로도 혼란스러울 때가 있지만, 그 양가감정을 이해받는 경험이 쌓이면 서서히 편안해질 수 있어요.",
-    match:"무엇보다 <b>안정형</b> 상대와의 꾸준하고 일관된 관계 경험이 큰 도움이 돼요."
+    desc:"가까워지고 싶은 마음과, 그만큼 상처받을까 두려운 마음이 동시에 있는 타입이에요. 그래서 관계 안에서 마음이 자주 오락가락하고, 스스로도 '내가 왜 이러지' 싶을 때가 있지만 이건 이상한 게 아니라 흔한 반응이에요.",
+    match:"무엇보다 <b>안정형</b> 상대와의 꾸준하고 일관된 관계 경험이 큰 도움이 돼요.",
+    voice:"\"보고 싶은데 무섭다\" — 이 두 마음이 동시에 드는 게 낯설지 않아요."
   }
 };
 
@@ -371,6 +380,7 @@ function showResult(){
   document.getElementById('rSub').textContent = r.sub;
   document.getElementById('rDesc').textContent = r.desc;
   document.getElementById('rMatch').innerHTML = '💌 ' + r.match;
+  document.getElementById('rVoice').textContent = r.voice;
 
   document.getElementById('quiz').classList.add('hidden');
   document.getElementById('result').classList.remove('hidden');
