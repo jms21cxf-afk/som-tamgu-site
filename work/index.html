@@ -57,6 +57,12 @@
   .hero h1{ font-size: clamp(26px, 5vw, 34px); margin-bottom:10px; line-height:1.35; }
   .hero p{ font-size:14.5px; color: var(--ink-soft); max-width:460px; }
 
+  /* 테스트 / 읽을거리 구분을 위한 작은 제목 */
+  .section-title{
+    font-size:15px; margin: 8px 0 14px; color: var(--ink-soft);
+    letter-spacing:0.04em;
+  }
+
   .card{
     display:block;
     background: var(--paper);
@@ -89,6 +95,7 @@
   <div class="wrap">
     <a class="brand serif" href="../index.html">탐구소</a>
     <nav class="site">
+      <a href="articles/index.html">읽을거리</a>
       <a href="../about.html">소개</a>
       <a href="../privacy.html">개인정보처리방침</a>
     </nav>
@@ -108,6 +115,7 @@
     <p>일하다 보면 닳고, 부딪히고, 선을 못 긋게 되잖아요. 그런 거 잠깐 짚어보는 곳이에요.</p>
   </div>
 
+  <h2 class="serif section-title">테스트</h2>
   <a class="card" href="burnout-test.html">
     <div class="row">
       <div class="emoji">🔋</div>
@@ -176,6 +184,44 @@
         <div class="desc">마감 직전에 켜지는 사람인지, 시작을 못 하는 사람인지</div>
       </div>
       <div class="badge">약 40초</div>
+    </div>
+  </a>
+
+  <h2 class="serif section-title">읽을거리</h2>
+  <a class="card" href="articles/sunday-dread.html">
+    <div class="row">
+      <div class="emoji">🌧️</div>
+      <div>
+        <div class="title">일요일 밤만 되면 월요일이 먼저 온다</div>
+        <div class="desc">쉬는 내내 깔리는 그 기분, 게으름이 아닐 때가 많다</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="articles/after-hours.html">
+    <div class="row">
+      <div class="emoji">📱</div>
+      <div>
+        <div class="title">퇴근 후 업무 카톡, 바로 봐야 하나</div>
+        <div class="desc">바로 답해야 일 잘하는 사람이라는 믿음부터 의심해보기</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="articles/quit-or-rest.html">
+    <div class="row">
+      <div class="emoji">🚪</div>
+      <div>
+        <div class="title">이직이 하고 싶은 건지, 쉬고 싶은 건지</div>
+        <div class="desc">채용공고를 보는 마음과, 몸이 먼저 손 든 상태는 처방이 다르다</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="articles/index.html">
+    <div class="row">
+      <div class="emoji">→</div>
+      <div>
+        <div class="title">읽을거리 더 보기</div>
+        <div class="desc">거절, 완벽주의, 회의 갈등까지</div>
+      </div>
     </div>
   </a>
 </main>

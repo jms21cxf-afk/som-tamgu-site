@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일요일 밤만 되면 월요일이 먼저 온다 — 탐구소</title>
+<meta name="description" content="주말에 월요일이 먼저 떠오르는 이유를 정리했습니다. 번아웃 신호일 수도 있어요.">
+<meta name="keywords" content="월요병, 일요일 밤, 번아웃, 직장 스트레스">
+<meta property="og:title" content="일요일 밤만 되면 월요일이 먼저 온다 — 탐구소">
+<meta property="og:description" content="쉬는 날인데 회사 생각이 안 끊길 때">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/articles/sunday-dread.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/articles/sunday-dread.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ font-size:17px; text-decoration:none; color: inherit; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site .wrap{ flex-wrap:wrap; gap:10px; }
+    nav a{ margin-left:12px; }
+  }
+  main{ padding: 36px 0 60px; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:16.5px; margin: 26px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; color: var(--ink); }
+  .cta-box{
+    margin-top: 34px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html">탐구소</a>
+    <nav>
+      <a href="../index.html">직장</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">직장</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <span class="tag">번아웃</span>
+  <h1 class="serif">일요일 밤만 되면 월요일이 먼저 온다</h1>
+  <div class="meta">읽는 시간 약 4분</div>
+  
+  <p>토요일 낮부터 ‘월요일이…’이 깔리면, 쉬는 게 쉬는 게 아니에요. 많은 사람이 그걸 월요병이라고 넘기지만, 몸이 먼저 거부하는 신호일 때가 있어요. 일요일을 망치는 건 의지가 약해서가 아니라, 주중에 쓴 에너지가 아직 안 돌아온 쪽에 가깝습니다.</p>
+
+  <h2>쉬는 중에도 뇌가 야근 중이면</h2>
+  <p>샤워하거나 누웠는데도 메일·슬랙이 재생되면, 이미 휴식 모드가 꺼진 거예요. 주말은 ‘일 생각 안 하기’가 목표가 아니라, 신경계가 위협이 끝났다고 느끼게 하는 시간이거든요. 그 스위치가 안 내려가면, 월요일이 오기 전에 이미 지칩니다.</p>
+
+  <h2>한숨과 배 불편함은 과장이 아님</h2>
+  <p>출근 생각만 해도 배가 뭉치거나 한숨이 먼저면, 머리가 ‘괜찮아’라고 해도 몸이 다른 답을 내는 중이에요. 이런 반응이 한두 번이면 바쁜 주의 여파일 수 있고, 매주 반복되면 회복보다 닳는 속도가 빠른 구간일 수 있어요.</p>
+
+  <h2>게으름이랑 구분하는 법</h2>
+  <p>좋아하는 일·사람 앞에서는 에너지가 있는데, 회사 생각만 하면 꺼진다면 그건 성격 문제가 아닐 때가 많아요. 반대로 뭐든 하기 싫고, 자도 개운한 날이 없고, 사소한 피드백에도 ‘역시 나인가’까지 가면 번아웃 쪽에 더 가깝습니다.</p>
+
+  <h2>일요일을 지키는 작은 선</h2>
+  <p>거창한 루틴보다, ‘업무 앱은 저녁 이후 안 연다’ 하나면 충분할 때도 있어요. 미리 월요일 할 일을 적어두면 불안이 줄기도 하고요. 다만 적어놓고도 계속 고치고 있다면, 그건 준비가 아니라 일을 주말로 끌어온 겁니다.</p>
+
+  <h2>결론</h2>
+  <p>일요일 밤의 그 기분은 약한 신호가 아니에요. 무시하면 갑자기 무거워지는 경우가 많아요. 이번 주에 비우는 저녁 하나만 막아두는 것부터, 이미 보호입니다.</p>
+    
+  <div class="cta-box">
+    <div class="q serif">지금 닳은 정도는 어느 쪽일까?</div>
+    <a href="../burnout-test.html">번아웃 체크 하러가기</a>
+  </div>
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>

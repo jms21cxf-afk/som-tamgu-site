@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제출 앞에서 또 고치는 이유 — 탐구소</title>
+<meta name="description" content="제출 버튼 앞에서 멈추지 못하는 완벽주의를, 직장 장면으로 풀어봤습니다.">
+<meta name="keywords" content="완벽주의, 일잘러, 강박, 직장 스트레스">
+<meta property="og:title" content="제출 앞에서 또 고치는 이유 — 탐구소">
+<meta property="og:description" content="이 정도면 되나? 한 번 더 훑는 그 습관">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/articles/good-enough.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/articles/good-enough.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ font-size:17px; text-decoration:none; color: inherit; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site .wrap{ flex-wrap:wrap; gap:10px; }
+    nav a{ margin-left:12px; }
+  }
+  main{ padding: 36px 0 60px; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:16.5px; margin: 26px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; color: var(--ink); }
+  .cta-box{
+    margin-top: 34px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html">탐구소</a>
+    <nav>
+      <a href="../index.html">직장</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">직장</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <span class="tag">완벽주의</span>
+  <h1 class="serif">제출 앞에서 또 고치는 이유</h1>
+  <div class="meta">읽는 시간 약 4분</div>
+  
+  <p>제출 버튼 앞에서 ‘한 번만 더’가 습관이면, 실수는 적고 대신 끝이 안 보여요. 상사가 초안만 달라고 해도 완성본을 내고, 보낸 뒤 오타 하나가 하루 종일 남습니다. 주변은 일 잘한다 하는데 본인은 맨날 부족해요. 그건 기준이 높은 거지, 실력이 없는 게 아닐 때가 많아요.</p>
+
+  <h2>80점 제시간 vs 100점 늦음</h2>
+  <p>팀에선 80점을 제시간에 주는 사람이 있어야 일이 실제로 끝납니다. 100점이 아니면 낸 게 아니라는 기준은, 혼자 일할 땐 퀄리티가 되지만 협업에선 병목이 돼요. 초안을 일부러 70점으로 내면, 피드백 받고 고치는 게 혼자 95점 만드는 것보다 빠를 때가 많아요.</p>
+
+  <h2>칭찬이 부담일 때</h2>
+  <p>‘잘했네’를 ‘아직 부족한 거 아는데’로 받아넘기면, 쉬는 권한이 안 옵니다. 칭찬이 곧 ‘실수 들킬 타이밍’처럼 느껴지니까요. 퇴근 후에도 ‘하나만 더’가 거의 매일이면, 성실함이 아니라 소모입니다.</p>
+
+  <h2>손 떼는 시간을 캘린더에</h2>
+  <p>마감 30분 전을 ‘손 떼는 시간’으로 막아두세요. 그 뒤에 고치는 건 내일 일입니다. 오늘은 완성 대신 제출을 목표로. 안 내면 0점이에요. 낸 다음에야 고칠 기회가 생깁니다.</p>
+
+  <h2>결론</h2>
+  <p>꼼꼼한 게 나쁜 건 아니에요. 다만 끝이 잘 안 나면, 기준을 낮추는 게 아니라 ‘낸 다음’을 허용하는 연습이 필요합니다.</p>
+    
+  <div class="cta-box">
+    <div class="q serif">나는 내려놓을 줄 아는 쪽일까?</div>
+    <a href="../perfect-test.html">이 정도면 되나 테스트</a>
+  </div>
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>

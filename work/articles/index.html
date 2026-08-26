@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>읽을거리 — 직장 · 탐구소</title>
+<meta name="description" content="번아웃, 이직, 선 긋기, 직장 갈등을 다루는 짧은 글. 진단이 아니라 자기 이해용입니다.">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/articles/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-soft:#E3F0F6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum', sans-serif; color: var(--ink); line-height:1.6; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width: 760px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding: 20px 0; border-bottom: 1px solid var(--line); background: var(--paper); }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-size:17px; }
+  nav.site a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; }
+  nav.site a.active{ color: var(--ink); font-weight:700; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size:13px; margin: 22px 0 8px;
+  }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+  .hero{ padding: 18px 0 28px; }
+  .hero h1{ font-size: clamp(26px, 5vw, 34px); margin-bottom:10px; line-height:1.35; }
+  .hero p{ font-size:14.5px; color: var(--ink-soft); max-width:460px; }
+  .card{
+    display:block; background: var(--paper); border: 1.5px solid var(--line);
+    border-radius: 14px; padding: 20px; margin-bottom: 12px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  .card .row{ display:flex; align-items:flex-start; gap:14px; }
+  .card .emoji{ font-size:26px; }
+  .card .title{ font-weight:700; font-size:16px; margin-bottom:4px; }
+  .card .desc{ font-size:13px; color: var(--ink-soft); }
+  footer.site{ border-top:1px solid var(--line); padding: 26px 0 44px; margin-top:40px; }
+  footer.site .copy{ font-size:11px; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html">탐구소</a>
+    <nav class="site">
+      <a href="../index.html">직장</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">직장</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <div class="hero">
+    <h1 class="serif">읽을거리</h1>
+    <p>일하다 보면 생기는 장면들. 테스트 전에 한 번 읽어봐도 좋아요.</p>
+  </div>
+  <a class="card" href="sunday-dread.html">
+    <div class="row">
+      <div class="emoji">🌧️</div>
+      <div>
+        <div class="title">일요일 밤만 되면 월요일이 먼저 온다</div>
+        <div class="desc">쉬는 내내 깔리는 그 기분, 게으름이 아닐 때가 많다</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="after-hours.html">
+    <div class="row">
+      <div class="emoji">📱</div>
+      <div>
+        <div class="title">퇴근 후 업무 카톡, 바로 봐야 하나</div>
+        <div class="desc">바로 답해야 일 잘하는 사람이라는 믿음부터 의심해보기</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="quit-or-rest.html">
+    <div class="row">
+      <div class="emoji">🚪</div>
+      <div>
+        <div class="title">이직이 하고 싶은 건지, 쉬고 싶은 건지</div>
+        <div class="desc">채용공고를 보는 마음과, 몸이 먼저 손 든 상태는 처방이 다르다</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="saying-no.html">
+    <div class="row">
+      <div class="emoji">🙅</div>
+      <div>
+        <div class="title">‘네’가 먼저 나오는 사람들</div>
+        <div class="desc">부탁을 잘 못 끊어서 본인만 바쁜 날, 착한 게 아닐 수 있다</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="good-enough.html">
+    <div class="row">
+      <div class="emoji">✦</div>
+      <div>
+        <div class="title">제출 앞에서 또 고치는 이유</div>
+        <div class="desc">초안이 초안이 안 되는 사람, 성실함과 완벽주의 사이</div>
+      </div>
+    </div>
+  </a>
+  <a class="card" href="after-conflict.html">
+    <div class="row">
+      <div class="emoji">⚡</div>
+      <div>
+        <div class="title">회의에서 한 소리 들었을 때</div>
+        <div class="desc">말로 풀지, 정리할지, 삼킬지 — 그날 밤이 달라진다</div>
+      </div>
+    </div>
+  </a>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="copy mono">© 2026 TAMGUSO · 재미용 콘텐츠이며 전문 상담을 대체하지 않습니다.</div>
+  </div>
+</footer>
+</body>
+</html>

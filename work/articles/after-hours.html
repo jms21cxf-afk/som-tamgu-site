@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>퇴근 후 업무 카톡, 바로 봐야 하나 — 탐구소</title>
+<meta name="description" content="퇴근 후 업무 연락을 바로 봐야 하는지, 선 긋기와 성실함의 차이를 정리했습니다.">
+<meta name="keywords" content="퇴근 후 카톡, 워라밸, 야근, 업무 경계">
+<meta property="og:title" content="퇴근 후 업무 카톡, 바로 봐야 하나 — 탐구소">
+<meta property="og:description" content="알림이 울리면 손이 먼저 가는 사람">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/articles/after-hours.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/articles/after-hours.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ font-size:17px; text-decoration:none; color: inherit; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site .wrap{ flex-wrap:wrap; gap:10px; }
+    nav a{ margin-left:12px; }
+  }
+  main{ padding: 36px 0 60px; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:16.5px; margin: 26px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; color: var(--ink); }
+  .cta-box{
+    margin-top: 34px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html">탐구소</a>
+    <nav>
+      <a href="../index.html">직장</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">직장</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <span class="tag">선 긋기</span>
+  <h1 class="serif">퇴근 후 업무 카톡, 바로 봐야 하나</h1>
+  <div class="meta">읽는 시간 약 4분</div>
+  
+  <p>퇴근했는데 카톡이 오면, 손이 먼저 가요. ‘급한 거면 어떡해’가 이유처럼 들리지만, 사실 많은 팀은 급한 일과 그냥 생각난 일을 같은 알림으로 보냅니다. 바로 답하는 습관이 쌓이면, 쉬는 권한이 나한테 잘 안 옵니다.</p>
+
+  <h2>‘일 잘하는 사람’의 착각</h2>
+  <p>늘 바로바로 답해야 일 잘하는 사람이라는 믿음이 있으면, 연차도 눈치가 나고 주말도 ‘조금만’이 반복돼요. 실제로 신뢰를 만드는 건 속도만이 아니라, 약속한 시간에 끝내는 쪽인 경우가 많아요. 24시간 열려 있는 사람은 편하지만, 오래 가진 못합니다.</p>
+
+  <h2>급한 것만 보는 중간 지대</h2>
+  <p>전부를 끄기 어려우면, ‘제목만 보고 내일’ 규칙을 정해둘 수 있어요. 진짜 장애·마감이면 전화가 오는 팀도 있고요. 문제는 ‘잠깐만요’가 매일 저녁을 채울 때입니다. 잠깐이 쌓이면 경계가 흐려져요.</p>
+
+  <h2>거절 문장 하나</h2>
+  <p>길게 설명할수록 미안함이 커집니다. ‘오늘은 어려워요. 내일 오전에 볼게요.’ 한 줄이면 관계가 안 깨지는 경우가 많아요. 안 된다고만 하면 세게 들리고, 여기까지는 가능하다고 하면 선이 보입니다.</p>
+
+  <h2>결론</h2>
+  <p>칼퇴가 이기심이 아니라 지속력일 수 있어요. 바쁠 때 무너지지 않게, 지금 지키는 규칙을 ‘예외 없을 때 규칙’으로 적어두는 게 혼자 결심하는 것보다 낫습니다.</p>
+    
+  <div class="cta-box">
+    <div class="q serif">일과 삶, 선이 있긴 해?</div>
+    <a href="../boundary-test.html">선 긋기 테스트 하러가기</a>
+  </div>
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>

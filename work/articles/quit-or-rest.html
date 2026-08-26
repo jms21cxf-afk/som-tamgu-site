@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이직이 하고 싶은 건지, 쉬고 싶은 건지 — 탐구소</title>
+<meta name="description" content="이직 욕구와 번아웃은 겹쳐 보여도 처방이 다릅니다. 나가기 전에 구분하는 기준을 정리했습니다.">
+<meta name="keywords" content="이직 고민, 퇴사, 번아웃, 이직 타이밍">
+<meta property="og:title" content="이직이 하고 싶은 건지, 쉬고 싶은 건지 — 탐구소">
+<meta property="og:description" content="사직서는 메모장에만 있는 그 상태">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/articles/quit-or-rest.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/articles/quit-or-rest.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ font-size:17px; text-decoration:none; color: inherit; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site .wrap{ flex-wrap:wrap; gap:10px; }
+    nav a{ margin-left:12px; }
+  }
+  main{ padding: 36px 0 60px; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:16.5px; margin: 26px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; color: var(--ink); }
+  .cta-box{
+    margin-top: 34px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html">탐구소</a>
+    <nav>
+      <a href="../index.html">직장</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">직장</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <span class="tag">이직</span>
+  <h1 class="serif">이직이 하고 싶은 건지, 쉬고 싶은 건지</h1>
+  <div class="meta">읽는 시간 약 4분</div>
+  
+  <p>채용공고는 북마크만 해두고, 사직서는 메모장에만 있는 그 상태. ‘힘들어서’와 ‘여길 떠나고 싶어서’는 다를 때가 많아요. 같은 일요일 밤 기분이라도, 한쪽은 쉼이 필요하고 한쪽은 환경이 안 맞는 겁니다.</p>
+
+  <h2>번아웃이면 이직이 약이 아닐 수 있다</h2>
+  <p>자도 개운한 날이 없고, 웬만한 일이 다 귀찮고, 사람까지 지쳐서 상관없어졌다면 몸이 먼저 손 든 쪽에 가깝습니다. 이 상태에서 새 회사로 가면, 새 슬랙이 똑같은 무게로 느껴질 수 있어요. 충동으로 사표부터 내기 전에, 잠·밥·속도부터 보는 게 맞을 때가 있습니다.</p>
+
+  <h2>이직 마음이 큰 쪽의 신호</h2>
+  <p>여기서 더 배울 게 반복처럼 느껴지고, 연봉이 조금 나아져도 별로 안 움직이고, 이력서를 몰래 손보고 있다면 온도가 오른 구간이에요. 사람 때문에 못 나가는 중이라면, 남는 이유가 ‘일’이 아니라 ‘미안함’일 수 있어요. 나가기 전에 ‘여기 남는 이유’를 한 줄로 적어보세요. 안 써지면 답이 나온 거에 가깝습니다.</p>
+
+  <h2>공고만 보지 말고</h2>
+  <p>막연한 탈출은 다음에서도 같은 패턴을 반복하기 쉬워요. ‘다음에서 원하는 것 3개’만 구체적이면, 탐색이 이직이 됩니다. 조건·하는 일·팀 분위기. 세 개가 비어 있으면, 아직 이직이 아니라 짜증일 수 있어요.</p>
+
+  <h2>결론</h2>
+  <p>이직 상담이 아니에요. 다만 몸이 무너진 거면 휴식이 먼저고, 환경이 안 맞으면 준비가 먼저입니다. 두 개를 한 방에 해결하려고 사표에 기대면, 둘 다 놓치기 쉬워요.</p>
+    
+  <div class="cta-box">
+    <div class="q serif">지금 이직 온도는 어느 쪽?</div>
+    <a href="../quit-test.html">이직 온도 보러가기</a>
+  </div>
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>
