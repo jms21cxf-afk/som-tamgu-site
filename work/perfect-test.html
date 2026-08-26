@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>직장 완벽주의 테스트 — 탐구소</title>
+<meta name="description" content="제출 앞에서 한 번 더 고치는 그 마음, 8문항으로 체크. 진단이 아닙니다.">
+<meta name="keywords" content="완벽주의 테스트, 직장 완벽주의, 일잘러 스트레스, 강박">
+<meta property="og:title" content="직장 완벽주의 테스트 — 탐구소">
+<meta property="og:description" content="이 정도면 되나? 제출 버튼 앞에서 한 번 더 고치는 사람">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/perfect-test.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/perfect-test.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74; --ok:#3D7A6A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 0%, rgba(47,111,143,0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 100%, rgba(61,122,106,0.07) 0%, transparent 40%);
+    font-family:'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height:100vh; padding: 20px 14px 40px;
+  }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .shell{ width:100%; max-width:440px; margin:0 auto; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size:13px; margin-bottom:14px;
+  }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: var(--ink); }
+  .panel{
+    background: var(--paper); border: 1.5px solid var(--line);
+    border-radius: 18px; overflow:hidden;
+    box-shadow: 0 12px 28px -18px rgba(26,34,40,0.35);
+  }
+  .panel-head{
+    padding: 16px 18px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .panel-head .mark{
+    width:36px; height:36px; border-radius:10px;
+    background: var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .panel-head .title{ font-weight:700; font-size:14.5px; }
+  .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
+  .progress{ height:3px; background: var(--line); }
+  .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
+  .screen{ padding: 22px 18px 24px; min-height: 420px; }
+  .hidden{ display:none !important; }
+  .intro .eyebrow{ font-size:11px; letter-spacing:0.1em; color: var(--accent); margin-bottom:12px; }
+  .intro h1{ font-size:28px; line-height:1.35; margin-bottom:12px; }
+  .intro p{ font-size:14px; color: var(--ink-soft); margin-bottom:10px; }
+  .intro .note{
+    font-size:12px; color: var(--ink-faint); margin: 16px 0 22px;
+    padding:10px 12px; border-left:3px solid var(--line);
+  }
+  .cta{
+    display:block; width:100%; background: var(--accent); color:#fff;
+    border:none; border-radius:12px; padding:14px 16px;
+    font-size:15px; font-weight:700; font-family:inherit; cursor:pointer;
+  }
+  .cta:hover{ background: var(--accent-dark); }
+  .q-num{ font-size:11.5px; color: var(--accent); letter-spacing:0.06em; margin-bottom:8px; }
+  .q-text{ font-size:18px; line-height:1.45; margin-bottom:18px; }
+  .opts{ display:flex; flex-direction:column; gap:8px; }
+  .opt{
+    text-align:left; width:100%; background: #F4F7F9; border:1px solid var(--line);
+    border-radius:12px; padding:12px 14px; font-size:14px; font-family:inherit;
+    color: var(--ink); cursor:pointer; transition: border-color .15s, background .15s;
+  }
+  .opt:hover{ border-color: var(--accent); background: #EEF5F9; }
+  .result .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:12px;
+  }
+  .result .name{ font-size:26px; line-height:1.3; margin-bottom:6px; }
+  .result .level{ font-size:13px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .desc{ font-size:14px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .tip{ background:#F4F7F9; border-radius:12px; padding:12px 14px; font-size:13.5px; margin-bottom:12px; }
+  .result .warn{ font-size:12px; color: var(--ink-faint); margin-bottom:18px; }
+  .actions{ display:flex; gap:8px; }
+  .actions button{
+    flex:1; border-radius:12px; padding:12px;
+    font-size:13.5px; font-family:inherit; font-weight:700; cursor:pointer;
+  }
+  .actions .share{ background: var(--accent); color:#fff; border:none; }
+  .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
+  .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
+  .toast.show{ display:block; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="crumb-bar">
+    <a href="../index.html">탐구소</a>
+    <span>/</span>
+    <a href="index.html">직장</a>
+    <span>/</span>
+    <span class="current">완벽주의</span>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="mark">✦</div>
+      <div>
+        <div class="title">이 정도면 되나</div>
+        <div class="sub" id="statusText">시작 전</div>
+      </div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+    <div id="intro" class="screen intro">
+      <div class="eyebrow">직장인 한정</div>
+      <h1 class="serif">제출 앞에서<br>또 고치고 있지?</h1>
+      <p>오타 하나에 밤을 새고, ‘일단 내요’가 제일 어려운 그 마음. 성실한 건지, 내려놓질 못하는 건지 한 번 보면 좋아요.</p>
+      <div class="note">성격 검사도, 병원 진단도 아니에요. 요즘 일에서 ‘기준이 너무 높은가’ 정도만 보는 테스트예요.</div>
+      <button class="cta" onclick="startQuiz()">해볼래 →</button>
+    </div>
+    <div id="quiz" class="screen hidden">
+      <div class="q-num mono" id="qNum"></div>
+      <div class="q-text serif" id="qText"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+    <div id="result" class="screen result hidden">
+      <span class="tag">결과</span>
+      <div class="name serif" id="rName"></div>
+      <div class="level" id="rLevel"></div>
+      <div class="desc" id="rDesc"></div>
+      <div class="tip" id="rTip"></div>
+      <div class="warn">꼼꼼한 게 나쁜 건 아니에요. 다만 쉬는 시간까지 일로 채우고 있다면, 그건 성실함이 아니라 소모일 수 있어요.</div>
+      <div class="actions">
+        <button class="share" onclick="copyResult()">결과 링크 복사</button>
+        <button class="again" onclick="restartQuiz()">다시하기</button>
+      </div>
+      <div class="toast" id="toast">링크가 복사됐어요</div>
+    </div>
+  </div>
+</div>
+<script>
+
+// 점수가 높을수록 완벽주의에 가깝다 (0~3)
+const questions = [
+  {
+    "text": "제출 버튼 앞에서 너는?",
+    "options": [
+      {
+        "text": "이 정도면 됐다, 바로 냄",
+        "score": 0
+      },
+      {
+        "text": "한 번만 더 훑고 냄",
+        "score": 1
+      },
+      {
+        "text": "고치다 마감 직전까지 감",
+        "score": 2
+      },
+      {
+        "text": "내면 큰일 날 것 같아서 못 냄",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "text": "이미 보낸 자료에서 오타 하나 보이면?",
+    "options": [
+      {
+        "text": "‘아 맞다’ 하고 넘김",
+        "score": 0
+      },
+      {
+        "text": "다음엔 안 그러자고 메모함",
+        "score": 1
+      },
+      {
+        "text": "하루 종일 그 칸만 생각남",
+        "score": 2
+      },
+      {
+        "text": "다시 보내고 사과부터 함",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "text": "상사가 ‘일단 초안만’ 하면?",
+    "options": [
+      {
+        "text": "진짜 초안으로 빨리 냄",
+        "score": 0
+      },
+      {
+        "text": "초안인데도 꽤 다듬음",
+        "score": 1
+      },
+      {
+        "text": "초안이 사실상 완성본임",
+        "score": 2
+      },
+      {
+        "text": "초안이란 말이 안 통함. 완성해야 냄",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "text": "80점으로 제시간에 vs 100점으로 늦음",
+    "options": [
+      {
+        "text": "80점, 제시간이 맞음",
+        "score": 0
+      },
+      {
+        "text": "상황 보고 고름",
+        "score": 1
+      },
+      {
+        "text": "늦더라도 퀄리티가 맞음",
+        "score": 2
+      },
+      {
+        "text": "100점 아니면 낸 게 아님",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "text": "다른 사람 일 보면 제일 먼저?",
+    "options": [
+      {
+        "text": "전체 흐름이 보임",
+        "score": 0
+      },
+      {
+        "text": "괜찮은데 한두 군데 걸림",
+        "score": 1
+      },
+      {
+        "text": "고치고 싶은 곳이 보임",
+        "score": 2
+      },
+      {
+        "text": "손이 근질거려서 참기 힘듦",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "text": "퇴근했는데 ‘하나만 더’가?",
+    "options": [
+      {
+        "text": "거의 없음. 끊음",
+        "score": 0
+      },
+      {
+        "text": "가끔, 진짜 걸릴 때만",
+        "score": 1
+      },
+      {
+        "text": "자주. 집에서 한 번 더 열어봄",
+        "score": 2
+      },
+      {
+        "text": "끊으면 불안해서 거의 매일",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "text": "칭찬 들으면 속마음은?",
+    "options": [
+      {
+        "text": "‘잘했네’ 하고 받음",
+        "score": 0
+      },
+      {
+        "text": "기쁜데 다음엔 더 잘해야지 함",
+        "score": 1
+      },
+      {
+        "text": "‘아직 부족한 거 아는데…’",
+        "score": 2
+      },
+      {
+        "text": "칭찬이 부담. 실수 들킬까 봐",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "text": "일을 ‘끝냈다’의 기준은?",
+    "options": [
+      {
+        "text": "요청한 걸 제시간에 주면 끝",
+        "score": 0
+      },
+      {
+        "text": "내가 봐도 괜찮으면 끝",
+        "score": 1
+      },
+      {
+        "text": "더 고칠 게 안 보여야 끝",
+        "score": 2
+      },
+      {
+        "text": "사실 끝이 잘 안 남",
+        "score": 3
+      }
+    ]
+  }
+];
+
+const bands = [
+  {
+    "max": 6,
+    "name": "내려놓을 줄 아는 사람",
+    "level": "기준은 있는데 끊음",
+    "desc": "대충하는 게 아니라, ‘이 정도면 됐다’를 아는 편이에요. 팀에선 그런 사람이 있어야 일이 실제로 끝납니다. 본인은 별거 아닌 습관인데, 주변은 그걸 부러워할 때가 많아요.",
+    "tip": "그 감각 유지하려면, 제출 전에 ‘고칠 것 한 개만’ 규칙을 정해두면 흔들릴 때 덜 무너져요."
+  },
+  {
+    "max": 12,
+    "name": "한 번 더 보는 사람",
+    "level": "꼼꼼한 편",
+    "desc": "초안이 초안답지 않은 편이에요. 실수는 적고, 대신 시간이 조금 더 듭니다. ‘하나만 더’가 습관이 되기 직전일 수 있어요. 아직 브레이크는 있는 구간입니다.",
+    "tip": "초안은 일부러 70점으로 내보세요. 피드백 받고 고치는 게, 혼자 95점 만드는 것보다 빠를 때가 많아요."
+  },
+  {
+    "max": 18,
+    "name": "고치다 밤 새는 사람",
+    "level": "완벽주의 올라오는 중",
+    "desc": "성실함이 강점인데, 끝이 안 보이는 패턴이에요. 보낸 뒤에도 오타가 하루 종일 남고, 칭찬은 ‘아직 부족한 거 아는데’로 받아넘깁니다. 일은 잘하는데, 쉬는 권한이 본인에게 잘 안 와요.",
+    "tip": "마감 30분 전을 ‘손 떼는 시간’으로 캘린더에 막아두세요. 그 뒤에 고치는 건 내일 일입니다."
+  },
+  {
+    "max": 99,
+    "name": "100점 아니면 0점인 사람",
+    "level": "완벽주의 강함",
+    "desc": "내면 큰일 날 것 같고, 초안이란 말이 안 통하고, 사실 끝이 잘 안 납니다. 주변은 ‘일 잘한다’고 하는데 본인은 맨날 부족해요. 그건 기준이 높은 거지, 실력이 없는 게 아닐 때가 많아요.",
+    "tip": "오늘은 ‘완성’ 대신 ‘제출’을 목표로 해보세요. 안 내면 0점입니다. 낸 다음에야 고칠 기회가 생겨요."
+  }
+];
+
+let current = 0;
+let total = 0;
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  current = 0;
+  total = 0;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById('statusText').textContent = (current + 1) + ' / ' + questions.length;
+  document.getElementById('qNum').textContent = (current + 1) + '번째';
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = opt.text;
+    // 선택 시 점수만 누적하고 다음 문항으로
+    btn.onclick = () => selectAnswer(opt.score);
+    opts.appendChild(btn);
+  });
+}
+
+function selectAnswer(score){
+  total += score;
+  current++;
+  if (current < questions.length) renderQuestion();
+  else {
+    document.getElementById('progressBar').style.width = '100%';
+    showResult();
+  }
+}
+
+function showResult(){
+  const band = bands.find(b => total <= b.max);
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '결과';
+  document.getElementById('rName').textContent = band.name;
+  document.getElementById('rLevel').textContent = band.level + ' · 점수 ' + total;
+  document.getElementById('rDesc').textContent = band.desc;
+  document.getElementById('rTip').textContent = band.tip;
+}
+
+function restartQuiz(){
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '시작 전';
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('toast').classList.remove('show');
+}
+
+function copyResult(){
+  navigator.clipboard.writeText(location.href).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  });
+}
+
+</script>
+</body>
+</html>

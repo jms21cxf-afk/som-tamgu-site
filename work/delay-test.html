@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일 미루기 유형 테스트 — 탐구소</title>
+<meta name="description" content="마감 직전에 켜지는 사람인지, 시작을 못 하는 사람인지. 8문항 유형 테스트.">
+<meta name="keywords" content="미루기 테스트, 프로크래스티네이션, 직장 미루기, 미루는 버릇">
+<meta property="og:title" content="일 미루기 유형 테스트 — 탐구소">
+<meta property="og:description" content="마감 전 2시간이 제일 생산적? 너의 미루기 유형">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/delay-test.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/delay-test.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74; --ok:#3D7A6A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 0%, rgba(47,111,143,0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 100%, rgba(61,122,106,0.07) 0%, transparent 40%);
+    font-family:'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height:100vh; padding: 20px 14px 40px;
+  }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  .shell{ width:100%; max-width:440px; margin:0 auto; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size:13px; margin-bottom:14px;
+  }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: var(--ink); }
+  .panel{
+    background: var(--paper); border: 1.5px solid var(--line);
+    border-radius: 18px; overflow:hidden;
+    box-shadow: 0 12px 28px -18px rgba(26,34,40,0.35);
+  }
+  .panel-head{
+    padding: 16px 18px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .panel-head .mark{
+    width:36px; height:36px; border-radius:10px;
+    background: var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .panel-head .title{ font-weight:700; font-size:14.5px; }
+  .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
+  .progress{ height:3px; background: var(--line); }
+  .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
+  .screen{ padding: 22px 18px 24px; min-height: 420px; }
+  .hidden{ display:none !important; }
+  .intro .eyebrow{ font-size:11px; letter-spacing:0.1em; color: var(--accent); margin-bottom:12px; }
+  .intro h1{ font-size:28px; line-height:1.35; margin-bottom:12px; }
+  .intro p{ font-size:14px; color: var(--ink-soft); margin-bottom:10px; }
+  .intro .note{
+    font-size:12px; color: var(--ink-faint); margin: 16px 0 22px;
+    padding:10px 12px; border-left:3px solid var(--line);
+  }
+  .cta{
+    display:block; width:100%; background: var(--accent); color:#fff;
+    border:none; border-radius:12px; padding:14px 16px;
+    font-size:15px; font-weight:700; font-family:inherit; cursor:pointer;
+  }
+  .cta:hover{ background: var(--accent-dark); }
+  .q-num{ font-size:11.5px; color: var(--accent); letter-spacing:0.06em; margin-bottom:8px; }
+  .q-text{ font-size:18px; line-height:1.45; margin-bottom:18px; }
+  .opts{ display:flex; flex-direction:column; gap:8px; }
+  .opt{
+    text-align:left; width:100%; background: #F4F7F9; border:1px solid var(--line);
+    border-radius:12px; padding:12px 14px; font-size:14px; font-family:inherit;
+    color: var(--ink); cursor:pointer; transition: border-color .15s, background .15s;
+  }
+  .opt:hover{ border-color: var(--accent); background: #EEF5F9; }
+  .result .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:12px;
+  }
+  .result .name{ font-size:26px; line-height:1.3; margin-bottom:6px; }
+  .result .level{ font-size:13px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .desc{ font-size:14px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .tip{ background:#F4F7F9; border-radius:12px; padding:12px 14px; font-size:13.5px; margin-bottom:12px; }
+  .result .warn{ font-size:12px; color: var(--ink-faint); margin-bottom:18px; }
+  .actions{ display:flex; gap:8px; }
+  .actions button{
+    flex:1; border-radius:12px; padding:12px;
+    font-size:13.5px; font-family:inherit; font-weight:700; cursor:pointer;
+  }
+  .actions .share{ background: var(--accent); color:#fff; border:none; }
+  .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
+  .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
+  .toast.show{ display:block; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="crumb-bar">
+    <a href="../index.html">탐구소</a>
+    <span>/</span>
+    <a href="index.html">직장</a>
+    <span>/</span>
+    <span class="current">미루기</span>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="mark">⏳</div>
+      <div>
+        <div class="title">미루는 버릇</div>
+        <div class="sub" id="statusText">시작 전</div>
+      </div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+    <div id="intro" class="screen intro">
+      <div class="eyebrow">유형 테스트</div>
+      <h1 class="serif">그 일,<br>왜 아직 안 열었어?</h1>
+      <p>하기 싫어서인지, 시작이 무서워서인지, 딴짓이 먼저인지. 미루는 이유는 사람마다 달라요. 습관만 보면 유형이 갈립니다.</p>
+      <div class="note">게으름 진단이 아니에요. 미루는 패턴을 알면, 같은 ‘의지’를 써도 처방이 달라집니다.</div>
+      <button class="cta" onclick="startQuiz()">해볼래 →</button>
+    </div>
+    <div id="quiz" class="screen hidden">
+      <div class="q-num mono" id="qNum"></div>
+      <div class="q-text serif" id="qText"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+    <div id="result" class="screen result hidden">
+      <span class="tag">결과</span>
+      <div class="name serif" id="rName"></div>
+      <div class="level" id="rLevel"></div>
+      <div class="desc" id="rDesc"></div>
+      <div class="tip" id="rTip"></div>
+      <div class="warn">유형은 오늘 할 일, 팀 분위기에도 흔들립니다. ‘항상 나’로 못 박진 마세요.</div>
+      <div class="actions">
+        <button class="share" onclick="copyResult()">결과 링크 복사</button>
+        <button class="again" onclick="restartQuiz()">다시하기</button>
+      </div>
+      <div class="toast" id="toast">링크가 복사됐어요</div>
+    </div>
+  </div>
+</div>
+<script>
+
+// 미루기 유형 — 압박 / 시작 막힘 / 회피 / 분산
+const questions = [
+  {
+    "text": "하기 싫은 일이 떨어지면?",
+    "options": [
+      {
+        "text": "마감이 가까워야 손이 감",
+        "val": "rush"
+      },
+      {
+        "text": "어떻게 시작할지부터 막힘",
+        "val": "stall"
+      },
+      {
+        "text": "쉬운 다른 일부터 처리함",
+        "val": "avoid"
+      },
+      {
+        "text": "열었다가 다른 탭으로 감",
+        "val": "scatter"
+      }
+    ]
+  },
+  {
+    "text": "생산성이 제일 높은 시간은?",
+    "options": [
+      {
+        "text": "마감 전 두세 시간",
+        "val": "rush"
+      },
+      {
+        "text": "완벽하게 준비된 아침",
+        "val": "stall"
+      },
+      {
+        "text": "좋아하는 일 할 때",
+        "val": "avoid"
+      },
+      {
+        "text": "알림 끄고 혼자일 때",
+        "val": "scatter"
+      }
+    ]
+  },
+  {
+    "text": "할 일 목록을 보면?",
+    "options": [
+      {
+        "text": "급한 것만 보임",
+        "val": "rush"
+      },
+      {
+        "text": "어디서부터지 막막함",
+        "val": "stall"
+      },
+      {
+        "text": "쉬운 거부터 지움",
+        "val": "avoid"
+      },
+      {
+        "text": "보다가 메일이랑 슬랙 봄",
+        "val": "scatter"
+      }
+    ]
+  },
+  {
+    "text": "‘나중에’의 진짜 뜻은?",
+    "options": [
+      {
+        "text": "마감 직전에 몰아서",
+        "val": "rush"
+      },
+      {
+        "text": "감이 올 때까지 보류",
+        "val": "stall"
+      },
+      {
+        "text": "더 싫은 일 피하려고",
+        "val": "avoid"
+      },
+      {
+        "text": "지금 다른 게 끼어들어서",
+        "val": "scatter"
+      }
+    ]
+  },
+  {
+    "text": "큰 일이면 너는?",
+    "options": [
+      {
+        "text": "쪼개기 전에 일단 버팀",
+        "val": "rush"
+      },
+      {
+        "text": "계획부터 오래 짬",
+        "val": "stall"
+      },
+      {
+        "text": "작은 일부터 치우고 봄",
+        "val": "avoid"
+      },
+      {
+        "text": "시작은 하는데 중간에 샛길",
+        "val": "scatter"
+      }
+    ]
+  },
+  {
+    "text": "집중이 깨지는 순간은?",
+    "options": [
+      {
+        "text": "아직 안 급해서",
+        "val": "rush"
+      },
+      {
+        "text": "첫 문장·첫 칸이 안 나와서",
+        "val": "stall"
+      },
+      {
+        "text": "이 일이 재미없어서",
+        "val": "avoid"
+      },
+      {
+        "text": "알림·새 탭·누가 불러서",
+        "val": "scatter"
+      }
+    ]
+  },
+  {
+    "text": "미룬 거 들키면 속마음은?",
+    "options": [
+      {
+        "text": "‘아직 시간 있어요’ 진심임",
+        "val": "rush"
+      },
+      {
+        "text": "시작을 못 한 내가 답답함",
+        "val": "stall"
+      },
+      {
+        "text": "그 일이 싫다는 게 들킬까 봐",
+        "val": "avoid"
+      },
+      {
+        "text": "하려다 다른 일에 묻힘",
+        "val": "scatter"
+      }
+    ]
+  },
+  {
+    "text": "일이 확 열릴 때는?",
+    "options": [
+      {
+        "text": "진짜 마감이 코앞일 때",
+        "val": "rush"
+      },
+      {
+        "text": "첫 한 줄이 나왔을 때",
+        "val": "stall"
+      },
+      {
+        "text": "이 일이 재밌어졌을 때",
+        "val": "avoid"
+      },
+      {
+        "text": "방해가 전부 꺼졌을 때",
+        "val": "scatter"
+      }
+    ]
+  }
+];
+const results = {
+  "rush": {
+    "name": "마감이 와야 켜지는 사람",
+    "level": "압박형",
+    "desc": "아직 안 급하면 손이 안 가요. 대신 마감 전 두세 시간이 하루의 생산성입니다. 주변은 ‘왜 미리 안 해’ 하는데, 본인은 그 압박이 스위치예요. 문제는 스위치가 꺼진 채로 큰일을 만나면 한 번에 무너진다는 점이에요.",
+    "tip": "가짜 마감을 하루 앞당기세요. 캘린더에 ‘제출 D-1’만 찍어도, 그 압박 엔진을 미리 쓸 수 있어요."
+  },
+  "stall": {
+    "name": "시작이 제일 어려운 사람",
+    "level": "시동형",
+    "desc": "하기 싫다기보다, 첫 칸이 안 나와서 못 여는 타입이에요. 계획이 길수록 착수는 늦어집니다. 한 줄만 나오면 의외로 쭉 가는데, 그 한 줄 앞에서 며칠을 보내요. ‘나중에’는 감이 올 때까지 보류라는 뜻입니다.",
+    "tip": "타이머 10분만 켜고 ‘못생긴 초안’을 강제하세요. 시작 문턱만 넘기면 당신은 일하는 사람입니다."
+  },
+  "avoid": {
+    "name": "싫은 일만 돌아가는 사람",
+    "level": "회피형",
+    "desc": "할 일 목록에서 쉬운 것부터 지우는 편이에요. 생산적인 척 바쁜데, 핵심 일은 그대로입니다. 좋아하는 일이면 밤을 새고, 재미없으면 ‘나중에’가 됩니다. 게으름보다 ‘이 감정이 싫어서’에 가까워요.",
+    "tip": "싫은 일을 25분만 맨 앞에 두세요. 다 안 해도 됩니다. 다만 쉬운 일 청소로 하루를 시작하진 마세요."
+  },
+  "scatter": {
+    "name": "열었다가 샛길로 새는 사람",
+    "level": "분산형",
+    "desc": "시작은 하는데 메일이랑 슬랙이랑 새 탭이 먼저입니다. 하려다 다른 일에 묻히고, 방해가 꺼져야 진짜 일이 열려요. 의지가 약해서가 아니라, 주의가 여러 갈래로 잘리는 패턴이에요.",
+    "tip": "그 일 여는 동안 알림 끄고 탭 하나만. ‘집중 45분’을 캘린더 회의처럼 막아두면 샛길이 줄어듭니다."
+  }
+};
+
+let current = 0;
+const scores = Object.fromEntries(Object.keys(results).map(k => [k, 0]));
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  current = 0;
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById('statusText').textContent = (current + 1) + ' / ' + questions.length;
+  document.getElementById('qNum').textContent = (current + 1) + '번째';
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = opt.text;
+    // 유형 점수를 올리고 다음 문항으로
+    btn.onclick = () => selectAnswer(opt.val);
+    opts.appendChild(btn);
+  });
+}
+
+function selectAnswer(val){
+  scores[val]++;
+  current++;
+  if (current < questions.length) renderQuestion();
+  else {
+    document.getElementById('progressBar').style.width = '100%';
+    showResult();
+  }
+}
+
+function showResult(){
+  const top = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+  const r = results[top];
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '결과';
+  document.getElementById('rName').textContent = r.name;
+  document.getElementById('rLevel').textContent = r.level;
+  document.getElementById('rDesc').textContent = r.desc;
+  document.getElementById('rTip').textContent = r.tip;
+}
+
+function restartQuiz(){
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '시작 전';
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('toast').classList.remove('show');
+}
+
+function copyResult(){
+  navigator.clipboard.writeText(location.href).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  });
+}
+
+</script>
+</body>
+</html>
