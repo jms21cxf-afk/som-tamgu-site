@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>나의 자존감 지수는? — 썸 탐구생활</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F4F7F2; --paper: #FFFFFF; --line: #E3E9DE;
+    --ink: #2B342E; --ink-soft: #6B7A6F;
+    --sage:#5C8A63; --sage-dark:#456B4B;
+    --coral:#FF6F59; --bubble-me: #E9F3E7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(92,138,99,0.10) 0%, transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(255,111,89,0.06) 0%, transparent 40%);
+    font-family: 'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 24px 12px;
+  }
+  .display{ font-family:'Gaegu', 'Gowun Dodum', sans-serif; }
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#8A5A1F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
+
+  .phone{
+    width: 100%; max-width: 400px; background: var(--paper); border-radius: 32px;
+    border: 1px solid var(--line); box-shadow: 0 20px 50px -20px rgba(43,52,46,0.25), 0 4px 12px rgba(43,52,46,0.06);
+    overflow: hidden; position: relative; min-height: 640px; display:flex; flex-direction:column;
+  }
+  .phone-header{ padding: 18px 20px 14px; border-bottom: 1px solid var(--line); display:flex; align-items:center; gap: 10px; }
+  .avatar{ width: 38px; height:38px; border-radius:50%; background: linear-gradient(135deg, var(--sage), var(--coral)); display:flex; align-items:center; justify-content:center; font-size: 18px; flex-shrink:0; }
+  .header-text .name{ font-weight:700; font-size:15px; }
+  .header-text .status{ font-size:11.5px; color: var(--ink-soft); }
+  .progress-wrap{ height: 4px; background: var(--line); position: relative; z-index: 2; }
+  .progress-bar{ height:100%; width: 0%; background: var(--sage-dark); transition: width 0.4s ease; }
+
+  .screen{ flex:1; display:flex; flex-direction:column; padding: 22px 18px; overflow-y:auto; position:relative; }
+  .hidden{ display:none !important; }
+
+  #intro{ align-items:center; justify-content:center; text-align:center; gap:16px; flex:1; }
+  #intro .big-emoji{ font-size: 52px; }
+  #intro h1{ font-size: 24px; line-height:1.4; }
+  #intro p{ font-size: 14px; color: var(--ink-soft); line-height:1.6; padding: 0 4px; }
+  .cta-btn{
+    margin-top: 10px; background: var(--sage-dark); color: white; border:none; padding: 14px 32px;
+    border-radius: 999px; font-size: 15px; font-weight: 700; cursor:pointer;
+    box-shadow: 0 8px 16px -6px rgba(69,107,75,0.4);
+  }
+  .cta-btn:active{ transform: scale(0.96); }
+  .meta-note{ font-size: 11.5px; color:#A6AEA1; margin-top:4px; }
+
+  #quiz{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; }
+  .bubble-row{ display:flex; margin-bottom: 4px; }
+  .bubble{ max-width: 86%; padding: 12px 16px; border-radius: 18px; font-size: 14.2px; line-height:1.55; animation: pop 0.25s ease; }
+  @keyframes pop{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:translateY(0);} }
+  .bubble.them{ background: var(--bg); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+  .answers{ display:flex; flex-direction:column; gap:8px; margin-top: 4px; }
+  .answer-btn{
+    align-self: flex-end; max-width: 90%; text-align:left; background: var(--bubble-me);
+    border: 1px solid #CFE3CB; color: var(--ink); padding: 10px 16px; border-radius: 16px;
+    border-bottom-right-radius: 4px; font-size: 13.5px; line-height:1.5; cursor:pointer;
+  }
+  .answer-btn:hover{ background:#DCEED8; }
+  .answer-btn:active{ transform: scale(0.98); }
+
+  #result{ align-items:center; text-align:center; gap:10px; flex:1; justify-content:center; }
+  .result-card{
+    width:100%; background: linear-gradient(180deg, #FFFDFB, #F4F7F2); border: 1px solid var(--line);
+    border-radius: 22px; padding: 26px 20px 22px; position:relative; box-shadow: 0 10px 24px -14px rgba(43,52,46,0.2);
+  }
+  .type-tag{ display:inline-block; background: var(--ink); color: white; font-size: 11px; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+  .score-num{ font-size: 40px; font-weight:800; color: var(--sage-dark); line-height:1; margin-bottom:4px; }
+  .score-max{ font-size:12px; color: var(--ink-soft); margin-bottom:14px; }
+  .type-name{ font-size: 21px; font-weight:700; line-height:1.3; margin-bottom: 14px; }
+  .type-desc{ font-size: 13.5px; line-height:1.7; color: var(--ink); text-align:left; }
+  .gentle-note{
+    margin-top:16px; background: var(--paper); border: 1px dashed var(--line); border-radius: 14px;
+    padding: 12px 14px; text-align:left; font-size: 12.2px; color: var(--ink-soft); line-height:1.6;
+  }
+  .read-more{ margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline; }
+  .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
+  .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-weight:700; cursor:pointer; border: none; }
+  .action-btn.share{ background: var(--ink); color:white; }
+  .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+  .copy-toast{
+    position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%);
+    background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px;
+    opacity:0; transition: opacity 0.25s ease; white-space:nowrap;
+  }
+  .copy-toast.show{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div style="width:100%; display:flex; justify-content:center;">
+<div style="width:100%; max-width:400px;">
+<div class="crumb-bar"><a href="../index.html">탐구소</a><span>/</span><span class="current">심리</span></div>
+<div class="phone">
+  <div class="phone-header">
+    <div class="avatar">🌱</div>
+    <div class="header-text">
+      <div class="name display">나를 돌아보는 시간</div>
+      <div class="status" id="statusText">대화 중...</div>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- INTRO -->
+  <div id="intro" class="screen">
+    <div class="big-emoji">🌱</div>
+    <h1 class="display">요즘 나는<br>나를 어떻게 보고 있을까?</h1>
+    <p>일상 속 생각 10가지에 답하면<br>지금 나의 자존감 지수를 가볍게 살펴볼 수 있어요.</p>
+    <button class="cta-btn" onclick="startQuiz()">시작하기 →</button>
+    <div class="meta-note">약 40초 소요 · 진단이 아닌 자기 이해용 테스트예요</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="screen hidden"></div>
+
+  <!-- RESULT -->
+  <div id="result" class="screen hidden">
+    <div class="result-card" id="resultCard">
+      <span class="type-tag">RESULT</span>
+      <div class="score-num" id="rScore"></div>
+      <div class="score-max">/ 30점</div>
+      <div class="type-name display" id="rName"></div>
+      <div class="type-desc" id="rDesc"></div>
+      <div class="gentle-note" id="rNote"></div>
+      <a class="read-more" href="articles/beyond-mbti.html">나를 이해하는 다른 방법들 →</a>
+      <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
+    </div>
+    <div class="action-row">
+      <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
+      <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+// reverse: true인 문항은 점수를 뒤집어서 계산 (자존감 척도의 실제 설계 방식을 참고)
+const questions = [
+  { them: "나는 내가 가진 여러 좋은 점들을 알고 있다.", reverse:false },
+  { them: "전반적으로 나는 나 자신에게 만족하는 편이다.", reverse:false },
+  { them: "가끔 나는 내가 아무 쓸모가 없다고 느낀다.", reverse:true },
+  { them: "나는 다른 사람들만큼 가치 있는 사람이라고 생각한다.", reverse:false },
+  { them: "나는 자랑할 만한 것이 별로 없다고 느낄 때가 많다.", reverse:true },
+  { them: "나는 나 자신에게 긍정적인 태도를 가지고 있다.", reverse:false },
+  { them: "가끔 나는 내가 실패자처럼 느껴진다.", reverse:true },
+  { them: "나는 대체로 내 결정에 스스로 확신을 가진다.", reverse:false },
+  { them: "나는 종종 다른 사람과 나를 비교하며 부족하다고 느낀다.", reverse:true },
+  { them: "나는 있는 그대로의 나를 존중하는 편이다.", reverse:false }
+];
+
+const options = [
+  { text: "전혀 그렇지 않다", val:0 },
+  { text: "별로 그렇지 않다", val:1 },
+  { text: "약간 그런 편이다", val:2 },
+  { text: "매우 그렇다", val:3 }
+];
+
+let current = 0;
+let totalScore = 0;
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  const quizEl = document.getElementById('quiz');
+
+  const row = document.createElement('div');
+  row.className = 'bubble-row';
+  row.innerHTML = '<div class="bubble them">' + q.them + '</div>';
+  quizEl.appendChild(row);
+
+  const answers = document.createElement('div');
+  answers.className = 'answers';
+  answers.id = 'answers-' + current;
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.val, q.reverse);
+    answers.appendChild(btn);
+  });
+  quizEl.appendChild(answers);
+
+  quizEl.scrollTop = quizEl.scrollHeight;
+  document.getElementById('progressBar').style.width = ((current)/questions.length*100) + '%';
+}
+
+function selectAnswer(val, reverse){
+  const points = reverse ? (3 - val) : val;
+  totalScore += points;
+  document.getElementById('answers-' + current).remove();
+
+  current++;
+  document.getElementById('progressBar').style.width = (current/questions.length*100) + '%';
+
+  if(current < questions.length){
+    document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+    setTimeout(renderQuestion, 300);
+  } else {
+    document.getElementById('statusText').textContent = "결과 도착!";
+    setTimeout(showResult, 400);
+  }
+}
+
+function showResult(){
+  document.getElementById('rScore').textContent = totalScore;
+
+  let name, desc, note;
+  if(totalScore >= 21){
+    name = "안정적으로 나를 지지하는 중";
+    desc = "지금 스스로를 비교적 있는 그대로 받아들이고 있는 편이에요. 실수하거나 잘 안 풀리는 날에도 나 자신을 크게 몰아붙이지 않고, 있는 그대로의 나에게 어느 정도 너그러운 시선을 갖고 있는 것 같아요.";
+    note = "이 상태를 유지하는 것도 노력이 필요해요. 가끔 스스로를 칭찬하는 습관을 계속 이어가 보세요.";
+  } else if(totalScore >= 11){
+    name = "나를 보는 시선이 오르내리는 중";
+    desc = "어떤 날은 스스로에게 너그럽다가도, 어떤 날은 유독 자신을 낮게 평가하게 되는 시기인 것 같아요. 이건 특별히 이상한 게 아니라, 많은 사람들이 겪는 흔한 기복이에요. 다만 그 낮아지는 날이 잦다면, 무엇이 그 기분을 건드리는지 한 번쯤 들여다볼 만해요.";
+    note = "이 결과는 진단이 아니라 지금 이 순간의 스냅샷일 뿐이에요. 나를 평가하는 도구가 아니라, 돌아보는 계기로만 참고해 주세요.";
+  } else {
+    name = "요즘 나에게 유독 엄격한 시기";
+    desc = "지금은 나 자신을 조금 가혹하게 바라보고 있는 시기일 수 있어요. 작은 실수도 크게 느껴지고, 스스로에게 좋은 말을 해주기가 쉽지 않은 때인 것 같아요. 이런 시기는 누구에게나 찾아오고, 이 상태가 '진짜 나'를 뜻하는 건 아니에요.";
+    note = "이 결과가 마음에 걸리신다면, 이건 혼자 해결해야 할 숙제가 아니에요. 가까운 사람에게 지금 마음을 이야기하거나, 전문가와 대화를 나눠보는 것도 좋은 방법이에요.";
+  }
+
+  document.getElementById('rName').textContent = name;
+  document.getElementById('rDesc').textContent = desc;
+  document.getElementById('rNote').textContent = note;
+
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+}
+
+function restartQuiz(){
+  current = 0;
+  totalScore = 0;
+  document.getElementById('quiz').innerHTML = '';
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('statusText').textContent = '대화 중...';
+}
+
+function copyResult(){
+  const score = document.getElementById('rScore').textContent;
+  const name = document.getElementById('rName').textContent;
+  const text = "나의 자존감 지수는 " + score + "/30, [" + name + "]! 너도 해볼래? → (배포 후 실제 링크로 교체)";
+  const toast = document.getElementById('copyToast');
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(() => {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  }
+}
+</script>
+
+</body>
+</html>
