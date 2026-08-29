@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>심리학 교과서에 MBTI가 없는 이유 — 썸 탐구생활</title>
+<meta name="description" content="MBTI 대신 성격 5요인(Big Five)을 쓰는 이유. 1936년 사전 작업부터 성실성 메타분석까지, 다섯 축이 어디서 나왔는지 정리했습니다.">
+<meta name="keywords" content="성격 5요인, Big Five, MBTI 차이, 빅파이브, 성격 심리학, 심리테스트">
+<meta name="author" content="썸 탐구생활">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="썸 탐구생활">
+<meta property="og:title" content="심리학 교과서에 MBTI가 없는 이유 — 썸 탐구생활">
+<meta property="og:description" content="성격을 열여섯 칸에 넣는 것과, 다섯 개 눈금자로 재는 것의 차이">
+<meta property="og:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/psych/articles/big-five-vs-mbti.html">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="심리학 교과서에 MBTI가 없는 이유 — 썸 탐구생활">
+<meta name="twitter:description" content="성격을 열여섯 칸에 넣는 것과, 다섯 개 눈금자로 재는 것의 차이">
+<meta name="twitter:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/psych/articles/big-five-vs-mbti.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF6F1; --paper:#FFFFFF; --line:#F0DED8;
+    --ink:#3A2E39; --ink-soft:#7A6B72; --coral:#FF6F59; --coral-dark:#E85A45; --teal:#4E9F8B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .display{ font-family:'Gaegu','Gowun Dodum',sans-serif; }
+  a{ color: var(--coral-dark); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 36px; }
+  header.site{ padding:22px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ display:flex; align-items:center; gap:8px; font-weight:700; font-size:17px; }
+  .brand .dot{ width:10px; height:10px; border-radius:50%; background: var(--coral); flex-shrink:0; }
+  nav a{ font-size:13.5px; color: var(--ink-soft); margin-left:18px; text-decoration:none; }
+  /* 현재 보고 있는 탭은 본문 색으로 더 진하게 표시 */
+  nav a.active{ color: var(--ink); font-weight:700; }
+  /* 휴대폰에서는 로고 한 줄, 그 아래 메뉴가 한 줄로 보이도록 */
+  @media (max-width: 720px){
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{ flex-direction:column; align-items:flex-start; gap:10px; }
+    .brand{ white-space:nowrap; }
+    header.site nav{ display:flex; width:100%; justify-content:center; gap:18px; }
+    header.site nav a{ margin-left:0; font-size:12px; white-space:nowrap; }
+  }
+  main{ padding: 40px 0 60px; }
+  .tag{ display:inline-block; background: var(--ink); color:white; font-size:11px; letter-spacing:0.05em; padding:4px 12px; border-radius:999px; margin-bottom:14px; }
+  h1{ font-size:27px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:17px; margin: 28px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; }
+  /* 다섯 요인을 한눈에 보여주는 목록 */
+  .trait-list{ background: var(--paper); border:1px solid var(--line); border-radius:14px; padding: 18px 20px; margin: 18px 0; }
+  .trait-list li{ list-style:none; font-size:14px; margin-bottom:10px; padding-left: 2px; }
+  .trait-list li:last-child{ margin-bottom:0; }
+  .trait-list b{ color: var(--coral-dark); }
+  /* 글 끝에 참고한 자료를 밝히는 영역 */
+  .refs{ margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .refs h3{ font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; font-weight:700; }
+  .refs li{ list-style:none; font-size: 12.5px; color: var(--ink-soft); line-height:1.7; margin-bottom: 4px; }
+  .cta-box{ margin-top: 34px; background: var(--paper); border:1px solid var(--line); border-radius:16px; padding: 20px; text-align:center; }
+  .cta-box a{ display:inline-block; margin-top:10px; background: var(--coral); color:white; padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none; }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+  /* 페이지 위치 표시 줄 */
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#A87E3F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><span class="display">썸 탐구생활</span></div>
+    <nav><a href="../index.html">홈</a><a href="index.html" class="active">읽을거리</a><a href="../../about.html">소개</a><a href="../../privacy.html">개인정보처리방침</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <span class="tag">성격 이야기</span>
+  <h1 class="display">심리학 교과서에<br>MBTI가 없는 이유</h1>
+  <div class="meta">읽는 시간 약 5분</div>
+
+  <p>MBTI를 물어보는 건 이제 인사말에 가깝습니다. 네 글자를 주고받으면 처음 만난 사람과도 20분은 떠들 수 있죠. 그런데 대학 성격심리학 교재를 펼치면 MBTI는 거의 안 나옵니다. 나와도 "널리 쓰이지만 학계에서는 신중하게 본다" 정도의 짧은 언급이에요. 대신 목차를 차지하고 있는 건 성격 5요인, 빅파이브(Big Five)입니다.</p>
+  <p>왜 이런 차이가 생겼을까요. 두 검사가 만들어진 방식이 아예 다릅니다.</p>
+
+  <h2>MBTI는 융의 아이디어에서 출발했다</h2>
+  <p>MBTI는 캐서린 브릭스와 이자벨 마이어스, 모녀가 만들었습니다. 두 사람 다 심리학자는 아니었고, 칼 융이 쓴 유형론을 읽고 그걸 실제로 쓸 수 있는 검사로 만들어보자는 생각에서 시작했습니다. 1940년대 일이에요. 사람을 잘 맞는 일자리에 배치하는 데 도움이 되겠다는 실용적인 동기가 컸습니다.</p>
+  <p>출발점이 이론이었기 때문에, 결과도 이론이 정한 대로 나옵니다. 융이 내향과 외향을 나눴으니 사람도 둘 중 하나로 갈립니다. 문제는 실제 사람들의 점수를 모아 그림을 그려보면 두 봉우리가 생기지 않는다는 거예요. 대부분이 가운데에 몰린 하나의 봉우리가 나옵니다.</p>
+  <p>가운데에 몰려 있다는 건 경계선에 사람이 많다는 뜻입니다. 51 대 49로 E가 나온 사람과 49 대 51로 I가 나온 사람은 거의 같은 사람인데, 결과지에는 다른 유형으로 찍힙니다. 그래서 다시 검사하면 글자가 바뀝니다. 1983년 매카를리와 카스카든이 5주 간격으로 재검사를 해봤더니 네 글자 중 최소 하나가 바뀐 사람이 절반 가까이였다는 보고도 있습니다.</p>
+
+  <h2>빅파이브는 영어 사전에서 나왔다</h2>
+  <p>이쪽은 순서가 반대입니다. 이론을 먼저 세우지 않았어요.</p>
+  <p>1936년, 올포트와 오드버트라는 두 연구자가 영어 사전을 뒤져서 사람의 성격을 묘사하는 단어를 전부 뽑았습니다. 1만 8천 개쯤 나왔습니다. 발상은 단순합니다. 사람들이 서로를 설명하려고 만들어 쓴 단어 안에 성격의 구조가 이미 들어 있을 거라는 거죠.</p>
+  <p>이후 수십 년 동안 이 목록을 줄이고 묶는 작업이 이어졌습니다. 비슷한 뜻끼리, 실제로 같이 움직이는 단어끼리 통계로 뭉치는 작업이었어요. 1961년 튜프스와 크리스털의 분석에서 다섯 덩어리가 잡혔고, 이후 여러 연구자가 다른 표본으로 다시 해도 비슷한 다섯이 반복해서 나왔습니다. 1981년 골드버그가 여기에 '빅파이브'라는 이름을 붙였습니다.</p>
+  <p>그러니까 다섯이라는 숫자는 누가 "성격은 다섯 개다"라고 선언한 결과가 아닙니다. 단어를 계속 묶다 보니 남은 잔여물이에요. 저는 이 지점이 빅파이브의 가장 설득력 있는 부분이라고 생각합니다. 만든 사람의 취향이 개입할 여지가 적으니까요.</p>
+
+  <ul class="trait-list">
+    <li><b>개방성</b> — 새로운 경험과 낯선 생각에 얼마나 끌리는지</li>
+    <li><b>성실성</b> — 계획하고 정리하고 끝까지 하는 성향이 얼마나 강한지</li>
+    <li><b>외향성</b> — 사람들과 부딪히는 자리에서 기운이 오르는지 빠지는지</li>
+    <li><b>우호성</b> — 남에게 맞춰주고 부딪히지 않으려는 쪽이 얼마나 강한지</li>
+    <li><b>정서 민감성</b> — 감정 신호에 얼마나 예민하고, 그게 얼마나 오래 남는지</li>
+  </ul>
+
+  <h2>칸에 넣지 않고 눈금으로 잰다</h2>
+  <p>빅파이브에는 유형이 없습니다. 다섯 개의 눈금자가 있고, 각각에서 내가 어디쯤인지를 봅니다. 외향성이 '있다·없다'로 갈리는 게 아니라 높은 편, 중간, 낮은 편이 되는 거죠.</p>
+  <p>사소한 차이 같지만 말할 수 있는 내용이 달라집니다. 예를 들어 1991년 배릭과 마운트가 여러 직군의 연구를 모아 분석했더니, 다섯 축 중 성실성이 직무 수행과 가장 일관되게 연결되는 축으로 나왔습니다. 직종을 가리지 않고요. 정서 민감성이 높은 쪽에서 스트레스를 더 강하게 겪는 경향도 여러 연구에서 함께 보고됩니다.</p>
+  <p>유형표로는 이런 문장을 쓸 수 없습니다. "ISTJ가 일을 잘한다"는 말은 성립하기 어렵지만, "성실성 점수가 높을수록 이런 경향이 있다"는 말은 정도를 재야 나올 수 있는 이야기예요.</p>
+
+  <h2>말투도 바뀝니다</h2>
+  <p>"나는 I라서 모임은 못 가"와 "지금은 외향성이 낮은 편이라 사람 많은 자리를 오래 못 버텨"는 다른 말입니다. 앞쪽은 정체성이고 뒤쪽은 상태예요. 성격의 높낮이는 나이가 들며 조금씩 움직이는 편이라, 뒤쪽 표현이 사실에 더 가깝기도 합니다.</p>
+  <p>나쁜 축이 하나도 없다는 점도 마음에 듭니다. 정서 민감성이 높으면 신호를 먼저 알아채는 대신 회복에 시간이 더 걸립니다. 우호성이 높으면 갈등을 줄이는 능력과, 자기 몫을 깎는 습관이 한 세트로 붙어 옵니다. 강점만 뽑아 칭찬해주는 결과지보다 이런 쪽이 덜 달콤하지만 더 쓸모 있어요.</p>
+
+  <h2>그래서 MBTI를 끊어야 하나</h2>
+  <p>그건 아니라고 생각합니다.</p>
+  <p>MBTI의 실제 기능은 성격 측정보다 대화 열기에 있습니다. 네 글자를 핑계로 "나는 이런 상황이 힘들다"는 말을 자연스럽게 꺼낼 수 있잖아요. 자기 이야기를 시작하기 어려운 사람들에게 이건 꽤 유용한 장치입니다. 재미로 보는 것도 나쁘지 않고요.</p>
+  <p>다만 되돌리기 어려운 결정에까지 쓰기엔 근거가 얇습니다. 채용에서 사람을 걸러내거나, 전공을 정하거나, "우리는 상극이라 안 맞아"로 관계를 끝내는 판단이요. 그런 자리에는 다시 검사하면 바뀔 수 있는 네 글자보다 조금 더 단단한 게 필요합니다.</p>
+
+  <div class="refs">
+    <h3>참고한 자료</h3>
+    <ul>
+      <li>Allport &amp; Odbert (1936) — 영어 사전에서 성격 묘사 단어 약 1만 8천 개를 추린 어휘 연구</li>
+      <li>Tupes &amp; Christal (1961), Goldberg (1981) — 다섯 요인 구조와 '빅파이브' 명명</li>
+      <li>Costa &amp; McCrae, NEO-PI-R — 오늘날 널리 쓰이는 5요인 검사</li>
+      <li>Barrick &amp; Mount (1991) — 성실성과 직무 수행의 관계를 다룬 메타분석</li>
+      <li>McCarley &amp; Carskadon (1983) — MBTI 재검사 안정성 보고</li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <div class="display" style="font-size:16px;">그럼 나는 어느 결이 제일 진할까?</div>
+    <a href="../big5-test.html">성격 5요인 테스트 하러가기</a>
+  </div>
+
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>

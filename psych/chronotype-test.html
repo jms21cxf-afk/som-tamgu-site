@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>나는 아침형일까 저녁형일까? — 썸 탐구생활</title>
+<meta name="description" content="10가지 질문으로 알아보는 나의 크로노타입. 아침형·중간형·저녁형 중 어디에 가까운지 가볍게 확인해보세요.">
+<meta name="keywords" content="아침형 저녁형 테스트, 크로노타입, 올빼미형, 수면 유형 테스트, 심리테스트">
+<meta property="og:title" content="나는 아침형일까 저녁형일까? — 썸 탐구생활">
+<meta property="og:description" content="알람 없이 잘 수 있다면 몇 시에 일어날까? 10문항으로 보는 나의 생활 리듬">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/psych/chronotype-test.html">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/psych/chronotype-test.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF4E9; --paper: #FFFFFF; --line: #EBDFCB;
+    --ink: #2E2A38; --ink-soft: #6D6577;
+    --dawn:#C58B3A; --dawn-dark:#9A6620;
+    --night:#4B4A7E; --bubble-me: #F6EBDA;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(197,139,58,0.12) 0%, transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(75,74,126,0.10) 0%, transparent 40%);
+    font-family: 'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 24px 12px;
+  }
+  .display{ font-family:'Gaegu', 'Gowun Dodum', sans-serif; }
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#8A5A1F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
+
+  .phone{
+    width: 100%; max-width: 400px; background: var(--paper); border-radius: 32px;
+    border: 1px solid var(--line); box-shadow: 0 20px 50px -20px rgba(46,42,56,0.25), 0 4px 12px rgba(46,42,56,0.06);
+    overflow: hidden; position: relative; min-height: 640px; display:flex; flex-direction:column;
+  }
+  .phone-header{ padding: 18px 20px 14px; border-bottom: 1px solid var(--line); display:flex; align-items:center; gap: 10px; }
+  .avatar{ width: 38px; height:38px; border-radius:50%; background: linear-gradient(135deg, var(--night), var(--dawn)); display:flex; align-items:center; justify-content:center; font-size: 18px; flex-shrink:0; }
+  .header-text .name{ font-weight:700; font-size:15px; }
+  .header-text .status{ font-size:11.5px; color: var(--ink-soft); }
+  .progress-wrap{ height: 4px; background: var(--line); position: relative; z-index: 2; }
+  .progress-bar{ height:100%; width: 0%; background: var(--dawn-dark); transition: width 0.4s ease; }
+
+  .screen{ flex:1; display:flex; flex-direction:column; padding: 22px 18px; overflow-y:auto; position:relative; }
+  .hidden{ display:none !important; }
+
+  #intro{ align-items:center; justify-content:center; text-align:center; gap:16px; flex:1; }
+  #intro .big-emoji{ font-size: 52px; }
+  #intro h1{ font-size: 24px; line-height:1.4; }
+  #intro p{ font-size: 14px; color: var(--ink-soft); line-height:1.6; padding: 0 4px; }
+  .cta-btn{
+    margin-top: 10px; background: var(--dawn-dark); color: white; border:none; padding: 14px 32px;
+    border-radius: 999px; font-size: 15px; font-weight: 700; cursor:pointer;
+    box-shadow: 0 8px 16px -6px rgba(154,102,32,0.4);
+  }
+  .cta-btn:active{ transform: scale(0.96); }
+  .meta-note{ font-size: 11.5px; color:#B2A794; margin-top:4px; }
+
+  #quiz{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; }
+  .bubble-row{ display:flex; margin-bottom: 4px; }
+  .bubble{ max-width: 86%; padding: 12px 16px; border-radius: 18px; font-size: 14.2px; line-height:1.55; animation: pop 0.25s ease; }
+  @keyframes pop{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:translateY(0);} }
+  /* 질문(상대)은 중립 회색, 대답(나)은 호박색 계열로 확실히 구분 */
+  .bubble.them{ background: #F2F2F4; border: 1px solid #E4E3E7; color: var(--ink); border-bottom-left-radius: 4px; }
+  .answers{ display:flex; flex-direction:column; gap:8px; margin-top: 4px; }
+  .answer-btn{
+    align-self: flex-end; max-width: 90%; text-align:left; background: #FAE3C1;
+    border: 1px solid #E0BC84; color: #7A4F16; padding: 10px 16px; border-radius: 16px;
+    border-bottom-right-radius: 4px; font-size: 13.5px; line-height:1.5; cursor:pointer;
+  }
+  .answer-btn:hover{ background:#F5D8AC; }
+  .answer-btn:active{ transform: scale(0.98); }
+
+  #result{ align-items:center; text-align:center; gap:10px; flex:1; justify-content:center; }
+  .result-card{
+    width:100%; background: linear-gradient(180deg, #FFFDFA, #FBF4E9); border: 1px solid var(--line);
+    border-radius: 22px; padding: 26px 20px 22px; position:relative; box-shadow: 0 10px 24px -14px rgba(46,42,56,0.2);
+  }
+  .type-tag{ display:inline-block; background: var(--ink); color: white; font-size: 11px; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+  .score-num{ font-size: 38px; font-weight:800; color: var(--dawn-dark); line-height:1; margin-bottom:4px; }
+  .score-max{ font-size:12px; color: var(--ink-soft); margin-bottom:14px; }
+  .type-name{ font-size: 21px; font-weight:700; line-height:1.3; margin-bottom: 14px; }
+  .type-desc{ font-size: 13.5px; line-height:1.7; color: var(--ink); text-align:left; }
+  .tip-box{
+    margin-top:16px; background: var(--paper); border: 1px dashed var(--line); border-radius: 14px;
+    padding: 12px 14px; text-align:left; font-size: 12.5px; color: var(--ink-soft); line-height:1.6;
+  }
+  .tip-box b{ color: var(--dawn-dark); }
+  /* 어떤 개념을 참고했는지 밝히는 줄 (공식 검사와 구분) */
+  .source-note{
+    margin-top:12px; text-align:left; font-size: 11.5px; color:#9C9284; line-height:1.6;
+  }
+  .read-more{ margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline; }
+  .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
+  .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-weight:700; cursor:pointer; border: none; }
+  .action-btn.share{ background: var(--ink); color:white; }
+  .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+  .copy-toast{
+    position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%);
+    background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px;
+    opacity:0; transition: opacity 0.25s ease; white-space:nowrap;
+  }
+  .copy-toast.show{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div style="width:100%; display:flex; justify-content:center;">
+<div style="width:100%; max-width:400px;">
+<div class="crumb-bar"><a href="../index.html">탐구소</a><span>/</span><span class="current">심리</span></div>
+<div class="phone">
+  <div class="phone-header">
+    <div class="avatar">🌙</div>
+    <div class="header-text">
+      <div class="name display">아침저녁 연구소</div>
+      <div class="status" id="statusText">대화 중...</div>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- INTRO -->
+  <div id="intro" class="screen">
+    <div class="big-emoji">🌙</div>
+    <h1 class="display">나는 아침형일까,<br>저녁형일까?</h1>
+    <p>알람 없이 잘 수 있다면 몇 시에 일어날까.<br>10가지 질문으로 내 생활 리듬을 살펴봐요.</p>
+    <button class="cta-btn" onclick="startQuiz()">시작하기 →</button>
+    <div class="meta-note">약 40초 소요 · 진단이 아닌 자기 이해용 테스트예요</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="screen hidden"></div>
+
+  <!-- RESULT -->
+  <div id="result" class="screen hidden">
+    <div class="result-card" id="resultCard">
+      <span class="type-tag">RESULT</span>
+      <div class="score-num" id="rScore"></div>
+      <div class="score-max">저녁형 점수 / 30점</div>
+      <div class="type-name display" id="rName"></div>
+      <div class="type-desc" id="rDesc"></div>
+      <div class="tip-box" id="rTip"></div>
+      <div class="source-note" id="rSource"></div>
+      <a class="read-more" href="articles/sleep-chronotype.html">아침에 못 일어나는 게 게으름이 아닌 이유 →</a>
+      <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
+    </div>
+    <div class="action-row">
+      <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
+      <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+// 점수가 높을수록 저녁형(올빼미)에 가깝다. 문항당 0~3점, 총 0~30점
+const questions = [
+  { them: "알람 없이 자유롭게 잘 수 있다면, 몇 시에 눈이 뜨일까?", options:[
+      {text:"6시 전후엔 저절로 깬다", score:0},
+      {text:"7~8시쯤", score:1},
+      {text:"9~10시쯤", score:2},
+      {text:"11시는 넘겨야 사람이 된다", score:3}
+    ]},
+  { them: "일어난 뒤 30분, 머리는 어때?", options:[
+      {text:"바로 맑고 말도 잘 나온다", score:0},
+      {text:"조금 걸리지만 괜찮다", score:1},
+      {text:"한동안 멍하다", score:2},
+      {text:"말 걸면 미안한 상태다", score:3}
+    ]},
+  { them: "아침에 밥 생각은 어때?", options:[
+      {text:"배고파서 챙겨 먹는다", score:0},
+      {text:"있으면 먹는다", score:1},
+      {text:"커피나 물만 들어간다", score:2},
+      {text:"아무것도 안 넘어간다", score:3}
+    ]},
+  { them: "머리가 제일 잘 돌아가는 시간은?", options:[
+      {text:"오전", score:0},
+      {text:"점심 지나 오후", score:1},
+      {text:"저녁", score:2},
+      {text:"밤 11시 이후", score:3}
+    ]},
+  { them: "집중해야 하는 일을 아침 7시 vs 밤 10시에 한다면?", options:[
+      {text:"아침 7시가 훨씬 편하다", score:0},
+      {text:"아침이 조금 낫다", score:1},
+      {text:"밤이 조금 낫다", score:2},
+      {text:"밤 10시가 훨씬 편하다", score:3}
+    ]},
+  { them: "알람은 몇 개 쓰지?", options:[
+      {text:"거의 안 쓴다", score:0},
+      {text:"하나면 충분하다", score:1},
+      {text:"여러 개 걸어둔다", score:2},
+      {text:"여러 개 다 끄고 다시 잔다", score:3}
+    ]},
+  { them: "평일 밤, 졸음이 오는 시간은?", options:[
+      {text:"10시 전에 온다", score:0},
+      {text:"11시쯤", score:1},
+      {text:"1시쯤", score:2},
+      {text:"2시가 넘어도 안 온다", score:3}
+    ]},
+  { them: "주말엔 평일보다 얼마나 늦게 일어나?", options:[
+      {text:"거의 비슷하다", score:0},
+      {text:"1시간 정도", score:1},
+      {text:"2시간 정도", score:2},
+      {text:"3시간 이상", score:3}
+    ]},
+  { them: "아침 8시에 중요한 일정이 잡히면?", options:[
+      {text:"별 부담 없다", score:0},
+      {text:"조금 신경 쓰인다", score:1},
+      {text:"꽤 괴롭다", score:2},
+      {text:"그날 하루가 다 흔들린다", score:3}
+    ]},
+  { them: "마지막. 스스로 생각하는 나는?", options:[
+      {text:"완전 아침형", score:0},
+      {text:"조금 아침형", score:1},
+      {text:"조금 저녁형", score:2},
+      {text:"완전 저녁형", score:3}
+    ]}
+];
+
+const bands = [
+  { max: 7,
+    name: "해와 같이 켜지는 사람",
+    desc: "아침에 이미 시동이 걸려 있는 편이에요. 일찍 깨는 게 부지런해서가 아니라, 몸의 리듬 자체가 앞으로 당겨져 있는 쪽이에요. 오전에 중요한 일을 몰아두면 능률이 잘 나오고, 대신 밤 약속이 길어지면 다음 날까지 여파가 남습니다.",
+    tip: "제일 어려운 일을 오전으로 옮겨보세요. 같은 시간을 써도 결과가 달라지는 구간이에요." },
+  { max: 14,
+    name: "아침에 조금 기울어진 사람",
+    desc: "완전한 아침형은 아니지만, 오전이 편한 쪽이에요. 알람 하나로 일어나고, 밤 늦게까지 버티는 건 애써야 되는 편이죠. 리듬이 크게 흔들리지 않아서 평일·주말 차이가 적은 편이기도 해요.",
+    tip: "지금 리듬이 안정적인 쪽이에요. 주말에 늦잠을 2시간 이상 몰아 자면 오히려 월요일이 힘들어질 수 있어요." },
+  { max: 21,
+    name: "낮에 제일 멀쩡한 사람",
+    desc: "아침형도 저녁형도 아닌 중간형이에요. 실제로 가장 흔한 유형입니다. 오전엔 서서히 올라오고, 점심 지나 오후에 컨디션이 제일 좋은 편이죠. 상황에 따라 리듬을 맞출 수 있는 게 강점이지만, 그래서 스케줄에 쉽게 끌려다니기도 해요.",
+    tip: "집중할 일은 오후 시간대에 배치해보세요. 스스로 리듬을 안 정하면 남의 일정에 맞춰지기 쉬워요." },
+  { max: 30,
+    name: "밤에 살아나는 사람",
+    desc: "저녁형(올빼미)에 가까워요. 밤 11시쯤 머리가 제일 잘 돌아가고, 아침 일정은 유독 버겁습니다. 이건 의지가 약한 게 아니라 몸의 리듬이 뒤로 밀려 있는 쪽이에요. 문제는 세상 일정이 아침 기준이라, 평일엔 늘 잠이 부족해지기 쉬운 점이에요.",
+    tip: "아침을 갑자기 당기기보다, 밤에 화면 밝기를 줄이고 취침을 15분씩 앞당겨보세요. 아침 햇빛을 보는 것도 리듬을 당기는 데 도움이 됩니다." }
+];
+
+const sourceText = "참고: 수면 연구에서 쓰는 <b>크로노타입</b>(아침형·저녁형) 개념을 바탕으로 재구성했어요. 실제 학술 설문(MEQ 등)을 그대로 옮긴 공식 검사는 아니고, 점수 구간도 가볍게 나눈 기준입니다.";
+
+let current = 0;
+let total = 0;
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  const quizEl = document.getElementById('quiz');
+
+  const row = document.createElement('div');
+  row.className = 'bubble-row';
+  row.innerHTML = '<div class="bubble them">' + q.them + '</div>';
+  quizEl.appendChild(row);
+
+  const answers = document.createElement('div');
+  answers.className = 'answers';
+  answers.id = 'answers-' + current;
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.score);
+    answers.appendChild(btn);
+  });
+  quizEl.appendChild(answers);
+
+  quizEl.scrollTop = quizEl.scrollHeight;
+  document.getElementById('progressBar').style.width = ((current)/questions.length*100) + '%';
+}
+
+function selectAnswer(score){
+  total += score;
+  document.getElementById('answers-' + current).remove();
+
+  current++;
+  document.getElementById('progressBar').style.width = (current/questions.length*100) + '%';
+
+  if(current < questions.length){
+    document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+    setTimeout(renderQuestion, 300);
+  } else {
+    document.getElementById('statusText').textContent = "결과 도착!";
+    setTimeout(showResult, 400);
+  }
+}
+
+function showResult(){
+  const band = bands.find(b => total <= b.max);
+  document.getElementById('rScore').textContent = total;
+  document.getElementById('rName').textContent = band.name;
+  document.getElementById('rDesc').textContent = band.desc;
+  document.getElementById('rTip').innerHTML = '🌙 <b>이렇게 해보면 좋아요</b><br>' + band.tip;
+  document.getElementById('rSource').innerHTML = sourceText;
+
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+}
+
+function restartQuiz(){
+  current = 0;
+  total = 0;
+  document.getElementById('quiz').innerHTML = '';
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('statusText').textContent = '대화 중...';
+}
+
+function copyResult(){
+  const toast = document.getElementById('copyToast');
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(location.href).then(() => {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  }
+}
+</script>
+
+</body>
+</html>

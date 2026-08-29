@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>나의 회복탄력성은? — 썸 탐구생활</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F9F1F3; --paper: #FFFFFF; --line: #EFDCE2;
+    --ink: #362530; --ink-soft: #7A6470;
+    --rose:#C15B7C; --rose-dark:#9A3F5C;
+    --coral:#FF6F59; --bubble-me: #FBE6EC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(193,91,124,0.09) 0%, transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(255,111,89,0.06) 0%, transparent 40%);
+    font-family: 'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 24px 12px;
+  }
+  .display{ font-family:'Gaegu', 'Gowun Dodum', sans-serif; }
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#8A5A1F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
+
+  .phone{
+    width: 100%; max-width: 400px; background: var(--paper); border-radius: 32px;
+    border: 1px solid var(--line); box-shadow: 0 20px 50px -20px rgba(54,37,48,0.25), 0 4px 12px rgba(54,37,48,0.06);
+    overflow: hidden; position: relative; min-height: 640px; display:flex; flex-direction:column;
+  }
+  .phone-header{ padding: 18px 20px 14px; border-bottom: 1px solid var(--line); display:flex; align-items:center; gap: 10px; }
+  .avatar{ width: 38px; height:38px; border-radius:50%; background: linear-gradient(135deg, var(--rose), var(--coral)); display:flex; align-items:center; justify-content:center; font-size: 18px; flex-shrink:0; }
+  .header-text .name{ font-weight:700; font-size:15px; }
+  .header-text .status{ font-size:11.5px; color: var(--ink-soft); }
+  .progress-wrap{ height: 4px; background: var(--line); position: relative; z-index: 2; }
+  .progress-bar{ height:100%; width: 0%; background: var(--rose-dark); transition: width 0.4s ease; }
+
+  .screen{ flex:1; display:flex; flex-direction:column; padding: 22px 18px; overflow-y:auto; position:relative; }
+  .hidden{ display:none !important; }
+
+  #intro{ align-items:center; justify-content:center; text-align:center; gap:16px; flex:1; }
+  #intro .big-emoji{ font-size: 52px; }
+  #intro h1{ font-size: 24px; line-height:1.4; }
+  #intro p{ font-size: 14px; color: var(--ink-soft); line-height:1.6; padding: 0 4px; }
+  .cta-btn{
+    margin-top: 10px; background: var(--rose-dark); color: white; border:none; padding: 14px 32px;
+    border-radius: 999px; font-size: 15px; font-weight: 700; cursor:pointer;
+    box-shadow: 0 8px 16px -6px rgba(154,63,92,0.4);
+  }
+  .cta-btn:active{ transform: scale(0.96); }
+  .meta-note{ font-size: 11.5px; color:#C7ABB6; margin-top:4px; }
+
+  #quiz{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; }
+  .bubble-row{ display:flex; margin-bottom: 4px; }
+  .bubble{ max-width: 86%; padding: 12px 16px; border-radius: 18px; font-size: 14.2px; line-height:1.55; animation: pop 0.25s ease; }
+  @keyframes pop{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:translateY(0);} }
+  .bubble.them{ background: var(--bg); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+  .answers{ display:flex; flex-direction:column; gap:8px; margin-top: 4px; }
+  .answer-btn{
+    align-self: flex-end; max-width: 90%; text-align:left; background: var(--bubble-me);
+    border: 1px solid #F2C9D5; color: var(--ink); padding: 10px 16px; border-radius: 16px;
+    border-bottom-right-radius: 4px; font-size: 13.5px; line-height:1.5; cursor:pointer;
+  }
+  .answer-btn:hover{ background:#F8D3E0; }
+  .answer-btn:active{ transform: scale(0.98); }
+
+  #result{ align-items:center; text-align:center; gap:10px; flex:1; justify-content:center; }
+  .result-card{
+    width:100%; background: linear-gradient(180deg, #FFFDFB, #F9F1F3); border: 1px solid var(--line);
+    border-radius: 22px; padding: 26px 20px 22px; position:relative; box-shadow: 0 10px 24px -14px rgba(54,37,48,0.2);
+  }
+  .type-tag{ display:inline-block; background: var(--ink); color: white; font-size: 11px; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+  .score-num{ font-size: 40px; font-weight:800; color: var(--rose-dark); line-height:1; margin-bottom:4px; }
+  .score-max{ font-size:12px; color: var(--ink-soft); margin-bottom:14px; }
+  .type-name{ font-size: 20px; font-weight:700; line-height:1.3; margin-bottom: 14px; }
+  .type-desc{ font-size: 13.5px; line-height:1.7; color: var(--ink); text-align:left; }
+  .gentle-note{
+    margin-top:16px; background: var(--paper); border: 1px dashed var(--line); border-radius: 14px;
+    padding: 12px 14px; text-align:left; font-size: 12.2px; color: var(--ink-soft); line-height:1.6;
+  }
+  .read-more{ margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline; }
+  .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
+  .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-weight:700; cursor:pointer; border: none; }
+  .action-btn.share{ background: var(--ink); color:white; }
+  .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+  .copy-toast{
+    position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%);
+    background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px;
+    opacity:0; transition: opacity 0.25s ease; white-space:nowrap;
+  }
+  .copy-toast.show{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div style="width:100%; display:flex; justify-content:center;">
+<div style="width:100%; max-width:400px;">
+<div class="crumb-bar"><a href="../index.html">탐구소</a><span>/</span><span class="current">심리</span></div>
+<div class="phone">
+  <div class="phone-header">
+    <div class="avatar">🪴</div>
+    <div class="header-text">
+      <div class="name display">다시 일어서는 힘</div>
+      <div class="status" id="statusText">대화 중...</div>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- INTRO -->
+  <div id="intro" class="screen">
+    <div class="big-emoji">🪴</div>
+    <h1 class="display">힘든 일이 지나간 뒤,<br>나는 얼마나 빨리 일어설까?</h1>
+    <p>일상 속 생각 10가지에 답하면<br>지금 나의 회복탄력성을 가볍게 살펴볼 수 있어요.</p>
+    <button class="cta-btn" onclick="startQuiz()">시작하기 →</button>
+    <div class="meta-note">약 40초 소요 · 진단이 아닌 자기 이해용 테스트예요</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="screen hidden"></div>
+
+  <!-- RESULT -->
+  <div id="result" class="screen hidden">
+    <div class="result-card" id="resultCard">
+      <span class="type-tag">RESULT</span>
+      <div class="score-num" id="rScore"></div>
+      <div class="score-max">/ 30점</div>
+      <div class="type-name display" id="rName"></div>
+      <div class="type-desc" id="rDesc"></div>
+      <div class="gentle-note" id="rNote"></div>
+      <a class="read-more" href="articles/beyond-mbti.html">나를 이해하는 다른 방법들 →</a>
+      <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
+    </div>
+    <div class="action-row">
+      <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
+      <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+const questions = [
+  { them: "힘든 일이 생겨도, 결국은 잘 풀릴 거라고 믿는 편이다.", reverse:false },
+  { them: "예상치 못한 변화가 생기면 비교적 쉽게 적응하는 편이다.", reverse:false },
+  { them: "한 번 좌절하면 다시 일어서기까지 오래 걸린다.", reverse:true },
+  { them: "힘든 상황에서도 내가 할 수 있는 일을 먼저 찾으려 한다.", reverse:false },
+  { them: "문제가 생기면 압도당해서 아무것도 못 할 때가 많다.", reverse:true },
+  { them: "과거의 힘들었던 경험이 지금의 나를 더 단단하게 만들었다고 생각한다.", reverse:false },
+  { them: "스트레스 상황에서 나는 쉽게 무너지는 편이다.", reverse:true },
+  { them: "실패해도 그 경험에서 배울 점을 찾으려 하는 편이다.", reverse:false },
+  { them: "요즘은 작은 일에도 쉽게 지치고, 회복이 더딘 편이다.", reverse:true },
+  { them: "힘든 시기를 겪어도 결국 나는 이겨낼 수 있다고 믿는다.", reverse:false }
+];
+
+const options = [
+  { text: "전혀 그렇지 않다", val:0 },
+  { text: "별로 그렇지 않다", val:1 },
+  { text: "약간 그런 편이다", val:2 },
+  { text: "매우 그렇다", val:3 }
+];
+
+let current = 0;
+let totalScore = 0;
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  const quizEl = document.getElementById('quiz');
+
+  const row = document.createElement('div');
+  row.className = 'bubble-row';
+  row.innerHTML = '<div class="bubble them">' + q.them + '</div>';
+  quizEl.appendChild(row);
+
+  const answers = document.createElement('div');
+  answers.className = 'answers';
+  answers.id = 'answers-' + current;
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.val, q.reverse);
+    answers.appendChild(btn);
+  });
+  quizEl.appendChild(answers);
+
+  quizEl.scrollTop = quizEl.scrollHeight;
+  document.getElementById('progressBar').style.width = ((current)/questions.length*100) + '%';
+}
+
+function selectAnswer(val, reverse){
+  const points = reverse ? (3 - val) : val;
+  totalScore += points;
+  document.getElementById('answers-' + current).remove();
+
+  current++;
+  document.getElementById('progressBar').style.width = (current/questions.length*100) + '%';
+
+  if(current < questions.length){
+    document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+    setTimeout(renderQuestion, 300);
+  } else {
+    document.getElementById('statusText').textContent = "결과 도착!";
+    setTimeout(showResult, 400);
+  }
+}
+
+function showResult(){
+  document.getElementById('rScore').textContent = totalScore;
+
+  let name, desc, note;
+  if(totalScore >= 21){
+    name = "단단하게 회복하는 사람";
+    desc = "힘든 일을 겪어도 결국 다시 일어설 수 있다는 믿음이 꽤 단단한 편이에요. 변화에 유연하게 적응하고, 힘들었던 경험조차 나를 성장시킨 자산으로 여기는 힘을 갖고 있어요.";
+    note = "지금의 회복력도 저절로 생긴 게 아니라 쌓아온 결과예요. 스스로를 잘 다독여온 시간들을 인정해줘도 좋아요.";
+  } else if(totalScore >= 11){
+    name = "회복 중인, 흔들리는 시기";
+    desc = "어떤 날은 금방 털고 일어나다가도, 어떤 날은 유독 무너진 채로 오래 머물게 되는 시기인 것 같아요. 회복력은 원래 계속 오르내리는 거라, 지금 흔들린다고 해서 이상한 게 아니에요.";
+    note = "이 결과는 진단이 아니라 지금 이 순간의 스냅샷일 뿐이에요. 스스로를 다그치기보다, 무엇이 나를 힘들게 하는지 돌아보는 계기로만 삼아주세요.";
+  } else {
+    name = "지금은 유독 버거운 시기";
+    desc = "요즘은 작은 일에도 쉽게 지치고, 다시 일어설 힘이 잘 안 나는 시기일 수 있어요. 이건 의지의 문제가 아니라, 누구나 겪을 수 있는 소진의 신호예요.";
+    note = "이 결과가 마음에 걸리신다면, 혼자 버티려 하지 않으셨으면 해요. 가까운 사람에게 지금 마음을 이야기하거나, 전문가와 대화를 나눠보는 것도 좋은 방법이에요.";
+  }
+
+  document.getElementById('rName').textContent = name;
+  document.getElementById('rDesc').textContent = desc;
+  document.getElementById('rNote').textContent = note;
+
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+}
+
+function restartQuiz(){
+  current = 0;
+  totalScore = 0;
+  document.getElementById('quiz').innerHTML = '';
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('statusText').textContent = '대화 중...';
+}
+
+function copyResult(){
+  const score = document.getElementById('rScore').textContent;
+  const name = document.getElementById('rName').textContent;
+  const text = "나의 회복탄력성은 " + score + "/30, [" + name + "]! 너도 해볼래? → (배포 후 실제 링크로 교체)";
+  const toast = document.getElementById('copyToast');
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(() => {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  }
+}
+</script>
+
+</body>
+</html>

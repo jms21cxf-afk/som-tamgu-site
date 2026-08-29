@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>나의 완벽주의 성향은? — 썸 탐구생활</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F8F2EE; --paper: #FFFFFF; --line: #EBDCD3;
+    --ink: #362B25; --ink-soft: #7A6B62;
+    --rust:#B5563C; --rust-dark:#8F3F2A;
+    --coral:#FF6F59; --bubble-me: #FBE9E2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(181,86,60,0.09) 0%, transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(255,111,89,0.06) 0%, transparent 40%);
+    font-family: 'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 24px 12px;
+  }
+  .display{ font-family:'Gaegu', 'Gowun Dodum', sans-serif; }
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#8A5A1F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
+
+  .phone{
+    width: 100%; max-width: 400px; background: var(--paper); border-radius: 32px;
+    border: 1px solid var(--line); box-shadow: 0 20px 50px -20px rgba(54,43,37,0.25), 0 4px 12px rgba(54,43,37,0.06);
+    overflow: hidden; position: relative; min-height: 640px; display:flex; flex-direction:column;
+  }
+  .phone-header{ padding: 18px 20px 14px; border-bottom: 1px solid var(--line); display:flex; align-items:center; gap: 10px; }
+  .avatar{ width: 38px; height:38px; border-radius:50%; background: linear-gradient(135deg, var(--rust), var(--coral)); display:flex; align-items:center; justify-content:center; font-size: 18px; flex-shrink:0; }
+  .header-text .name{ font-weight:700; font-size:15px; }
+  .header-text .status{ font-size:11.5px; color: var(--ink-soft); }
+  .progress-wrap{ height: 4px; background: var(--line); position: relative; z-index: 2; }
+  .progress-bar{ height:100%; width: 0%; background: var(--rust-dark); transition: width 0.4s ease; }
+
+  .screen{ flex:1; display:flex; flex-direction:column; padding: 22px 18px; overflow-y:auto; position:relative; }
+  .hidden{ display:none !important; }
+
+  #intro{ align-items:center; justify-content:center; text-align:center; gap:16px; flex:1; }
+  #intro .big-emoji{ font-size: 52px; }
+  #intro h1{ font-size: 24px; line-height:1.4; }
+  #intro p{ font-size: 14px; color: var(--ink-soft); line-height:1.6; padding: 0 4px; }
+  .cta-btn{
+    margin-top: 10px; background: var(--rust-dark); color: white; border:none; padding: 14px 32px;
+    border-radius: 999px; font-size: 15px; font-weight: 700; cursor:pointer;
+    box-shadow: 0 8px 16px -6px rgba(143,63,42,0.4);
+  }
+  .cta-btn:active{ transform: scale(0.96); }
+  .meta-note{ font-size: 11.5px; color:#BFAA9E; margin-top:4px; }
+
+  #quiz{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; }
+  .bubble-row{ display:flex; margin-bottom: 4px; }
+  .bubble{ max-width: 86%; padding: 12px 16px; border-radius: 18px; font-size: 14.2px; line-height:1.55; animation: pop 0.25s ease; }
+  @keyframes pop{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:translateY(0);} }
+  .bubble.them{ background: var(--bg); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+  .answers{ display:flex; flex-direction:column; gap:8px; margin-top: 4px; }
+  .answer-btn{
+    align-self: flex-end; max-width: 90%; text-align:left; background: var(--bubble-me);
+    border: 1px solid #F0CFC0; color: var(--ink); padding: 10px 16px; border-radius: 16px;
+    border-bottom-right-radius: 4px; font-size: 13.5px; line-height:1.5; cursor:pointer;
+  }
+  .answer-btn:hover{ background:#FADCCB; }
+  .answer-btn:active{ transform: scale(0.98); }
+
+  #result{ align-items:center; text-align:center; gap:10px; flex:1; justify-content:center; }
+  .result-card{
+    width:100%; background: linear-gradient(180deg, #FFFDFB, #F8F2EE); border: 1px solid var(--line);
+    border-radius: 22px; padding: 26px 20px 22px; position:relative; box-shadow: 0 10px 24px -14px rgba(54,43,37,0.2);
+  }
+  .type-tag{ display:inline-block; background: var(--ink); color: white; font-size: 11px; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+  .type-name{ font-size: 21px; font-weight:700; line-height:1.3; margin-bottom: 14px; }
+  .type-desc{ font-size: 13.5px; line-height:1.7; color: var(--ink); text-align:left; }
+  .tip-box{
+    margin-top:16px; background: var(--paper); border: 1px dashed var(--line); border-radius: 14px;
+    padding: 12px 14px; text-align:left; font-size: 12.5px; color: var(--ink-soft); line-height:1.6;
+  }
+  .tip-box b{ color: var(--rust-dark); }
+  .read-more{ margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline; }
+  .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
+  .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-weight:700; cursor:pointer; border: none; }
+  .action-btn.share{ background: var(--ink); color:white; }
+  .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+  .copy-toast{
+    position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%);
+    background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px;
+    opacity:0; transition: opacity 0.25s ease; white-space:nowrap;
+  }
+  .copy-toast.show{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div style="width:100%; display:flex; justify-content:center;">
+<div style="width:100%; max-width:400px;">
+<div class="crumb-bar"><a href="../index.html">탐구소</a><span>/</span><span class="current">심리</span></div>
+<div class="phone">
+  <div class="phone-header">
+    <div class="avatar">🎯</div>
+    <div class="header-text">
+      <div class="name display">완벽주의 관찰소</div>
+      <div class="status" id="statusText">대화 중...</div>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- INTRO -->
+  <div id="intro" class="screen">
+    <div class="big-emoji">🎯</div>
+    <h1 class="display">나는 어떤 방식으로<br>스스로를 몰아붙일까?</h1>
+    <p>일상 속 상황 8가지에 답하면<br>나의 완벽주의 유형을 알려줄게요.</p>
+    <button class="cta-btn" onclick="startQuiz()">시작하기 →</button>
+    <div class="meta-note">약 40초 소요 · 진단이 아닌 자기 이해용 테스트예요</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="screen hidden"></div>
+
+  <!-- RESULT -->
+  <div id="result" class="screen hidden">
+    <div class="result-card" id="resultCard">
+      <span class="type-tag">RESULT</span>
+      <div class="type-name display" id="rName"></div>
+      <div class="type-desc" id="rDesc"></div>
+      <div class="tip-box" id="rTip"></div>
+      <a class="read-more" href="articles/beyond-mbti.html">나를 이해하는 다른 방법들 →</a>
+      <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
+    </div>
+    <div class="action-row">
+      <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
+      <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+const questions = [
+  { them: "실수를 했을 때 나는", options:[
+      {text:"며칠이고 스스로를 자책한다", val:"self"},
+      {text:"내 탓이 아닌지부터 꼼꼼히 따져본다", val:"other"},
+      {text:"남들이 날 어떻게 볼지 제일 먼저 걱정된다", val:"social"},
+      {text:"\"그럴 수 있지\" 하고 다음으로 넘어간다", val:"healthy"}
+    ]},
+  { them: "목표를 세울 때 나는", options:[
+      {text:"무조건 100% 완벽한 결과를 목표로 잡는다", val:"self"},
+      {text:"팀원 모두가 최고 수준이어야 한다고 생각한다", val:"other"},
+      {text:"다른 사람들 기대에 맞는 목표를 세운다", val:"social"},
+      {text:"현실적으로 가능한 선에서 목표를 잡는다", val:"healthy"}
+    ]},
+  { them: "90점짜리 결과물을 받으면", options:[
+      {text:"부족한 10점이 계속 마음에 걸린다", val:"self"},
+      {text:"이 정도는 당연한 거 아니냐고 생각한다", val:"other"},
+      {text:"남들이 어떻게 평가할지부터 신경 쓴다", val:"social"},
+      {text:"이 정도면 충분히 잘했다고 여긴다", val:"healthy"}
+    ]},
+  { them: "팀 프로젝트에서 동료의 결과물이 마음에 안 들면", options:[
+      {text:"내가 처음부터 다시 만든다", val:"self"},
+      {text:"왜 이 정도밖에 못하나 싶어 답답해진다", val:"other"},
+      {text:"괜히 내 탓처럼 느껴져 불안해진다", val:"social"},
+      {text:"부족한 부분만 짚어서 피드백한다", val:"healthy"}
+    ]},
+  { them: "쉬는 날에도 나는", options:[
+      {text:"다 끝낸 일을 계속 다시 들여다본다", val:"self"},
+      {text:"남들이 얼마나 열심히 하는지 신경 쓰인다", val:"other"},
+      {text:"내가 게을러 보이지 않을지 걱정된다", val:"social"},
+      {text:"미련 없이 푹 쉰다", val:"healthy"}
+    ]},
+  { them: "새로운 걸 시도할 때 나는", options:[
+      {text:"완벽하게 할 자신이 없으면 아예 시작을 미룬다", val:"self"},
+      {text:"남들보다 잘해야 한다는 부담이 크다", val:"other"},
+      {text:"사람들이 나를 어떻게 평가할지 먼저 상상한다", val:"social"},
+      {text:"서툴러도 일단 해보고 배운다", val:"healthy"}
+    ]},
+  { them: "칭찬을 받으면 나는", options:[
+      {text:"아직 부족한 부분이 떠올라 온전히 못 받아들인다", val:"self"},
+      {text:"당연한 결과라고 생각한다", val:"other"},
+      {text:"진심인지 아닌지부터 의심하게 된다", val:"social"},
+      {text:"고맙게 받아들이고 넘어간다", val:"healthy"}
+    ]},
+  { them: "마지막 질문. 나에게 완벽주의란", options:[
+      {text:"나 자신에게 지우는 무거운 기준", val:"self"},
+      {text:"주변 사람들에게도 적용하는 기준", val:"other"},
+      {text:"남들 눈치를 보게 만드는 압박", val:"social"},
+      {text:"더 잘하고 싶게 만드는 자연스러운 동기", val:"healthy"}
+    ]}
+];
+
+const results = {
+  self:{ name:"나에게 유독 엄격한 완벽주의자", desc:"기준을 세우는 대상이 언제나 '나 자신'이에요. 남들에게는 관대하면서도, 스스로에게는 100점이 아니면 만족을 못 하는 편이라 늘 자기 자신과 씨름하고 있어요. 그만큼 결과물의 퀄리티는 확실히 높지만, 정작 그 성취를 온전히 누리지 못할 때가 많아요.", tip:"부족한 10%보다, 이미 이룬 90%를 먼저 봐주는 연습이 필요해요." },
+  other:{ name:"기준이 높은 리더형 완벽주의자", desc:"스스로에게도 엄격하지만, 그 잣대가 주변 사람에게도 똑같이 적용되는 타입이에요. 팀을 이끌거나 높은 퀄리티를 만들어내는 데는 강점이지만, 주변 사람들은 그 기준을 부담스러워할 수 있어요.", tip:"내 기준이 곧 유일한 정답은 아니라는 걸 가끔 떠올려보세요." },
+  social:{ name:"눈치 보는 완벽주의자", desc:"완벽함의 기준이 나 자신이 아니라 '남들이 나를 어떻게 볼까'에 맞춰져 있는 타입이에요. 그래서 잘해도 마음이 편치 않고, 늘 평가받는 기분이 들어요. 사실 그 기준은 누가 정해준 게 아니라 스스로 상상한 잣대일 때가 많아요.", tip:"모든 사람을 만족시킬 수는 없다는 걸 받아들이는 연습이 큰 도움이 돼요." },
+  healthy:{ name:"균형 잡힌 노력가형", desc:"높은 기준을 갖고 있으면서도, 그 기준에 짓눌리지 않는 균형 감각을 가진 타입이에요. 잘하고 싶은 마음과, 이 정도면 됐다고 넘길 줄 아는 유연함을 함께 갖고 있어요. 심리학에서는 이런 태도를 '건강한 노력(healthy striving)'이라고 불러요.", tip:"지금의 이 균형 감각을 계속 지켜가시면 돼요. 잘하고 계세요." }
+};
+
+let current = 0;
+const scores = { self:0, other:0, social:0, healthy:0 };
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  const quizEl = document.getElementById('quiz');
+
+  const row = document.createElement('div');
+  row.className = 'bubble-row';
+  row.innerHTML = '<div class="bubble them">' + q.them + '</div>';
+  quizEl.appendChild(row);
+
+  const answers = document.createElement('div');
+  answers.className = 'answers';
+  answers.id = 'answers-' + current;
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.val);
+    answers.appendChild(btn);
+  });
+  quizEl.appendChild(answers);
+
+  quizEl.scrollTop = quizEl.scrollHeight;
+  document.getElementById('progressBar').style.width = ((current)/questions.length*100) + '%';
+}
+
+function selectAnswer(val){
+  scores[val]++;
+  document.getElementById('answers-' + current).remove();
+
+  current++;
+  document.getElementById('progressBar').style.width = (current/questions.length*100) + '%';
+
+  if(current < questions.length){
+    document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+    setTimeout(renderQuestion, 300);
+  } else {
+    document.getElementById('statusText').textContent = "결과 도착!";
+    setTimeout(showResult, 400);
+  }
+}
+
+function showResult(){
+  const top = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+  const r = results[top];
+  document.getElementById('rName').textContent = r.name;
+  document.getElementById('rDesc').textContent = r.desc;
+  document.getElementById('rTip').innerHTML = '🎯 <b>기억해두면 좋은 것</b><br>' + r.tip;
+
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+}
+
+function restartQuiz(){
+  current = 0;
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  document.getElementById('quiz').innerHTML = '';
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('statusText').textContent = '대화 중...';
+}
+
+function copyResult(){
+  const name = document.getElementById('rName').textContent;
+  const text = "나의 완벽주의 유형은 [" + name + "]! 너도 해볼래? → (배포 후 실제 링크로 교체)";
+  const toast = document.getElementById('copyToast');
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(() => {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  }
+}
+</script>
+
+</body>
+</html>
