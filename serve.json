@@ -1,0 +1,14 @@
+{
+  "cleanUrls": false,
+  "directoryListing": false,
+  "rewrites": [
+    { "source": "/psych", "destination": "/psych/index.html" },
+    { "source": "/psych/", "destination": "/psych/index.html" },
+    { "source": "/work", "destination": "/work/index.html" },
+    { "source": "/work/", "destination": "/work/index.html" },
+    { "source": "/psych/articles", "destination": "/psych/articles/index.html" },
+    { "source": "/psych/articles/", "destination": "/psych/articles/index.html" },
+    { "source": "/psych/insights", "destination": "/psych/insights/index.html" },
+    { "source": "/psych/insights/", "destination": "/psych/insights/index.html" }
+  ]
+}

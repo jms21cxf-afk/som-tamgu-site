@@ -1,0 +1,7 @@
+{
+  "cleanUrls": false,
+  "redirects": [
+    { "source": "/insights", "destination": "/psych/insights/" },
+    { "source": "/insights/:path*", "destination": "/psych/insights/:path*" }
+  ]
+}

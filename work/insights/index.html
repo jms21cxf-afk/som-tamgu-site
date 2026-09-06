@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>탐구 — 직장 · 탐구소</title>
+<meta name="description" content="테스트 하나로는 다 담기지 않는, 일에 남은 마음을 조금 더 오래 들여다본 글.">
+<meta name="keywords" content="직장 탐구, 업무 피로, 회복, 번아웃, 탐구소">
+<meta name="author" content="탐구소">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="탐구소">
+<meta property="og:title" content="탐구 — 직장 · 탐구소">
+<meta property="og:description" content="테스트 하나로는 다 담기지 않는, 일에 남은 마음을 조금 더 오래 들여다본 글.">
+<meta property="og:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/insights/">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="탐구 — 직장 · 탐구소">
+<meta name="twitter:description" content="테스트 하나로는 다 담기지 않는, 일에 남은 마음을 조금 더 오래 들여다본 글.">
+<meta name="twitter:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/insights/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Gowun+Dodum&family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F1EC; --band:#E8E6E0; --card:#F8F7F3;
+    --title:#263746; --body:#4D5357; --meta:#85898A;
+    --point:#667C88; --line:#DDD9D2;
+    --deep:#263746; --deep-text:#F3F1EC; --deep-soft:#A8B4BC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum', sans-serif; color: var(--body); line-height:1.7; }
+  a{ color: inherit; text-decoration:none; }
+  .wrap{ max-width: 680px; margin:0 auto; padding: 0 20px; }
+
+  header.site{ padding: 16px 0; background: var(--deep); }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:8px; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--point); }
+  .brand .name{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-weight:700; font-size:16px; color: var(--deep-text); }
+  nav.site{ display:flex; gap:18px; }
+  nav.site a{ font-size:13px; color: var(--deep-soft); }
+  nav.site a.current{ color: var(--deep-text); font-weight:700; }
+
+  /* 휴대폰에서는 로고 아래 메뉴를 한 줄로 */
+  @media (max-width: 720px){
+    header.site .wrap{ flex-direction:column; align-items:flex-start; gap:10px; }
+    nav.site{ width:100%; justify-content:center; }
+    nav.site a{ font-size:12px; white-space:nowrap; }
+  }
+
+  .crumb-bar{ background: var(--bg); padding: 12px 0; font-family:'Do Hyeon', sans-serif; font-size: 13px; }
+  .crumb-bar .wrap{ display:flex; align-items:center; gap:8px; }
+  .crumb-bar a.home{ color: var(--point); }
+  .crumb-bar span.sep{ color: var(--meta); }
+  .crumb-bar .current{ color: var(--title); }
+
+  .intro{ padding: 30px 0 34px; }
+  .intro .tag{
+    display:inline-block; background: var(--point); color: var(--card);
+    font-size:11px; letter-spacing:0.05em; padding:4px 12px; border-radius:999px; margin-bottom:16px;
+    font-family:'Do Hyeon', sans-serif;
+  }
+  .intro h1{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-size:30px; color: var(--title); line-height:1.4; margin-bottom:12px; }
+  .intro p{ font-size:14.5px; color: var(--meta); max-width:440px; }
+
+  section.list{ background: var(--band); padding: 34px 0 44px; }
+  .list-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--line);
+  }
+  .list-head h2{ font-size:14px; color: var(--title); letter-spacing:0.02em; }
+  .list-head .count{ font-size:11px; color: var(--meta); font-family:'Do Hyeon',sans-serif; }
+
+  .entry{
+    display:block; padding: 22px 22px; margin-bottom: 14px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .entry:hover{ transform: translateY(-2px); box-shadow: 0 12px 24px -16px rgba(38,55,70,0.25); }
+  .entry .meta-row{ display:flex; gap:10px; align-items:center; margin-bottom:8px; font-size:11px; color: var(--meta); font-family:'Do Hyeon',sans-serif; }
+  .entry .meta-row .num{ color: var(--point); }
+  .entry h3{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-size:19px; color: var(--title); margin-bottom:6px; }
+  .entry p{ font-size:13.2px; color: var(--body); margin-bottom:8px; }
+  .entry .read{ font-size:12px; color: var(--point); font-weight:700; }
+
+  footer.site{ background: var(--deep); padding: 30px 0; }
+  footer.site .wrap{ text-align:center; }
+  footer.site .name{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-weight:700; font-size:15px; color: var(--deep-text); margin-bottom:6px; }
+  footer.site p{ font-size:12px; color: var(--deep-soft); }
+  footer.site a{ color: var(--deep-text); text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><span class="name">탐구소</span></div>
+    <nav class="site">
+      <a href="../index.html">홈</a>
+      <a href="../articles/index.html">읽을거리</a>
+      <a href="index.html" class="current">탐구</a>
+      <a href="../../about.html">소개</a>
+    </nav>
+  </div>
+</header>
+
+<div class="crumb-bar">
+  <div class="wrap">
+    <a class="home" href="../../index.html">탐구소</a><span class="sep">/</span>
+    <span>직장</span><span class="sep">/</span>
+    <span class="current">탐구</span>
+  </div>
+</div>
+
+<div class="intro wrap">
+  <span class="tag">DEEP DIVE</span>
+  <h1>조금 더 깊이,<br>천천히 들여다보는 글</h1>
+  <p>테스트 하나로는 다 담기지 않는 이야기들. 일이 끝난 뒤에도 왜 이렇게 남는지, 조금 더 오래 들여다본 기록입니다.</p>
+</div>
+
+<section class="list">
+  <div class="wrap">
+    <div class="list-head">
+      <h2>전체 글</h2>
+      <span class="count">1 ENTRY</span>
+    </div>
+
+    <a class="entry" href="why-work-makes-me-tired.html">
+      <div class="meta-row"><span class="num">01</span><span>·</span><span>읽는 시간 약 8분</span></div>
+      <h3>회사에서 유독 피곤한 이유</h3>
+      <p>하루 종일 앉아 있었는데, 왜 집에 오면 아무것도 하기 싫을까.</p>
+      <span class="read">읽어보기 →</span>
+    </a>
+
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="name">탐구소</div>
+    <p>가볍게 시작해서, 진지하게 알아가는 곳 · <a href="../../about.html">소개</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

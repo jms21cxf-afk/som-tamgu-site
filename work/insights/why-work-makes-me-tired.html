@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회사에서 유독 피곤한 이유 — 탐구소</title>
+<meta name="description" content="하루 종일 앉아 있었는데, 왜 집에 오면 아무것도 하기 싫을까.">
+<meta name="keywords" content="업무 피로, 회복, 심리적 분리, 직장 탐구, 번아웃">
+<meta name="author" content="탐구소">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="탐구소">
+<meta property="og:title" content="회사에서 유독 피곤한 이유 — 탐구소">
+<meta property="og:description" content="하루 종일 앉아 있었는데, 왜 집에 오면 아무것도 하기 싫을까.">
+<meta property="og:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
+<meta property="og:url" content="https://som-tamgu-site.vercel.app/work/insights/why-work-makes-me-tired.html">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="회사에서 유독 피곤한 이유 — 탐구소">
+<meta name="twitter:description" content="하루 종일 앉아 있었는데, 왜 집에 오면 아무것도 하기 싫을까.">
+<meta name="twitter:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
+<link rel="canonical" href="https://som-tamgu-site.vercel.app/work/insights/why-work-makes-me-tired.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Gowun+Dodum&family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F1EC; --card:#F8F7F3;
+    --title:#263746; --body:#4D5357; --meta:#85898A;
+    --point:#667C88; --line:#DDD9D2;
+    --deep:#263746; --deep-text:#F3F1EC; --deep-soft:#A8B4BC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum', sans-serif; color: var(--body); line-height:1.85; }
+  a{ color: var(--point); text-decoration:none; }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 20px; }
+
+  header.site{ padding: 16px 0; background: var(--deep); }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:8px; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--point); }
+  .brand .name{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-weight:700; font-size:16px; color: var(--deep-text); }
+  nav.site{ display:flex; gap:18px; }
+  nav.site a{ font-size:13px; color: var(--deep-soft); }
+  nav.site a.current{ color: var(--deep-text); font-weight:700; }
+  /* 휴대폰에서는 로고 아래 메뉴를 한 줄로 */
+  @media (max-width: 720px){
+    header.site .wrap{ flex-direction:column; align-items:flex-start; gap:10px; }
+    nav.site{ width:100%; justify-content:center; }
+    nav.site a{ font-size:12px; white-space:nowrap; }
+  }
+
+  .crumb-bar{ background: var(--bg); padding: 12px 0; font-family:'Do Hyeon', sans-serif; font-size: 13px; }
+  .crumb-bar .wrap{ display:flex; align-items:center; gap:8px; }
+  .crumb-bar a.home{ color: var(--point); }
+  .crumb-bar span.sep{ color: var(--meta); }
+  .crumb-bar .current{ color: var(--title); }
+
+  main{ padding: 36px 0 70px; }
+  .tag{
+    display:inline-block; background: var(--point); color: var(--card);
+    font-size:11px; letter-spacing:0.05em; padding:4px 12px; border-radius:999px; margin-bottom:16px;
+    font-family:'Do Hyeon', sans-serif;
+  }
+  h1{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-size:28px; color: var(--title); line-height:1.4; margin-bottom:10px; }
+  .meta{ font-size:12px; color: var(--meta); margin-bottom:34px; }
+
+  h2{ font-size:18px; color: var(--title); margin: 34px 0 14px; font-weight:700; }
+  p{ font-size:14.8px; color: var(--body); margin-bottom: 12px; }
+  p strong{ color: var(--title); }
+  .quote-line{ color: var(--title); font-weight:700; }
+
+  hr{ border:none; border-top:1px solid var(--line); margin: 32px 0; }
+
+  .closing{
+    margin-top: 40px; padding: 20px; background: var(--card); border: 1px solid var(--line); border-radius:16px;
+  }
+  .closing h3{ font-size:15px; color: var(--title); margin-bottom:8px; font-family:'Gaegu','Gowun Dodum',sans-serif; }
+  .closing p{ font-size:13.5px; margin-bottom:8px; }
+  .closing p:last-child{ margin-bottom:0; }
+
+  .refs{
+    margin-top: 24px; padding: 16px 18px; background: var(--card); border: 1px dashed var(--line); border-radius:12px;
+  }
+  .refs .refs-title{ font-size:12px; color: var(--meta); margin-bottom:12px; font-family:'Do Hyeon',sans-serif; letter-spacing:0.03em; }
+  .refs ul{ list-style:none; }
+  /* 논문 제목 아래 한글로 요약을 붙인다 */
+  .refs li{ margin-bottom:14px; padding-left:14px; position:relative; }
+  .refs li:last-child{ margin-bottom:0; }
+  .refs li::before{ content:'—'; position:absolute; left:0; color: var(--point); }
+  .refs .paper{ font-size:12.5px; color: var(--title); font-weight:700; margin-bottom:4px; }
+  .refs .note{ font-size:12.5px; color: var(--body); line-height:1.65; }
+
+  .cta-box{
+    margin-top: 30px; background: var(--card); border:1px solid var(--line); border-radius:16px;
+    padding: 20px; text-align:center;
+  }
+  .cta-box a{
+    display:inline-block; margin-top:10px; background: #EEF1F3; color: var(--point);
+    border: 1.5px solid var(--point);
+    padding:10px 24px; border-radius:999px; font-weight:700; font-size:13.5px;
+  }
+
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--meta); }
+
+  footer.site{ margin-top: 50px; background: var(--deep); padding: 30px 0; }
+  footer.site .wrap{ text-align:center; }
+  footer.site .name{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-weight:700; font-size:15px; color: var(--deep-text); margin-bottom:6px; }
+  footer.site p{ font-size:12px; color: var(--deep-soft); margin-bottom:0; }
+  footer.site a{ color: var(--deep-text); text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><span class="name">탐구소</span></div>
+    <nav class="site">
+      <a href="../index.html">홈</a>
+      <a href="../articles/index.html">읽을거리</a>
+      <a href="index.html" class="current">탐구</a>
+      <a href="../../about.html">소개</a>
+    </nav>
+  </div>
+</header>
+
+<div class="crumb-bar">
+  <div class="wrap">
+    <a class="home" href="../../index.html">탐구소</a><span class="sep">/</span>
+    <span>직장</span><span class="sep">/</span>
+    <span class="current">탐구</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <span class="tag">DEEP DIVE</span>
+  <h1>회사에서 유독 피곤한 이유</h1>
+  <div class="meta">읽는 시간 약 8분</div>
+
+  <p><strong>하루 종일 앉아 있었는데, 왜 집에 오면 아무것도 하기 싫을까.</strong></p>
+
+  <p>이상하게 회사에서는 시간이 잘 가지 않는다.</p>
+  <p>아침에는 괜찮았는데 점심을 지나면서 조금씩 지친다.</p>
+  <p>오후가 되면 집중하기가 어려워지고,<br>퇴근할 때쯤이면 아무것도 하고 싶지 않다.</p>
+  <p>집에 돌아오면 씻는 것도 귀찮고,<br>누워서 휴대폰을 보는 것 말고는 하고 싶은 게 없다.</p>
+  <p>그런데 문득 이상한 생각이 든다.</p>
+  <p class="quote-line">“오늘 특별히 힘든 일을 한 것도 아닌데, 왜 이렇게 피곤하지?”</p>
+  <p>하루 종일 몸을 움직인 것도 아니다.</p>
+  <p>대부분 앉아서 일했고,<br>퇴근 후에는 별다른 일정도 없었다.</p>
+  <p>그렇다면 회사에서 느끼는 피로는<br>단순히 몸을 많이 써서 생기는 것만은 아닐지도 모른다.</p>
+
+  <h2>몸은 가만히 있어도 계속 일하고 있다</h2>
+  <p>회사에서는 몸보다 머리를 더 많이 쓰는 날이 있다.</p>
+  <p>메일을 확인하고,<br>회의 내용을 듣고,<br>업무 순서를 정하고,<br>상대방의 말을 이해하고,<br>실수하지 않으려고 다시 확인한다.</p>
+  <p>별것 아닌 것처럼 보이는 일도<br>하나씩 이어지면 계속 신경을 써야 한다.</p>
+  <p>특히 여러 일을 동시에 처리하거나<br>계속 우선순위를 바꿔야 하는 상황에서는<br>업무가 끝난 뒤에도 회복이 더 필요할 수 있다.</p>
+  <p>실제로 연구에서는 업무에서 요구되는 정신적·감정적·신체적 부담이나 근무시간 등이<br>업무 후 회복이 더 필요하다고 느끼는 것과 관련되어 있는 것으로 나타났다.</p>
+  <p>그러니까</p>
+  <p><strong>앉아서 일했다고 해서 아무것도 하지 않은 것은 아니다.</strong></p>
+  <p>몸이 움직이지 않았을 뿐,<br>하루 종일 계속 사용한 것이 있었던 것이다.</p>
+
+  <h2>일이 많아서만 피곤한 것은 아니다</h2>
+  <p>업무가 많으면 당연히 힘들다.</p>
+  <p>그런데 이상하게도<br>일이 많지 않은 날에도 피곤할 때가 있다.</p>
+  <p>왜 그럴까.</p>
+  <p>해야 할 일이 적더라도<br>계속 신경 써야 하는 상황이 있을 수 있기 때문이다.</p>
+  <p>상사의 반응을 살피거나,<br>실수하지 않을까 걱정하거나,<br>언제 연락이 올지 신경 쓰거나,<br>내가 지금 제대로 하고 있는지 계속 확인하는 것처럼.</p>
+  <p>업무에 대한 요구가 높은 것뿐 아니라<br>일을 얼마나 통제할 수 있는지,<br>주변의 지원을 받을 수 있는지 같은 업무 환경도<br>직장인의 스트레스와 관련될 수 있다.</p>
+  <p>그래서 회사에서의 피로를<br>단순히</p>
+  <p class="quote-line">‘일이 많아서’</p>
+  <p>라고만 설명하기에는 부족할 때가 있다.</p>
+  <p><strong>일의 양뿐 아니라, 일을 하면서 얼마나 긴장하고 있었는지도 영향을 줄 수 있다.</strong></p>
+
+  <h2>쉬는 시간에도 회사 생각을 하고 있다면</h2>
+  <p>퇴근했다고 해서<br>바로 회사에서 벗어나는 것은 아니다.</p>
+  <p>집에 와서도</p>
+  <p class="quote-line">‘내일 그거 해야 하는데.’<br>‘아까 그 말을 괜히 했나.’<br>‘메일 답장을 안 했네.’</p>
+  <p>이런 생각이 계속 이어질 수 있다.</p>
+  <p>몸은 집에 있는데<br>머릿속은 아직 회사에 있는 것이다.</p>
+  <p>연구에서는 업무가 끝난 뒤<br>일에 대한 생각에서 심리적으로 벗어나는 것,<br>즉 <strong>심리적 분리(psychological detachment)</strong>가<br>회복과 관련된 중요한 경험으로 다뤄져 왔다.</p>
+  <p>반대로 업무에 대한 생각이 계속 이어지면<br>퇴근 후에도 제대로 쉬지 못하는 느낌이 생길 수 있다.</p>
+  <p>그래서 어떤 날은<br>퇴근 시간이 빨랐는데도 피곤하다.</p>
+  <p><strong>쉬는 시간이 있었지만, 완전히 쉬지는 못했기 때문이다.</strong></p>
+
+  <h2>‘아무것도 하기 싫은 저녁’도 이유가 있을 수 있다</h2>
+  <p>회사에서 하루를 보내고 집에 돌아오면<br>갑자기 모든 것이 귀찮아질 때가 있다.</p>
+  <p>운동도 해야 하고,<br>방도 치워야 하고,<br>밀린 일도 있는데<br>그냥 누워 있고 싶다.</p>
+  <p>이럴 때</p>
+  <p class="quote-line">‘나는 왜 이렇게 의지가 없지?’</p>
+  <p>라고 생각하기 쉽다.</p>
+  <p>하지만 하루 동안 사용한 에너지를 회복하는 데에는<br>시간이 필요하다.</p>
+  <p>업무로 인한 피로가 충분히 회복되지 않으면<br>다음 날까지 피로가 이어질 수 있다는 연구도 있다.</p>
+  <p>그래서 퇴근 후 아무것도 하기 싫은 날에는<br>그 시간을 무조건 게으른 시간이라고 볼 필요는 없다.</p>
+  <p>어쩌면 정말로<br><strong>회복이 필요한 시간</strong>일 수도 있다.</p>
+
+  <h2>주말이면 괜찮아질 것 같았는데</h2>
+  <p>그래서 주말을 기다리게 된다.</p>
+  <p class="quote-line">‘주말에는 푹 쉬어야지.’</p>
+  <p>그런데 막상 주말이 되어도<br>생각만큼 회복되지 않을 때가 있다.</p>
+  <p>늦게까지 자고,<br>하루 종일 누워 있고,<br>휴대폰을 보면서 시간을 보내도<br>월요일이 가까워지면 다시 피곤해진다.</p>
+  <p>쉬는 시간의 양만 중요한 것은 아닐 수 있다.</p>
+  <p>연구에서는 업무에서 벗어나 휴식을 취하는 것뿐 아니라<br>일에서 심리적으로 거리를 두거나,<br>편안하게 긴장을 풀거나,<br>자신이 원하는 활동을 할 수 있다고 느끼는 것 같은<br><strong>회복 경험</strong>도 중요하게 다뤄지고 있다.</p>
+  <p>그러니까</p>
+  <p class="quote-line">‘얼마나 오래 쉬었는가’</p>
+  <p>만큼이나</p>
+  <p><strong>‘쉬는 동안 정말 회사에서 벗어나 있었는가’</strong></p>
+  <p>도 생각해볼 필요가 있다.</p>
+
+  <h2>회사에서 유독 피곤하다면</h2>
+  <p>그렇다면 피곤할 때마다<br>무조건 더 쉬어야 하는 걸까.</p>
+  <p>꼭 그렇지는 않다.</p>
+  <p>먼저 무엇 때문에 피곤한지를<br>조금 다르게 살펴볼 필요가 있다.</p>
+  <p>일의 양이 너무 많은 건지,</p>
+  <p>계속 긴장하고 있는 건지,</p>
+  <p>사람들과의 관계 때문에 신경을 많이 쓰는 건지,</p>
+  <p>퇴근 후에도 회사 생각을 계속하고 있는 건지.</p>
+  <p>원인이 다르면<br>필요한 회복 방법도 달라질 수 있다.</p>
+  <p>일이 너무 많다면<br>해야 할 일을 줄이거나 우선순위를 다시 정해야 할 수도 있고,</p>
+  <p>계속 긴장하고 있다면<br>잠깐이라도 업무에서 벗어나는 시간이 필요할 수 있다.</p>
+  <p>퇴근 후에도 회사 생각이 계속된다면<br>일과 생활 사이에 경계를 만드는 것이 도움이 될 수도 있다.</p>
+  <p>중요한 것은<br>피곤하다는 사실만 보고</p>
+  <p class="quote-line">‘내가 체력이 약한가?’</p>
+  <p>라고 결론 내리지 않는 것이다.</p>
+
+  <hr>
+
+  <h2>이건 정말 그럴까?</h2>
+  <p class="quote-line">‘회사에서 피곤한 건 그냥 일을 많이 해서 그런 걸까?’</p>
+  <p>정말 그럴까.</p>
+  <p>궁금해서 관련 연구를 찾아보았다.</p>
+  <p>업무 후 피로를 다룬 연구들을 살펴보면<br>이야기는 생각보다 단순하지 않았다.</p>
+  <p>업무량이나 업무 요구뿐 아니라<br>근무시간,<br>업무를 얼마나 통제할 수 있는지,<br>업무에서 얼마나 회복할 수 있는지 등<br>여러 요소가 함께 관련되어 있었다.</p>
+  <p>특히 최근 연구에서도<br>여러 업무 요구가 피로와 수면 문제에 영향을 줄 수 있고,<br>회복 경험이 그 관계에서 중요한 역할을 할 수 있는지를 계속 살펴보고 있다.</p>
+  <p>그래서 이번 글에서는</p>
+  <p><strong>‘회사에서 피곤한 건 일을 많이 해서다’라고 단순하게 말하지 않았다.</strong></p>
+  <p>궁금해서 찾아봤고,</p>
+  <p>찾아보니 회사에서 느끼는 피로에는<br>일의 양뿐 아니라<br>긴장과 회복의 문제도 함께 들어 있을 수 있었다.</p>
+
+  <div class="refs">
+    <div class="refs-title">관련 연구</div>
+    <ul>
+      <li>
+        <div class="paper">Need for recovery from work related fatigue and its role in the development and prediction of subjective health complaints</div>
+        <div class="note">일과 관련된 피로를 충분히 회복하지 못할수록 이후의 피로감이나 수면 문제, 건강 관련 불편과 연결될 수 있다는 점을 보여준 연구다.</div>
+      </li>
+      <li>
+        <div class="paper">Job characteristics and off-job activities as predictors of need for recovery, well-being, and fatigue</div>
+        <div class="note">업무량이 많거나 업무를 스스로 조절하기 어려울수록 퇴근 후 회복이 더 필요했고, 이런 회복의 부족이 피로와 낮은 웰빙과 관련되어 있음을 살펴본 연구다.</div>
+      </li>
+      <li>
+        <div class="paper">Advances in recovery research: What have we learned? What should be done next?</div>
+        <div class="note">기존의 회복 연구들을 종합해, 퇴근 후 업무에서 심리적으로 벗어나는 것과 휴식·운동 같은 회복 활동이 소진과 피로를 줄이는 데 어떤 의미가 있는지 정리한 리뷰 논문이다.</div>
+      </li>
+      <li>
+        <div class="paper">The longitudinal effect of multiple job demands on fatigue and sleep problems: the moderating role of recovery experiences</div>
+        <div class="note">2026년에 발표된 종단 연구로, 여러 업무 요구가 피로와 수면 문제에 미치는 관계에서 심리적 분리와 이완 같은 회복 경험이 어떤 역할을 하는지 살펴봤다.</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="closing">
+    <h3>한 가지 기억할 것</h3>
+    <p><strong>회사에서 유독 피곤하다고 해서 내가 유난히 체력이 약한 것은 아닐 수 있다.</strong></p>
+    <p>하루 동안 처리해야 할 일이 많았을 수도 있고,<br>계속 긴장하고 있었을 수도 있고,<br>퇴근한 뒤에도 머릿속으로 일을 계속하고 있었을 수도 있다.</p>
+    <p>그래서 피곤한 날에는</p>
+    <p class="quote-line">‘왜 이렇게 아무것도 하기 싫지?’</p>
+    <p>라고 자신을 탓하기 전에</p>
+    <p><strong>‘오늘 나는 무엇 때문에 가장 많이 지쳤을까?’</strong></p>
+    <p>라고 한번 물어봐도 좋을 것 같다.</p>
+  </div>
+
+  <div class="cta-box">
+    <div style="font-family:'Gaegu','Gowun Dodum',sans-serif; font-size:16px; color:var(--title);">지금 일은 얼마나 남아 있을까?</div>
+    <a href="../burnout-test.html">번아웃 체크 하러가기</a>
+  </div>
+
+  <a class="back" href="index.html">← 탐구 목록으로</a>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="name">탐구소</div>
+    <p>가볍게 시작해서, 진지하게 알아가는 곳 · <a href="../../about.html">소개</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
