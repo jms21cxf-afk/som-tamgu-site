@@ -12,14 +12,14 @@
 <meta property="og:site_name" content="썸 탐구생활">
 <meta property="og:title" content="생각이 너무 많을 때 머릿속에서 일어나는 일 — 썸 탐구생활">
 <meta property="og:description" content="생각이 많다는 것은 반드시 문제가 많다는 뜻이 아니다. 그 생각이 어디로 향하고 있는지가 중요하다.">
-<meta property="og:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
-<meta property="og:url" content="https://som-tamgu-site.vercel.app/psych/insights/why-do-i-think-too-much.html">
+<meta property="og:image" content="https://tamguso.com/og-preview-2.jpg">
+<meta property="og:url" content="https://tamguso.com/psych/insights/why-do-i-think-too-much.html">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="생각이 너무 많을 때 머릿속에서 일어나는 일 — 썸 탐구생활">
 <meta name="twitter:description" content="생각이 많다는 것은 반드시 문제가 많다는 뜻이 아니다. 그 생각이 어디로 향하고 있는지가 중요하다.">
-<meta name="twitter:image" content="https://som-tamgu-site.vercel.app/og-preview-2.jpg">
-<link rel="canonical" href="https://som-tamgu-site.vercel.app/psych/insights/why-do-i-think-too-much.html">
+<meta name="twitter:image" content="https://tamguso.com/og-preview-2.jpg">
+<link rel="canonical" href="https://tamguso.com/psych/insights/why-do-i-think-too-much.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Gowun+Dodum&family=Do+Hyeon&display=swap" rel="stylesheet">
 <style>
@@ -82,10 +82,15 @@
   .refs{
     margin-top: 24px; padding: 16px 18px; background: var(--card); border: 1px dashed var(--line); border-radius:12px;
   }
-  .refs .refs-title{ font-size:12px; color: var(--meta); margin-bottom:8px; font-family:'Do Hyeon',sans-serif; letter-spacing:0.03em; }
+  .refs .refs-title{ font-size:12px; color: var(--meta); margin-bottom:12px; font-family:'Do Hyeon',sans-serif; letter-spacing:0.03em; }
   .refs ul{ list-style:none; }
-  .refs li{ font-size:12.5px; color: var(--body); margin-bottom:5px; padding-left:14px; position:relative; }
+  /* 논문 제목 아래 한글 요약과 PubMed 링크를 붙인다 */
+  .refs li{ margin-bottom:14px; padding-left:14px; position:relative; }
+  .refs li:last-child{ margin-bottom:0; }
   .refs li::before{ content:'—'; position:absolute; left:0; color: var(--point); }
+  .refs .paper{ font-size:12.5px; color: var(--title); font-weight:700; margin-bottom:4px; }
+  .refs .note{ font-size:12.5px; color: var(--body); line-height:1.65; }
+  .refs .note a{ color: var(--point); text-decoration:underline; }
 
   .cta-box{
     margin-top: 30px; background: var(--card); border:1px solid var(--line); border-radius:16px;
@@ -251,9 +256,18 @@
   <div class="refs">
     <div class="refs-title">관련 연구</div>
     <ul>
-      <li>Thought Suppression and Rebound Effects</li>
-      <li>Ironic Effects of Thought Suppression: A Meta-Analysis</li>
-      <li>The Effectiveness and Adaptiveness of Suppressing Unwanted Thoughts</li>
+      <li>
+        <div class="paper">Paradoxical effects of thought suppression: a meta-analysis of controlled studies</div>
+        <div class="note">생각을 억누르려는 시도가 이후 그 생각을 다시 떠올리는 ‘반동 효과’와 관련이 있는지 여러 연구를 종합해 살펴본 메타분석이다. 생각 억제가 이후 생각의 증가와 관련되는 경향은 있었지만, 그 정도는 생각의 종류와 연구 방법에 따라 달라졌다. (<a href="https://pubmed.ncbi.nlm.nih.gov/11434226/" target="_blank" rel="noopener">PubMed</a>)</div>
+      </li>
+      <li>
+        <div class="paper">Ironic Effects of Thought Suppression: A Meta-Analysis</div>
+        <div class="note">생각 억제에 관한 31개 연구를 종합한 메타분석이다. 생각을 억누른 뒤 다시 그 생각이 늘어나는 반동 효과는 일관되게 나타났지만, 억누르는 순간부터 생각이 더 많아지는 현상은 인지적 부담이 있을 때 주로 나타났다. 즉, 생각을 억누르는 효과가 상황과 조건에 따라 달라질 수 있음을 보여준다. (<a href="https://pubmed.ncbi.nlm.nih.gov/32286932/" target="_blank" rel="noopener">PubMed</a>)</div>
+      </li>
+      <li>
+        <div class="paper">The Effectiveness and Adaptiveness of Suppressing Unwanted Thoughts</div>
+        <div class="note">2025년에 발표된 최신 리뷰 논문으로, 원치 않는 생각을 억누르는 것이 항상 효과가 없거나 해롭다는 기존의 단순한 설명을 다시 검토했다. 건강한 사람에게서는 생각 억제가 단기적으로 효과적일 수 있으며, 반동 효과 역시 모든 상황에서 일관되게 나타나는 것은 아니라고 정리했다. 생각 억제의 효과는 개인과 상황에 따라 달라질 수 있다는 점을 강조한다. (<a href="https://pubmed.ncbi.nlm.nih.gov/41366149/" target="_blank" rel="noopener">PubMed</a>)</div>
+      </li>
     </ul>
   </div>
 
