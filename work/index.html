@@ -36,8 +36,32 @@
     background: var(--paper);
   }
   header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
-  .brand{ font-size:17px; }
+  /* 메인에서 직장 카드로 들어와도 첫줄은 직장 탐구생활 */
+  .brand{ display:flex; align-items:center; gap:8px; font-size:17px; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--accent); flex-shrink:0; }
   nav.site a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; }
+  nav.site a.active{ color: var(--ink); font-weight:700; }
+  /* 휴대폰에서는 로고 한 줄, 그 아래 메뉴가 한 줄로 보이도록 */
+  @media (max-width: 720px){
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .brand{ white-space: nowrap; }
+    nav.site{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 18px;
+    }
+    nav.site a{
+      margin-left: 0;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+  }
 
   .crumb-bar{
     display:flex; align-items:center; gap:6px;
@@ -93,8 +117,9 @@
 
 <header class="site">
   <div class="wrap">
-    <a class="brand serif" href="../index.html">탐구소</a>
+    <a class="brand serif" href="../index.html"><span class="dot"></span>직장 탐구생활</a>
     <nav class="site">
+      <a href="index.html" class="active">직장</a>
       <a href="articles/index.html">읽을거리</a>
       <a href="insights/index.html">탐구</a>
       <a href="../about.html">소개</a>

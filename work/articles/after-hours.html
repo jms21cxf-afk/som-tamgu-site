@@ -26,12 +26,29 @@
   .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
   header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
   header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
-  .brand{ font-size:17px; text-decoration:none; color: inherit; }
+  .brand{ display:flex; align-items:center; gap:8px; font-size:17px; text-decoration:none; color: inherit; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--accent); flex-shrink:0; }
   nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
   nav a.active{ color: var(--ink); font-weight:700; }
   @media (max-width: 720px){
-    header.site .wrap{ flex-wrap:wrap; gap:10px; }
-    nav a{ margin-left:12px; }
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .brand{ white-space: nowrap; }
+    nav{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 18px;
+    }
+    nav a{
+      margin-left: 0;
+      font-size: 12px;
+      white-space: nowrap;
+    }
   }
   main{ padding: 36px 0 60px; }
   .tag{
@@ -67,7 +84,7 @@
 <body>
 <header class="site">
   <div class="wrap">
-    <a class="brand serif" href="../../index.html">탐구소</a>
+    <a class="brand serif" href="../../index.html"><span class="dot"></span>직장 탐구생활</a>
     <nav>
       <a href="../index.html">직장</a>
       <a href="index.html" class="active">읽을거리</a>
