@@ -259,9 +259,8 @@ function restartQuiz(){
 }
 
 function copyResult(){
-  const score = document.getElementById('rScore').textContent;
-  const name = document.getElementById('rName').textContent;
-  const text = "나의 회복탄력성은 " + score + "/30, [" + name + "]! 너도 해볼래? → (배포 후 실제 링크로 교체)";
+  // 결과 이름 한 줄, 주소 한 줄만 복사한다
+  const text = document.getElementById('rName').textContent + '\n' + location.href;
   const toast = document.getElementById('copyToast');
   if(navigator.clipboard){
     navigator.clipboard.writeText(text).then(() => {

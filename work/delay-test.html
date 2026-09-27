@@ -410,7 +410,9 @@ function restartQuiz(){
 }
 
 function copyResult(){
-  navigator.clipboard.writeText(location.href).then(() => {
+  // 결과 이름 한 줄, 주소 한 줄만 복사한다
+  const text = document.getElementById('rName').textContent + '\n' + location.href;
+  navigator.clipboard.writeText(text).then(() => {
     const toast = document.getElementById('toast');
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 1800);

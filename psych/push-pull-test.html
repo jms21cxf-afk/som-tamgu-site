@@ -322,9 +322,8 @@ function restartQuiz(){
 }
 
 function copyResult(){
-  const name = document.getElementById('rName').textContent;
-  const sub = document.getElementById('rSub').textContent;
-  const text = "나의 밀당 스타일은 [" + sub + "] " + name + "! 너도 테스트 해봐 → (배포 후 실제 링크로 교체)";
+  // 결과 이름 한 줄, 주소 한 줄만 복사한다
+  const text = document.getElementById('rName').textContent + '\n' + location.href;
   const toast = document.getElementById('copyToast');
   if(navigator.clipboard){
     navigator.clipboard.writeText(text).then(() => {
