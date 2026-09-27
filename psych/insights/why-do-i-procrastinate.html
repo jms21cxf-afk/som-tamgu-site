@@ -90,6 +90,8 @@
   .refs li::before{ content:'—'; position:absolute; left:0; color: var(--point); }
   .refs .paper{ font-size:12.5px; color: var(--title); font-weight:700; margin-bottom:4px; }
   .refs .note{ font-size:12.5px; color: var(--body); line-height:1.65; }
+  /* 설명 끝 PubMed 링크는 포인트색으로 구분한다 */
+  .refs .note a{ color: var(--point); text-decoration:underline; }
 
   .cta-box{
     margin-top: 30px; background: var(--card); border:1px solid var(--line); border-radius:16px;
@@ -142,7 +144,7 @@
   <p>해야 할 일이 있다는 걸 알고 있다.</p>
   <p>오늘 안에 해야 하고,<br>미루면 결국 내가 더 힘들어진다는 것도 안다.</p>
   <p>그런데 이상하게 손이 가지 않는다.</p>
-  <p class="quote-line">‘조금만 있다가 해야지.’</p>
+  <p>‘조금만 있다가 해야지.’</p>
   <p>휴대폰을 잠깐 보고,<br>물 한 잔을 마시고,<br>괜히 다른 일을 시작한다.</p>
   <p>그러다 문득 시간이 많이 지나 있다는 걸 알아차린다.</p>
   <p>그제야 급하게 시작한다.</p>
@@ -159,7 +161,7 @@
   <p>생각만 해도 조금 피곤하다.</p>
   <p>미루기 연구에서는 이런 <strong>일 자체가 얼마나 부담스럽고 하기 싫게 느껴지는지(task aversiveness)</strong>가 미루기와 관련된 중요한 요인으로 반복해서 언급되어 왔다.</p>
   <p>그러니까 일을 미루는 순간에는</p>
-  <p class="quote-line">‘하기 싫으니까 나중에 해야지.’</p>
+  <p>‘하기 싫으니까 나중에 해야지.’</p>
   <p>라는 단순한 마음만 있는 것이 아닐 수도 있다.</p>
   <p><strong>지금 이 일을 시작하면서 느끼게 될 불편함을 잠시 피하고 싶은 마음</strong>이 함께 있을 수 있는 것이다.</p>
 
@@ -190,7 +192,7 @@
   <p>처음에는 불편함을 피하려고 미뤘는데,<br>나중에는 미룬 일 때문에 또 불편해진다.</p>
   <p>이런 과정 때문에 연구에서는 미루기를 <strong>당장의 불편한 감정을 줄이려는 행동</strong>과 연결해서 설명하기도 한다. 특히 스트레스가 높은 상황에서는 어려운 일에서 느끼는 불편한 감정을 피하려는 방식으로 미루기가 나타날 수 있다는 관점도 제시되어 있다.</p>
   <p>그러니까 미루기는</p>
-  <p class="quote-line">‘해야 하는 걸 몰라서’</p>
+  <p>‘해야 하는 걸 몰라서’</p>
   <p>생기는 행동이라기보다,</p>
   <p><strong>해야 한다는 걸 알면서도 지금 느끼는 부담을 잠시 피하는 행동</strong>일 수도 있다.</p>
 
@@ -262,19 +264,19 @@
     <ul>
       <li>
         <div class="paper">The nature of procrastination: A meta-analytic and theoretical review of quintessential self-regulatory failure</div>
-        <div class="note">미루기와 관련된 여러 연구를 종합해 살펴본 메타분석이다. 연구에서는 해야 할 일이 불쾌하게 느껴지거나, 보상이 늦게 주어지거나, 스스로 해낼 수 있다는 확신이 낮을 때 미루는 경향이 더 강하게 나타났고, 충동성이나 자기조절 능력도 관련이 있는 것으로 나타났다. 즉, 미루는 행동을 단순히 ‘게으름’ 하나로 설명하기는 어렵다는 점을 보여준다.</div>
+        <div class="note">미루기와 관련된 여러 연구를 종합해 살펴본 메타분석이다. 연구에서는 해야 할 일이 불쾌하게 느껴지거나, 보상이 늦게 주어지거나, 스스로 해낼 수 있다는 확신이 낮을 때 미루는 경향이 더 강하게 나타났고, 충동성이나 자기조절 능력도 관련이 있는 것으로 나타났다. 즉, 미루는 행동을 단순히 ‘게으름’ 하나로 설명하기는 어렵다는 점을 보여준다. (<a href="https://pubmed.ncbi.nlm.nih.gov/17201571/" target="_blank" rel="noopener">PubMed</a>)</div>
       </li>
       <li>
         <div class="paper">To do it now or later: The cognitive mechanisms and neural substrates underlying procrastination</div>
-        <div class="note">미루기에 영향을 주는 요인을 정리한 리뷰 논문이다. 과제가 얼마나 하기 싫게 느껴지는지, 미래의 보상이 얼마나 멀리 있는지, 자기조절과 충동성이 어떤 영향을 미치는지 살펴보며, 미루기가 단순한 시간 관리 문제가 아니라 감정과 동기 조절의 문제와도 연결될 수 있음을 설명한다.</div>
+        <div class="note">미루기에 영향을 주는 요인을 정리한 리뷰 논문이다. 과제가 얼마나 하기 싫게 느껴지는지, 미래의 보상이 얼마나 멀리 있는지, 자기조절과 충동성이 어떤 영향을 미치는지 살펴보며, 미루기가 단순한 시간 관리 문제가 아니라 감정과 동기 조절의 문제와도 연결될 수 있음을 설명한다. (<a href="https://pubmed.ncbi.nlm.nih.gov/30638308/" target="_blank" rel="noopener">PubMed</a>)</div>
       </li>
       <li>
         <div class="paper">Procrastination and Stress: A Conceptual Review of Why Context Matters</div>
-        <div class="note">미루기와 스트레스의 관계를 살펴본 개념적 리뷰다. 스트레스가 높아지면 힘든 감정을 감당할 여유가 줄어들어 미루기가 더 쉬워질 수 있고, 반대로 미루기가 이후의 스트레스를 높일 수도 있다는 관점에서 두 관계를 설명한다.</div>
+        <div class="note">미루기와 스트레스의 관계를 살펴본 개념적 리뷰다. 스트레스가 높아지면 힘든 감정을 감당할 여유가 줄어들어 미루기가 더 쉬워질 수 있고, 반대로 미루기가 이후의 스트레스를 높일 수도 있다는 관점에서 두 관계를 설명한다. (<a href="https://pubmed.ncbi.nlm.nih.gov/36981941/" target="_blank" rel="noopener">PubMed</a>)</div>
       </li>
       <li>
         <div class="paper">The association between procrastination and negative emotions in healthy individuals: a systematic review and meta-analysis</div>
-        <div class="note">88개 연구, 63,323명을 종합한 2025년 체계적 문헌고찰·메타분석이다. 미루기는 우울, 불안, 스트레스 같은 부정적 감정과 중간 정도의 양의 상관관계를 보였으며, 미루기와 부정적 감정 사이에 서로 영향을 주고받는 관계가 있을 가능성도 살펴봤다.</div>
+        <div class="note">88개 연구, 63,323명을 종합한 2025년 체계적 문헌고찰·메타분석이다. 미루기는 우울, 불안, 스트레스 같은 부정적 감정과 중간 정도의 양의 상관관계를 보였으며, 미루기와 부정적 감정 사이에 서로 영향을 주고받는 관계가 있을 가능성도 살펴봤다. (<a href="https://pubmed.ncbi.nlm.nih.gov/41210118/" target="_blank" rel="noopener">PubMed</a>)</div>
       </li>
     </ul>
   </div>
