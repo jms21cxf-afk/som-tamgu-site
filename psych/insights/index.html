@@ -86,10 +86,6 @@
   .entry p{ font-size:13.2px; color: var(--body); margin-bottom:8px; }
   .entry .read{ font-size:12px; color: var(--point); font-weight:700; }
 
-  /* 아직 없는 글은 흐리게, 클릭되지 않게 */
-  .entry.soon{ opacity:0.55; pointer-events:none; }
-  .entry.soon .read{ color: var(--meta); font-weight:400; }
-
   footer.site{ background: var(--deep); padding: 30px 0; }
   footer.site .wrap{ text-align:center; }
   footer.site .name{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-weight:700; font-size:15px; color: var(--deep-text); margin-bottom:6px; }
@@ -114,7 +110,7 @@
 <div class="crumb-bar">
   <div class="wrap">
     <a class="home" href="../../index.html">탐구소</a><span class="sep">/</span>
-    <span>심리</span><span class="sep">/</span>
+    <a class="home" href="../index.html">심리</a><span class="sep">/</span>
     <span class="current">탐구</span>
   </div>
 </div>
@@ -166,13 +162,6 @@
       <p>실수가 하루를 지운 것이 아니라, 그 실수가 하루를 대표하는 장면이 된 것일 수 있다.</p>
       <span class="read">읽어보기 →</span>
     </a>
-
-    <div class="entry soon">
-      <div class="meta-row"><span class="num">06</span><span>·</span><span>준비 중</span></div>
-      <h3>다음 이야기</h3>
-      <p>곧 새로운 탐구가 이어집니다.</p>
-      <span class="read">준비 중</span>
-    </div>
 
   </div>
 </section>

@@ -30,7 +30,8 @@
   .serif{ font-family:'Do Hyeon', sans-serif; }
   .mono{ font-family:'JetBrains Mono', monospace; }
   a{ color:inherit; text-decoration:none; }
-  .shell{ width:100%; max-width:440px; margin:0 auto; }
+  /* 폰 화면처럼 좁고 길게. 폭을 줄이면 한 줄 글자도 줄어든다 */
+  .shell{ width:100%; max-width:336px; margin:0 auto; }
   .crumb-bar{
     display:flex; align-items:center; gap:6px;
     font-family:'Do Hyeon', sans-serif; font-size:13px; margin-bottom:14px;
@@ -56,7 +57,10 @@
   .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
   .progress{ height:3px; background: var(--line); }
   .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
-  .screen{ padding: 22px 18px 24px; min-height: 420px; }
+  /* 카드 전체를 화면 높이에 가깝게 늘리고, 버튼은 아래로 붙인다 */
+  .panel{ min-height: min(760px, calc(100dvh - 70px)); display:flex; flex-direction:column; }
+  .screen{ padding: 26px 20px 24px; flex:1; display:flex; flex-direction:column; }
+  .cta, .actions{ margin-top:auto; }
   .hidden{ display:none !important; }
   .intro .eyebrow{ font-size:11px; letter-spacing:0.1em; color: var(--accent); margin-bottom:12px; }
   .intro h1{ font-size:28px; line-height:1.35; margin-bottom:12px; }
@@ -123,7 +127,7 @@
       <div class="eyebrow">유형 테스트</div>
       <h1 class="serif">그 일,<br>왜 아직 안 열었어?</h1>
       <p>하기 싫어서인지, 시작이 무서워서인지, 딴짓이 먼저인지. 미루는 이유는 사람마다 달라요. 습관만 보면 유형이 갈립니다.</p>
-      <div class="note">게으름 진단이 아니에요. 미루는 패턴을 알면, 같은 ‘의지’를 써도 처방이 달라집니다.</div>
+      <div class="note">게으름 진단이 아니에요. 미루는 패턴을 알면, 같은<br>‘의지’를 써도 처방이 달라집니다.</div>
       <button class="cta" onclick="startQuiz()">해볼래 →</button>
     </div>
     <div id="quiz" class="screen hidden">

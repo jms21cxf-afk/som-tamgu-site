@@ -30,7 +30,8 @@
   .serif{ font-family:'Do Hyeon', sans-serif; }
   .mono{ font-family:'JetBrains Mono', monospace; }
   a{ color:inherit; text-decoration:none; }
-  .shell{ width:100%; max-width:440px; margin:0 auto; }
+  /* 폰 화면처럼 좁고 길게. 폭을 줄이면 한 줄 글자도 줄어든다 */
+  .shell{ width:100%; max-width:336px; margin:0 auto; }
   .crumb-bar{
     display:flex; align-items:center; gap:6px;
     font-family:'Do Hyeon', sans-serif; font-size:13px; margin-bottom:14px;
@@ -56,7 +57,10 @@
   .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
   .progress{ height:3px; background: var(--line); }
   .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
-  .screen{ padding: 22px 18px 24px; min-height: 420px; }
+  /* 카드 전체를 화면 높이에 가깝게 늘리고, 버튼은 아래로 붙인다 */
+  .panel{ min-height: min(760px, calc(100dvh - 70px)); display:flex; flex-direction:column; }
+  .screen{ padding: 26px 20px 24px; flex:1; display:flex; flex-direction:column; }
+  .cta, .actions{ margin-top:auto; }
   .hidden{ display:none !important; }
   .intro .eyebrow{ font-size:11px; letter-spacing:0.1em; color: var(--accent); margin-bottom:12px; }
   .intro h1{ font-size:28px; line-height:1.35; margin-bottom:12px; }
