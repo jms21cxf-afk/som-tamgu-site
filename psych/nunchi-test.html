@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>나의 눈치 레벨은? — 썸 탐구생활</title>
+<meta name="description" content="분위기, 표정, 말투. 남의 기분을 얼마나 빨리, 얼마나 과하게 읽는지 8가지 상황으로 알아보기.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  /* 채팅형 테스트 틀, 색만 올리브·겨자 계열로 */
+  :root{
+    --bg: #F3F2EA; --paper: #FFFFFF; --line: #E2DDD0;
+    --ink: #2E2C26; --ink-soft: #6E6A5E;
+    --olive:#6B7348; --olive-dark:#4F5634;
+    --coral:#FF6F59; --bubble-me: #EEE9D8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(107,115,72,0.12) 0%, transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(255,111,89,0.06) 0%, transparent 40%);
+    font-family: 'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 24px 12px;
+  }
+  .display{ font-family:'Gaegu', 'Gowun Dodum', sans-serif; }
+  .crumb-bar{
+    width:100%; max-width:400px; margin: 0 auto 12px;
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px;
+  }
+  .crumb-bar a{ color:#8A5A1F; text-decoration:none; }
+  .crumb-bar span{ color:#B4ABA0; }
+  .crumb-bar .current{ color:#3A2E39; }
+
+  .phone{
+    width: 100%; max-width: 400px; background: var(--paper); border-radius: 32px;
+    border: 1px solid var(--line); box-shadow: 0 20px 50px -20px rgba(46,44,38,0.25), 0 4px 12px rgba(46,44,38,0.06);
+    overflow: hidden; position: relative; min-height: 640px; display:flex; flex-direction:column;
+  }
+  .phone-header{ padding: 18px 20px 14px; border-bottom: 1px solid var(--line); display:flex; align-items:center; gap: 10px; }
+  .avatar{ width: 38px; height:38px; border-radius:50%; background: linear-gradient(135deg, var(--olive), var(--coral)); display:flex; align-items:center; justify-content:center; font-size: 18px; flex-shrink:0; }
+  .header-text .name{ font-weight:700; font-size:15px; }
+  .header-text .status{ font-size:11.5px; color: var(--ink-soft); }
+  .progress-wrap{ height: 4px; background: var(--line); position: relative; z-index: 2; }
+  .progress-bar{ height:100%; width: 0%; background: var(--olive-dark); transition: width 0.4s ease; }
+
+  .screen{ flex:1; display:flex; flex-direction:column; padding: 22px 18px; overflow-y:auto; position:relative; }
+  .hidden{ display:none !important; }
+
+  #intro{ align-items:center; justify-content:center; text-align:center; gap:16px; flex:1; }
+  #intro .big-emoji{ font-size: 52px; }
+  #intro h1{ font-size: 24px; line-height:1.4; }
+  #intro p{ font-size: 14px; color: var(--ink-soft); line-height:1.6; padding: 0 4px; }
+  .cta-btn{
+    margin-top: 10px; background: var(--olive-dark); color: white; border:none; padding: 14px 32px;
+    border-radius: 999px; font-size: 15px; font-weight: 700; cursor:pointer;
+    box-shadow: 0 8px 16px -6px rgba(79,86,52,0.4);
+  }
+  .cta-btn:active{ transform: scale(0.96); }
+  .meta-note{ font-size: 11.5px; color:#A8A392; margin-top:4px; }
+
+  #quiz{ flex:1; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; }
+  .bubble-row{ display:flex; margin-bottom: 4px; }
+  .bubble{ max-width: 86%; padding: 12px 16px; border-radius: 18px; font-size: 14.2px; line-height:1.55; animation: pop 0.25s ease; }
+  @keyframes pop{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:translateY(0);} }
+  .bubble.them{ background: var(--bg); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+  .answers{ display:flex; flex-direction:column; gap:8px; margin-top: 4px; }
+  .answer-btn{
+    align-self: flex-end; max-width: 90%; text-align:left; background: var(--bubble-me);
+    border: 1px solid #D6D0BC; color: var(--ink); padding: 10px 16px; border-radius: 16px;
+    border-bottom-right-radius: 4px; font-size: 13.5px; line-height:1.5; cursor:pointer;
+  }
+  .answer-btn:hover{ background:#E4DFCC; }
+  .answer-btn:active{ transform: scale(0.98); }
+
+  #result{ align-items:center; text-align:center; gap:10px; flex:1; justify-content:center; }
+  .result-card{
+    width:100%; background: linear-gradient(180deg, #FFFDFB, #F3F2EA); border: 1px solid var(--line);
+    border-radius: 22px; padding: 26px 20px 22px; position:relative; box-shadow: 0 10px 24px -14px rgba(46,44,38,0.2);
+  }
+  .type-tag{ display:inline-block; background: var(--ink); color: white; font-size: 11px; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+  .type-name{ font-size: 22px; font-weight:700; line-height:1.3; margin-bottom: 14px; }
+  .type-desc{ font-size: 13.5px; line-height:1.7; color: var(--ink); text-align:left; }
+  .tip-box{
+    margin-top:16px; background: var(--paper); border: 1px dashed var(--line); border-radius: 14px;
+    padding: 12px 14px; text-align:left; font-size: 12.5px; color: var(--ink-soft); line-height:1.6;
+  }
+  .tip-box b{ color: var(--olive-dark); }
+  .read-more{ margin-top:14px; display:inline-block; font-size:12.5px; color: var(--ink-soft); text-decoration:underline; }
+  .action-row{ display:flex; gap:8px; width:100%; margin-top: 16px; }
+  .action-btn{ flex:1; border-radius: 14px; padding: 12px 8px; font-size: 13px; font-weight:700; cursor:pointer; border: none; }
+  .action-btn.share{ background: var(--ink); color:white; }
+  .action-btn.restart{ background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+  .copy-toast{
+    position:absolute; bottom: -6px; left:50%; transform: translateX(-50%) translateY(100%);
+    background: var(--ink); color:white; font-size:12px; padding: 8px 14px; border-radius: 999px;
+    opacity:0; transition: opacity 0.25s ease; white-space:nowrap;
+  }
+  .copy-toast.show{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div style="width:100%; display:flex; justify-content:center;">
+<div style="width:100%; max-width:400px;">
+<div class="crumb-bar"><a href="../index.html">탐구소</a><span>/</span><a href="index.html" class="current">심리</a></div>
+<div class="phone">
+  <div class="phone-header">
+    <div class="avatar">📡</div>
+    <div class="header-text">
+      <div class="name display">눈치 진단소</div>
+      <div class="status" id="statusText">대화 중...</div>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- INTRO -->
+  <div id="intro" class="screen">
+    <div class="big-emoji">📡</div>
+    <h1 class="display">남의 기분을,<br>나는 얼마나 읽을까?</h1>
+    <p>눈치가 쓰이는 순간 8가지에 답하면<br>내가 분위기를 읽는 방식을 알려줄게요.</p>
+    <button class="cta-btn" onclick="startQuiz()">시작하기 →</button>
+    <div class="meta-note">약 40초 소요 · 진단이 아닌 자기 이해용 테스트예요</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="screen hidden"></div>
+
+  <!-- RESULT -->
+  <div id="result" class="screen hidden">
+    <div class="result-card" id="resultCard">
+      <span class="type-tag">RESULT</span>
+      <div class="type-name display" id="rName"></div>
+      <div class="type-desc" id="rDesc"></div>
+      <div class="tip-box" id="rTip"></div>
+      <a class="read-more" href="emotion-expression-test.html">나의 감정 표현 방식은? →</a>
+      <div class="copy-toast" id="copyToast">링크가 복사됐어요!</div>
+    </div>
+    <div class="action-row">
+      <button class="action-btn share" onclick="copyResult()">결과 공유하기</button>
+      <button class="action-btn restart" onclick="restartQuiz()">다시하기</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script>
+// 네 가지 눈치: radar(과잉) / fit(맞춤) / late(한 박자 늦은) / straight(직진)
+const questions = [
+  { them: "단톡에 보낸 내 말에 답이 없다. 나는", options:[
+      {text:"내가 뭔가 잘못 말했나, 계속 다시 읽어본다", val:"radar"},
+      {text:"바쁠 수도 있으니 조금 기다린다", val:"fit"},
+      {text:"한참 뒤에야 '아, 그때 읽씹이었나' 싶다", val:"late"},
+      {text:"그냥 다음 할 일 한다", val:"straight"}
+    ]},
+  { them: "모임에서 누군가의 웃는 표정이 어색하다", options:[
+      {text:"내가 뭘 잘못했나부터 생각한다", val:"radar"},
+      {text:"눈치는 채지만, 굳이 나서서 화제를 안 돌린다", val:"fit"},
+      {text:"끝나고 나서야 그때 어색했다는 걸 안다", val:"late"},
+      {text:"못 알아채고 하던 말을 이어간다", val:"straight"}
+    ]},
+  { them: "상사가 \"시간 되면 이것도 봐줘\" 라고 한다", options:[
+      {text:"지금 당장 해야 하는 말로 들린다", val:"radar"},
+      {text:"우선순위를 보고 가능한 때 한다", val:"fit"},
+      {text:"한가해지면 하려고 뒀다가 까먹는다", val:"late"},
+      {text:"시간 되면 하라는 말 그대로 받는다", val:"straight"}
+    ]},
+  { them: "친구가 \"나 괜찮아\" 라고 한다", options:[
+      {text:"절대 괜찮지 않다고 생각하고 캐묻는다", val:"radar"},
+      {text:"말투와 상황을 보고 진짜인지 가늠한다", val:"fit"},
+      {text:"나중에 이상해서 다시 물어본다", val:"late"},
+      {text:"괜찮다니까 넘어간다", val:"straight"}
+    ]},
+  { them: "밥 자리에서 메뉴를 고를 때", options:[
+      {text:"다른 사람 눈치 보고 제일 무난한 걸 고른다", val:"radar"},
+      {text:"먹고 싶은 걸 말하되, 반대하면 맞춘다", val:"fit"},
+      {text:"다 고르고 나서 내가 비싼 걸 골랐나 싶다", val:"late"},
+      {text:"먹고 싶은 걸 말한다", val:"straight"}
+    ]},
+  { them: "대화 중 상대가 시계를 본다", options:[
+      {text:"내가 너무 오래 말했나 긴장한다", val:"radar"},
+      {text:"할 말을 짧게 마치고 자리를 정리한다", val:"fit"},
+      {text:"나중에 '그때 바빴나 보다' 한다", val:"late"},
+      {text:"시계 본 줄도 모르고 이야기 이어간다", val:"straight"}
+    ]},
+  { them: "주변 사람들이 나에 대해 자주 하는 말은", options:[
+      {text:"\"너는 눈치가 너무 빨라\"", val:"radar"},
+      {text:"\"너는 분위기 잘 맞춰\"", val:"fit"},
+      {text:"\"너는 나중에야 알아채더라\"", val:"late"},
+      {text:"\"너는 눈치가 없다\"", val:"straight"}
+    ]},
+  { them: "마지막 질문. 남의 기분을 읽고 난 뒤 드는 기분은?", options:[
+      {text:"맞췄는지 불안해서 더 확인한다", val:"radar"},
+      {text:"필요한 만큼 맞춰서 편하다", val:"fit"},
+      {text:"알아챈 뒤에는 이미 타이밍이 지났다", val:"late"},
+      {text:"굳이 읽지 않아서 그런 기분이 잘 없다", val:"straight"}
+    ]}
+];
+
+const results = {
+  radar:{ name:"과잉 레이더형", desc:"없는 신호까지 잡는 타입이에요. 표정, 말투, 답장 속도가 다 의미 있어 보여서, 상대보다 내가 먼저 지치기도 해요. 분위기를 잘 읽는 건 맞는데, 그 레이더가 꺼지지 않아서 일상이 정보 과다가 되기 쉬워요.", tip:"'이건 나에 대한 신호일까, 그냥 그 사람의 하루일까?' 한 번만 나눠 보세요. 모든 침묵이 나를 향한 건 아니에요." },
+  fit:{ name:"상황 맞춤형", desc:"필요한 만큼만 읽는 타입이에요. 분위기는 채되, 모든 표정에 반응하지는 않아요. 상대의 기분을 살피면서도 내 할 말은 하는 편이라, 눈치가 관계를 잡아먹지 않아요.", tip:"맞춤이 습관이 되면 내 기분은 뒤로 밀릴 수 있어요. 맞추기 전에 '나는 지금 뭐가 필요하지?' 한 줄만 확인해 보세요." },
+  late:{ name:"한 박자 늦은형", desc:"그 자리에서는 못 읽고, 집에 와서야 장면이 다시 재생되는 타입이에요. 눈치가 없는 게 아니라, 처리가 한 박자 뒤에 오는 거예요. 그래서 '그때 왜 몰랐지'라는 후회가 자주 남아요.", tip:"후회가 올라오면 그때의 나를 탓하기보다, 다음에 쓸 문장 하나만 적어 두세요. '그때 좀 어색했어'도 늦지 않은 말입니다." },
+  straight:{ name:"직진형", desc:"말 그대로 듣고, 표정은 크게 해석하지 않는 타입이에요. 눈치 게임에 에너지를 안 써서 속이 편한 편이에요. 다만 상대는 이미 신호를 보냈는데 나만 못 받았을 때가 있어요.", tip:"상대가 두 번 같은 말을 하거나 표정이 바뀌면, 한 번만 물어보세요. \"지금 바쁜 거야?\" 추측 대신 확인이면 충분해요." }
+};
+
+let current = 0;
+const scores = { radar:0, fit:0, late:0, straight:0 };
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+  renderQuestion();
+}
+
+// 질문 말풍선과 답변 버튼을 채팅처럼 아래에 붙인다
+function renderQuestion(){
+  const q = questions[current];
+  const quizEl = document.getElementById('quiz');
+
+  const row = document.createElement('div');
+  row.className = 'bubble-row';
+  row.innerHTML = '<div class="bubble them">' + q.them + '</div>';
+  quizEl.appendChild(row);
+
+  const answers = document.createElement('div');
+  answers.className = 'answers';
+  answers.id = 'answers-' + current;
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.val);
+    answers.appendChild(btn);
+  });
+  quizEl.appendChild(answers);
+
+  quizEl.scrollTop = quizEl.scrollHeight;
+  document.getElementById('progressBar').style.width = ((current)/questions.length*100) + '%';
+}
+
+function selectAnswer(val){
+  scores[val]++;
+  document.getElementById('answers-' + current).remove();
+
+  current++;
+  document.getElementById('progressBar').style.width = (current/questions.length*100) + '%';
+
+  if(current < questions.length){
+    document.getElementById('statusText').textContent = "질문 " + (current+1) + " / " + questions.length;
+    setTimeout(renderQuestion, 300);
+  } else {
+    document.getElementById('statusText').textContent = "결과 도착!";
+    setTimeout(showResult, 400);
+  }
+}
+
+// 점수가 가장 높은 유형을 결과로 보여준다 (동점이면 앞선 순서 우선)
+function showResult(){
+  const top = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+  const r = results[top];
+  document.getElementById('rName').textContent = r.name;
+  document.getElementById('rDesc').textContent = r.desc;
+  document.getElementById('rTip').innerHTML = '📡 <b>이럴 때 도움돼요</b><br>' + r.tip;
+
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+}
+
+function restartQuiz(){
+  current = 0;
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  document.getElementById('quiz').innerHTML = '';
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('statusText').textContent = '대화 중...';
+}
+
+function copyResult(){
+  // 결과 이름 한 줄, 주소 한 줄만 복사한다
+  const text = document.getElementById('rName').textContent + '\n' + location.href;
+  const toast = document.getElementById('copyToast');
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(() => {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  }
+}
+</script>
+
+</body>
+</html>
