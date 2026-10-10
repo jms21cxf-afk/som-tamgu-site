@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>같은 팀인데 일하는 방식이 이렇게 다른 이유 — 탐구소</title>
+<meta name="description" content="일을 먼저 보는 사람, 사람을 먼저 보는 사람, 구멍을 찾는 사람, 판을 키우는 사람. 누가 옳은 게 아니라 일하는 방식이 다른 거예요.">
+<meta name="keywords" content="직장 성향, 일하는 방식, 회사 소통, 업무 스타일, 팀 갈등">
+<meta property="og:title" content="같은 팀인데 일하는 방식이 이렇게 다른 이유 — 탐구소">
+<meta property="og:description" content="누가 옳은 게 아니라 일하는 방식이 다른 거예요">
+<meta property="og:url" content="https://tamguso.com/work/articles/task-or-people.html">
+<link rel="canonical" href="https://tamguso.com/work/articles/task-or-people.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E8EEF2; --paper:#FFFFFF; --line:#C5D0D8;
+    --ink:#1A2228; --ink-soft:#4A5863; --ink-faint:#8A97A1;
+    --accent:#2F6F8F; --accent-dark:#245A74;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ display:flex; align-items:center; gap:8px; font-size:17px; text-decoration:none; color: inherit; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--accent); flex-shrink:0; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .brand{ white-space: nowrap; }
+    nav{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 18px;
+    }
+    nav a{
+      margin-left: 0;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+  }
+  main{ padding: 36px 0 60px; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:16.5px; margin: 26px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; color: var(--ink); }
+  .cta-box{
+    margin-top: 34px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html"><span class="dot"></span>직장 탐구생활</a>
+    <nav>
+      <a href="../index.html">직장</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../insights/index.html">탐구</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">직장</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <span class="tag">회사에서의 나</span>
+  <h1 class="serif">같은 팀인데 일하는 방식이 이렇게 다른 이유</h1>
+  <div class="meta">읽는 시간 약 4분</div>
+
+  <p>같은 팀인데 어떤 사람은 회의에서 ‘그래서 결론이 뭐예요?’부터 묻고, 어떤 사람은 분위기부터 살펴요. 또 어떤 사람은 ‘여기 빈 데가 있는데요’를 짚고, 어떤 사람은 갑자기 다른 방향을 던지고요. 누가 옳은 게 아니라 일하는 방식이 다른 거예요.</p>
+
+  <h2>일을 먼저 보는 쪽, 사람을 먼저 보는 쪽</h2>
+  <p>일 쪽은 목표와 마감이 기준이에요. 빨리 정리하고 넘어가는 게 편하고, 돌려 말하는 걸 답답해해요. 추진력이 장점이지만, 본인은 효율적으로 말한 건데 상대는 지적받았다고 느낄 수 있어요.</p>
+  <p>사람 쪽은 관계와 분위기가 기준이에요. 불편한 말은 한 번 다듬어서 꺼내고, 팀이 부드럽게 굴러가게 해요. 대신 부탁을 다 받아주다 혼자 지칠 수 있어요. 맞추는 일에도 에너지가 꽤 들거든요.</p>
+
+  <h2>구멍을 찾는 쪽, 판을 키우는 쪽</h2>
+  <p>분석 쪽은 근거와 구조를 봐요. ‘잠깐만요, 이거 맞아요?’ 하는 사람이 성급한 결정을 막아주죠. 다만 완벽한 답을 기다리다 타이밍을 놓칠 수 있어요. 돌파 쪽은 막히면 다른 각도로 풀어요. 선택지를 늘려주는 대신, 마무리 디테일은 일부러 챙겨야 하고요.</p>
+
+  <h2>지치는 지점도 달라요</h2>
+  <p>일 쪽은 일이 느슨하게 굴러갈 때, 사람 쪽은 갈등이 길어질 때, 분석 쪽은 근거 없이 밀어붙일 때, 돌파 쪽은 틀에 갇혔을 때 에너지가 빠지기 쉬워요. 그리고 대부분은 상황과 상대에 따라 여러 모습을 오가요. 팀장 앞에서는 사람 쪽, 후배 앞에서는 일 쪽인 사람도 많고요.</p>
+
+  <h2>결론</h2>
+  <p>내 방식을 알면 ‘왜 나만 이렇게 피곤하지’가 ‘내가 이런 곳에서 에너지가 빠지는구나’로 바뀌어요. 상대 방식을 알면 말투 하나에 덜 상처받게 되고요. 팀에는 보통 여러 유형이 섞여 있어야 굴러가요.</p>
+
+  <div class="cta-box">
+    <div class="q serif">회사에서 나는 어떤 쪽에 가깝지?</div>
+    <a href="../work-style-test.html">회사에서의 나 테스트 하러가기</a>
+  </div>
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>
