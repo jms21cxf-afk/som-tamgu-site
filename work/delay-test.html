@@ -103,6 +103,7 @@
   .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
   .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
   .toast.show{ display:block; }
+  .result .related{ display:block; font-size:13px; color: var(--accent); margin-bottom:14px; text-decoration:underline; text-underline-offset:3px; }
 </style>
 </head>
 <body>
@@ -142,6 +143,7 @@
       <div class="desc" id="rDesc"></div>
       <div class="tip" id="rTip"></div>
       <div class="warn">유형은 오늘 할 일, 팀 분위기에도 흔들립니다. ‘항상 나’로 못 박진 마세요.</div>
+      <a class="related" href="articles/why-we-delay.html">관련 글 · 마감 직전에야 손이 가는 이유 →</a>
       <div class="actions">
         <button class="share" onclick="copyResult()">결과 링크 복사</button>
         <button class="again" onclick="restartQuiz()">다시하기</button>

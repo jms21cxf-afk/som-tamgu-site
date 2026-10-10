@@ -73,6 +73,7 @@
   .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
   .toast.show{ display:block; }
 
+  .result .related{ display:block; font-size:13px; color: var(--accent); margin-bottom:14px; text-decoration:underline; text-underline-offset:3px; }
 </style>
 </head>
 <body>
@@ -112,6 +113,7 @@
       <div class="desc" id="rDesc"></div>
       <div class="tip" id="rTip"></div>
       <div class="warn">오늘 팀 분위기, 상사 스타일에 따라 달라질 수 있어요. ‘항상 나’는 아닙니다.</div>
+      <a class="related" href="articles/task-or-people.html">관련 글 · 같은 팀인데 일하는 방식이 이렇게 다른 이유 →</a>
       <div class="actions">
         <button class="share" onclick="copyResult()">결과 링크 복사</button>
         <button class="again" onclick="restartQuiz()">다시하기</button>
