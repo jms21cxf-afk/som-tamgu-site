@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>돈 얘기가 어려운 사람 테스트 — 탐구소</title>
+<meta name="description" content="빌려준 돈, 더치페이, 같이 쓴 돈. 금액보다 말 꺼내기가 더 어려운 이유를 8문항으로 알아보는 유형 테스트. 재무·법률 상담이 아닙니다.">
+<meta name="keywords" content="돈 얘기 어려운 사람, 더치페이 테스트, 정산 말 못하는, 돈 빌려주기 거절, 돈 얘기 유형">
+<meta property="og:title" content="돈 얘기가 어려운 사람 테스트 — 탐구소">
+<meta property="og:description" content="돈 얘기 앞에서 왜 입이 안 떨어질까? 40초 유형 테스트">
+<meta property="og:url" content="https://tamguso.com/money/talk-test.html">
+<link rel="canonical" href="https://tamguso.com/money/talk-test.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E9F1EE; --paper:#FFFFFF; --line:#C6D6CF;
+    --ink:#1A2622; --ink-soft:#475650; --ink-faint:#8A9892;
+    --accent:#2A7F6E; --accent-dark:#206456; --ok:#3D7A6A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 0%, rgba(42,127,110,0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 100%, rgba(217,164,0,0.06) 0%, transparent 40%);
+    font-family:'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height:100vh; padding: 20px 14px 40px;
+  }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  /* 폰 화면처럼 좁고 길게. 폭을 줄이면 한 줄 글자도 줄어든다 */
+  .shell{ width:100%; max-width:336px; margin:0 auto; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size:13px; margin-bottom:14px;
+  }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: var(--ink); }
+  .panel{
+    background: var(--paper); border: 1.5px solid var(--line);
+    border-radius: 18px; overflow:hidden;
+    box-shadow: 0 12px 28px -18px rgba(26,38,34,0.35);
+  }
+  .panel-head{
+    padding: 16px 18px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .panel-head .mark{
+    width:36px; height:36px; border-radius:10px;
+    background: var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .panel-head .title{ font-weight:700; font-size:14.5px; }
+  .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
+  .progress{ height:3px; background: var(--line); }
+  .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
+  /* 카드 전체를 화면 높이에 가깝게 늘리고, 버튼은 아래로 붙인다 */
+  .panel{ min-height: min(760px, calc(100dvh - 70px)); display:flex; flex-direction:column; }
+  .screen{ padding: 26px 20px 24px; flex:1; display:flex; flex-direction:column; }
+  .cta, .actions{ margin-top:auto; }
+  .hidden{ display:none !important; }
+  .intro .eyebrow{ font-size:11px; letter-spacing:0.1em; color: var(--accent); margin-bottom:12px; }
+  .intro h1{ font-size:28px; line-height:1.35; margin-bottom:12px; }
+  .intro p{ font-size:14px; color: var(--ink-soft); margin-bottom:10px; }
+  .intro .note{
+    font-size:12px; color: var(--ink-faint); margin: 16px 0 22px;
+    padding:10px 12px; border-left:3px solid var(--line);
+  }
+  .cta{
+    display:block; width:100%; background: var(--accent); color:#fff;
+    border:none; border-radius:12px; padding:14px 16px;
+    font-size:15px; font-weight:700; font-family:inherit; cursor:pointer;
+  }
+  .cta:hover{ background: var(--accent-dark); }
+  .q-num{ font-size:11.5px; color: var(--accent); letter-spacing:0.06em; margin-bottom:8px; }
+  .q-text{ font-size:18px; line-height:1.45; margin-bottom:18px; }
+  .opts{ display:flex; flex-direction:column; gap:8px; }
+  .opt{
+    text-align:left; width:100%; background: #F3F8F6; border:1px solid var(--line);
+    border-radius:12px; padding:12px 14px; font-size:14px; font-family:inherit;
+    color: var(--ink); cursor:pointer; transition: border-color .15s, background .15s;
+  }
+  .opt:hover{ border-color: var(--accent); background: #EAF4F0; }
+  .result .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:12px;
+  }
+  .result .name{ font-size:26px; line-height:1.3; margin-bottom:6px; }
+  .result .level{ font-size:13px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .desc{ font-size:14px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .tip{ background:#F3F8F6; border-radius:12px; padding:12px 14px; font-size:13.5px; margin-bottom:12px; }
+  .result .warn{ font-size:12px; color: var(--ink-faint); margin-bottom:18px; }
+  .actions{ display:flex; gap:8px; }
+  .actions button{
+    flex:1; border-radius:12px; padding:12px;
+    font-size:13.5px; font-family:inherit; font-weight:700; cursor:pointer;
+  }
+  .actions .share{ background: var(--accent); color:#fff; border:none; }
+  .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
+  .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
+  .toast.show{ display:block; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="crumb-bar">
+    <a href="../index.html">탐구소</a>
+    <span>/</span>
+    <a href="index.html">돈</a>
+    <span>/</span>
+    <span class="current">돈 얘기</span>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="mark">💬</div>
+      <div>
+        <div class="title">돈 얘기</div>
+        <div class="sub" id="statusText">시작 전</div>
+      </div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+    <div id="intro" class="screen intro">
+      <div class="eyebrow">돈과 관계</div>
+      <h1 class="serif">돈 얘기 앞에서<br>왜 입이 안 떨어지지?</h1>
+      <p>빌려준 돈, 더치페이, 같이 쓴 돈. 금액보다 말을 꺼내는 일이 더 어려운 순간이 있어요.</p>
+      <div class="note">재무 상담도, 법률 조언도 아니에요. 돈 얘기가 어려운 이유가 어느 쪽에 가까운지만 보는 테스트예요. 정답 유형은 없어요.</div>
+      <button class="cta" onclick="startQuiz()">해볼래 →</button>
+    </div>
+    <div id="quiz" class="screen hidden">
+      <div class="q-num mono" id="qNum"></div>
+      <div class="q-text serif" id="qText"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+    <div id="result" class="screen result hidden">
+      <span class="tag">결과</span>
+      <div class="name serif" id="rName"></div>
+      <div class="level" id="rLevel"></div>
+      <div class="desc" id="rDesc"></div>
+      <div class="tip" id="rTip"></div>
+      <div class="warn">돈 얘기가 어려운 건 성격 탓만은 아니에요. 상대와 상황에 따라 달라지고, 재무·법률 상담이 아닙니다.</div>
+      <div class="actions">
+        <button class="share" onclick="copyResult()">결과 링크 복사</button>
+        <button class="again" onclick="restartQuiz()">다시하기</button>
+      </div>
+      <div class="toast" id="toast">링크가 복사됐어요</div>
+    </div>
+  </div>
+</div>
+<script>
+
+// 돈 얘기가 어려운 사람 — 속으로 계산 / 일단 응해줌 / 정확해야 편함 / 웃음으로 넘김
+const questions = [
+  { text: "친구가 빌려간 돈, 한 달째 얘기가 없어. 너는?", options: [
+    { text: "속으로 날짜만 세고 있음", val:"silent" },
+    { text: "‘괜찮아’ 하고 그냥 넘김", val:"yield" },
+    { text: "금액과 날짜를 정리해서 말함", val:"exact" },
+    { text: "‘나 요즘 파산이야~’ 하며 슬쩍 돌려 말함", val:"joke" }
+  ]},
+  { text: "더치페이하다 금액이 애매하게 어긋나면?", options: [
+    { text: "말 못 하고 속으로만 계산함", val:"silent" },
+    { text: "상대가 편한 대로 맞춰줌", val:"yield" },
+    { text: "정확히 나눠야 마음이 편함", val:"exact" },
+    { text: "‘그냥 내가 낼게’ 하고 웃으며 넘김", val:"joke" }
+  ]},
+  { text: "지인이 ‘이번만 좀 빌려줘’ 하면?", options: [
+    { text: "얼마나, 언제까지인지 못 물어봄", val:"silent" },
+    { text: "일단 빌려주고 나중에 후회함", val:"yield" },
+    { text: "금액과 기한이 정해져야 빌려줌", val:"exact" },
+    { text: "‘나도 없어~’ 하고 웃으며 돌려 거절함", val:"joke" }
+  ]},
+  { text: "같이 쓴 돈을 정산하자고 말해야 한다면?", options: [
+    { text: "속으로만 계산하고 말은 안 꺼냄", val:"silent" },
+    { text: "상대가 곤란해 보이면 내가 그냥 부담함", val:"yield" },
+    { text: "필요하면 바로 말함. 그게 편함", val:"exact" },
+    { text: "‘우리 정산해야 하나~?’ 하고 가볍게 던짐", val:"joke" }
+  ]},
+  { text: "연인·가족과 생활비·데이트 비용 얘기가 나오면?", options: [
+    { text: "분위기 깨질까 봐 일단 넘어감", val:"silent" },
+    { text: "상대에게 맞춰서 더 내는 편", val:"yield" },
+    { text: "기준을 정해두자고 말함", val:"exact" },
+    { text: "‘돈 얘기는 나중에~’ 하고 돌림", val:"joke" }
+  ]},
+  { text: "돈 얘기가 끝난 뒤(혹은 못 한 뒤) 남는 기분은?", options: [
+    { text: "말 못 한 게 계속 곱씹힘", val:"silent" },
+    { text: "해줬는데 후회가 남음", val:"yield" },
+    { text: "정리돼서 개운한데, 야박했나 싶음", val:"exact" },
+    { text: "분위기는 좋았는데 결론은 안 남음", val:"joke" }
+  ]},
+  { text: "돈 얘기를 분명하게 하는 사람을 보면?", options: [
+    { text: "대단하다, 나는 입이 안 떨어짐", val:"silent" },
+    { text: "나도 해야지 하는데 막상 앞에선 응하게 됨", val:"yield" },
+    { text: "나도 저게 편한데 가끔 눈치가 보임", val:"exact" },
+    { text: "저렇게 직접 말하는 게 나는 민망함", val:"joke" }
+  ]},
+  { text: "돈 얘기가 어렵다고 느끼는 진짜 이유는?", options: [
+    { text: "관계가 어색해질까 봐", val:"silent" },
+    { text: "상대를 곤란하게 하기 싫어서", val:"yield" },
+    { text: "내가 야박해 보일까 봐", val:"exact" },
+    { text: "돈 얘기 자체가 민망해서", val:"joke" }
+  ]}
+];
+const results = {
+  silent:{ name:"속으로 계산하는 사람", level:"참는형",
+    desc: "말을 꺼내면 관계가 어색해질까 봐 일단 삼키는 쪽이에요. 받을 돈, 낸 돈을 속으로는 정확히 세고 있어서 쌓일수록 마음이 불편해져요. 돈 자체보다 말을 못 해서 남는 찜찜함이 더 커요.",
+    tip: "한 번에 다 말하려 하지 말고, 확인하는 말 한 줄만 먼저 꺼내보세요. ‘지난번 그거 정산해도 될까?’처럼 부탁보다 확인에 가까운 말이 부담이 덜해요." },
+  yield:{ name:"일단 응해주고 후회하는 사람", level:"수락형",
+    desc: "부탁이나 요구 앞에서 거절보다 수락이 먼저 나오는 쪽이에요. 상대를 곤란하게 하기 싫은 마음이 커서 더 내고, 빌려주고, 넘어가요. 그런데 돌아서면 마음에 남는 게 많아요.",
+    tip: "바로 대답하지 말고 ‘생각해보고 알려줄게’ 한마디를 연습해보세요. 거절이 아니라 시간을 버는 말이라서 부담이 적어요." },
+  exact:{ name:"정확해야 편한 사람", level:"정산형",
+    desc: "금액과 기준이 분명해야 마음이 편한 쪽이에요. 돈 얘기를 피하지 않는 건 장점이지만, 따지는 내가 야박해 보일까 신경 쓰이기도 해요. 정확해서 편한 건데, 그 마음이 잘 전해지지 않아 오해받을 때도 있죠.",
+    tip: "숫자를 말하기 전에 ‘내가 정확해야 마음이 편해서’ 한마디를 붙여보세요. 같은 말도 따지는 것보다 부탁에 가깝게 들려요." },
+  joke:{ name:"웃음으로 넘기는 사람", level:"돌려말하기형",
+    desc: "돈 얘기가 나오면 분위기를 가볍게 만들며 넘기는 쪽이에요. 직접 말하는 게 민망하기도 하고, 분위기를 깨고 싶지 않아서이기도 해요. 다만 웃고 끝나면 결론이 안 남아서 같은 얘기가 다시 돌아와요.",
+    tip: "농담 뒤에 ‘그래서 이번 주 안에 정리하자’처럼 날짜 한 줄만 붙여보세요. 웃으면서도 결론은 남길 수 있어요." }
+};
+
+let current = 0;
+const scores = Object.fromEntries(Object.keys(results).map(k => [k, 0]));
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  current = 0;
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  renderQuestion();
+}
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById('statusText').textContent = (current + 1) + ' / ' + questions.length;
+  document.getElementById('qNum').textContent = (current + 1) + '번째';
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
+  // 선택지 순서를 매번 섞어서, 위치 때문에 결과가 쏠리지 않게 한다
+  shuffle(q.options).forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.val);
+    opts.appendChild(btn);
+  });
+}
+function selectAnswer(val){
+  scores[val]++;
+  current++;
+  if (current < questions.length) renderQuestion();
+  else {
+    document.getElementById('progressBar').style.width = '100%';
+    showResult();
+  }
+}
+function showResult(){
+  // 동점이면 동점인 유형 중에서 무작위로 고른다
+  const max = Math.max(...Object.values(scores));
+  const tops = Object.keys(scores).filter(k => scores[k] === max);
+  const top = tops[Math.floor(Math.random() * tops.length)];
+  const r = results[top];
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '결과';
+  document.getElementById('rName').textContent = r.name;
+  document.getElementById('rLevel').textContent = r.level;
+  document.getElementById('rDesc').textContent = r.desc;
+  document.getElementById('rTip').textContent = r.tip;
+}
+function restartQuiz(){
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '시작 전';
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('toast').classList.remove('show');
+}
+function copyResult(){
+  // 결과 이름 한 줄, 주소 한 줄만 복사한다
+  const text = document.getElementById('rName').textContent + '\n' + location.href;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  }).catch(() => {});
+}
+
+</script>
+</body>
+</html>
