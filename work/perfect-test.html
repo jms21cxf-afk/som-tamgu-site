@@ -103,6 +103,7 @@
   .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
   .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
   .toast.show{ display:block; }
+  .result .related{ display:block; font-size:13px; color: var(--accent); margin-bottom:14px; text-decoration:underline; text-underline-offset:3px; }
 </style>
 </head>
 <body>
@@ -142,6 +143,7 @@
       <div class="desc" id="rDesc"></div>
       <div class="tip" id="rTip"></div>
       <div class="warn">꼼꼼한 게 나쁜 건 아니에요. 다만 쉬는 시간까지 일로 채우고 있다면, 그건 성실함이 아니라 소모일 수 있어요.</div>
+      <a class="related" href="articles/good-enough.html">관련 글 · 제출 앞에서 또 고치는 이유 →</a>
       <div class="actions">
         <button class="share" onclick="copyResult()">결과 링크 복사</button>
         <button class="again" onclick="restartQuiz()">다시하기</button>
