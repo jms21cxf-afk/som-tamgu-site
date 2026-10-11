@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>하루 종일 바빴는데, 성과는 어디에 있을까? — 탐구소</title>
+<meta name="description" content="하루 종일 바빴는데 성과는 어디에 있을까? 업무 중단과 협업 과부하, 몰입과 생산성의 관계를 연구로 살펴봅니다.">
+<meta name="keywords" content="업무 성과, 생산성, 협업 과부하, 업무 몰입, 직장탐구">
+<meta name="author" content="탐구소">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="탐구소">
+<meta property="og:title" content="하루 종일 바빴는데, 성과는 어디에 있을까? — 탐구소">
+<meta property="og:description" content="바쁜 하루와 업무 성과의 차이를 살펴봅니다.">
+<meta property="og:image" content="https://tamguso.com/og-preview-2.jpg">
+<meta property="og:url" content="https://tamguso.com/work/insights/busy-but-not-productive.html">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="하루 종일 바빴는데, 성과는 어디에 있을까? — 탐구소">
+<meta name="twitter:description" content="바쁜 하루와 업무 성과의 차이를 살펴봅니다.">
+<meta name="twitter:image" content="https://tamguso.com/og-preview-2.jpg">
+<link rel="canonical" href="https://tamguso.com/work/insights/busy-but-not-productive.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Gowun+Dodum&family=Do+Hyeon&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F1EC; --card:#F8F7F3;
+    --title:#263746; --body:#4D5357; --meta:#85898A;
+    --point:#667C88; --line:#DDD9D2;
+    --deep:#263746; --deep-text:#F3F1EC; --deep-soft:#A8B4BC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum', sans-serif; color: var(--body); line-height:1.85; }
+  a{ color: var(--point); text-decoration:none; }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 20px; }
+
+  header.site{ padding: 16px 0; background: var(--deep); }
+  header.site .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:8px; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--point); }
+  .brand .name{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-weight:700; font-size:16px; color: var(--deep-text); }
+  nav.site{ display:flex; gap:18px; }
+  nav.site a{ font-size:13px; color: var(--deep-soft); }
+  nav.site a.current{ color: var(--deep-text); font-weight:700; }
+  /* 휴대폰에서는 로고 아래 메뉴를 한 줄로 */
+  @media (max-width: 720px){
+    header.site .wrap{ flex-direction:column; align-items:flex-start; gap:10px; }
+    nav.site{ width:100%; justify-content:center; }
+    nav.site a{ font-size:12px; white-space:nowrap; }
+  }
+
+  .crumb-bar{ background: var(--bg); padding: 12px 0; font-family:'Do Hyeon', sans-serif; font-size: 13px; }
+  .crumb-bar .wrap{ display:flex; align-items:center; gap:8px; }
+  .crumb-bar a.home{ color: var(--point); }
+  .crumb-bar span.sep{ color: var(--meta); }
+  .crumb-bar .current{ color: var(--title); }
+
+  main{ padding: 36px 0 70px; }
+  .tag{
+    display:inline-block; background: var(--point); color: var(--card);
+    font-size:11px; letter-spacing:0.05em; padding:4px 12px; border-radius:999px; margin-bottom:16px;
+    font-family:'Do Hyeon', sans-serif;
+  }
+  h1{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-size:28px; color: var(--title); line-height:1.4; margin-bottom:10px; }
+  .meta{ font-size:12px; color: var(--meta); margin-bottom:34px; }
+
+  h2{ font-size:18px; color: var(--title); margin: 34px 0 14px; font-weight:700; }
+  p{ font-size:14.8px; color: var(--body); margin-bottom: 12px; }
+  p strong{ color: var(--title); }
+  .quote-line{ color: var(--title); font-weight:700; }
+
+  hr{ border:none; border-top:1px solid var(--line); margin: 32px 0; }
+
+  .closing{
+    margin-top: 40px; padding: 20px; background: var(--card); border: 1px solid var(--line); border-radius:16px;
+  }
+  .closing h3{ font-size:15px; color: var(--title); margin-bottom:8px; font-family:'Gaegu','Gowun Dodum',sans-serif; }
+  .closing p{ font-size:13.5px; margin-bottom:8px; }
+  .closing p:last-child{ margin-bottom:0; }
+
+  .refs{
+    margin-top: 24px; padding: 16px 18px; background: var(--card); border: 1px dashed var(--line); border-radius:12px;
+  }
+  .refs .refs-title{ font-size:12px; color: var(--meta); margin-bottom:12px; font-family:'Do Hyeon',sans-serif; letter-spacing:0.03em; }
+  .refs ul{ list-style:none; }
+  /* 논문 제목 아래 한글로 요약을 붙인다 */
+  .refs li{ margin-bottom:14px; padding-left:14px; position:relative; }
+  .refs li:last-child{ margin-bottom:0; }
+  .refs li::before{ content:'—'; position:absolute; left:0; color: var(--point); }
+  .refs .paper{ font-size:12.5px; color: var(--title); font-weight:700; margin-bottom:4px; }
+  .refs .note{ font-size:12.5px; color: var(--body); line-height:1.65; }
+
+  .cta-box{
+    margin-top: 30px; background: var(--card); border:1px solid var(--line); border-radius:16px;
+    padding: 20px; text-align:center;
+  }
+  .cta-box a{
+    display:inline-block; margin-top:10px; background: #EEF1F3; color: var(--point);
+    border: 1.5px solid var(--point);
+    padding:10px 24px; border-radius:999px; font-weight:700; font-size:13.5px;
+  }
+
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--meta); }
+
+  footer.site{ margin-top: 50px; background: var(--deep); padding: 30px 0; }
+  footer.site .wrap{ text-align:center; }
+  footer.site .name{ font-family:'Gaegu','Gowun Dodum',sans-serif; font-weight:700; font-size:15px; color: var(--deep-text); margin-bottom:6px; }
+  footer.site p{ font-size:12px; color: var(--deep-soft); margin-bottom:0; }
+  footer.site a{ color: var(--deep-text); text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="https://tamguso.com/work/" aria-label="직장 탐구생활 홈"><span class="dot"></span><span class="name">직장 탐구생활</span></a>
+    <nav class="site">
+      <a href="https://tamguso.com/work/">직장</a>
+      <a href="https://tamguso.com/work/articles/">읽을거리</a>
+      <a href="https://tamguso.com/work/insights/" class="current">탐구</a>
+      <a href="https://tamguso.com/about.html">소개</a>
+    </nav>
+  </div>
+</header>
+
+<div class="crumb-bar">
+  <div class="wrap">
+    <a class="home" href="https://tamguso.com/">탐구소</a><span class="sep">/</span>
+    <a class="home" href="https://tamguso.com/work/">직장</a><span class="sep">/</span>
+    <a class="current" href="https://tamguso.com/work/insights/">탐구</a>
+  </div>
+</div>
+
+<main class="wrap">
+  <span class="tag">DEEP DIVE</span>
+  <h1>하루 종일 바빴는데, 성과는 어디에 있을까?</h1>
+  <div class="meta">읽는 시간 약 8분</div>
+  <p><strong>하루 종일 바빴는데, 정작 무엇을 해냈는지는 잘 떠오르지 않는다.</strong></p>
+  <p>아침부터 메일을 확인하고, 급한 요청에 답하고, 회의에 참석한다. 회의가 끝나면 메신저 알림이 울린다. 잠깐 답을 쓰는 동안 또 다른 일이 들어온다.</p>
+  <p>점심시간이 지나고 오후가 된다. 여전히 처리할 일은 많다.</p>
+  <p>어느새 퇴근 시간. 오늘 꼭 끝내려고 했던 보고서는 아직 절반도 작성하지 못했다.</p>
+  <p class="quote-line">“오늘 이렇게 바빴는데, 나는 뭘 한 거지?”</p>
+  <p>분명 아무것도 하지 않은 것은 아니다. 오히려 누구보다 바쁘게 움직였다. 그런데 일이 많이 진행된 것 같지는 않다.</p>
+  <p>바쁘게 일하는 것과 성과를 내는 것은 왜 다를까?</p>
+  <h2>바쁘다는 것은 일을 많이 했다는 뜻일까?</h2>
+  <p>회사에서 바쁜 사람은 쉽게 눈에 띈다. 늘 메일을 확인하고, 회의에 참석하고, 누군가의 질문에 답한다.</p>
+  <p>그런데 업무 활동이 많다는 것과 중요한 결과를 만들어냈다는 것은 같은 의미가 아니다.</p>
+  <p>A는 하루 동안 메일 40개에 답하고 회의 세 번에 참석했다. B는 중요한 문제 하나를 해결하고 다음 프로젝트에 필요한 핵심 자료를 완성했다.</p>
+  <p>누가 더 바쁘게 보일까? 아마 A일 것이다. 그렇다면 누가 더 좋은 성과를 냈을까?</p>
+  <p>이 질문에는 쉽게 답하기 어렵다. A의 대응이 팀의 업무를 멈추지 않게 했을 수도 있고, B의 자료가 실제로는 별 도움이 되지 않았을 수도 있기 때문이다.</p>
+  <p><strong>중요한 것은 처리한 업무의 개수만이 아니라 그 일이 어떤 결과로 이어졌는가이다.</strong></p>
+  <h2>바쁘게 움직이는 모습은 눈에 잘 띈다</h2>
+  <p>전화를 받고 회의실을 오가는 사람은 바쁘다는 사실을 쉽게 알 수 있다. 반면 중요한 문제를 해결하려고 두 시간 동안 조용히 생각하는 사람은 별다른 일을 하지 않는 것처럼 보일 수도 있다.</p>
+  <p>그래서 우리는 때때로 메일 수, 회의 참석 횟수, 늦은 퇴근처럼 확인하기 쉬운 활동을 성과의 단서로 삼는다.</p>
+  <p>물론 고객 응대나 장애 처리처럼 신속한 대응 자체가 중요한 업무도 있다. 문제는 측정하기 쉬운 활동이 실제로 중요한 결과를 대신하기 시작할 때다.</p>
+  <p>고객 불만을 줄이는 것이 목표인데 상담 처리 건수만 평가한다면 어떨까? 상담을 빠르게 끝내는 것과 고객 문제가 해결되는 것은 별개의 문제다.</p>
+  <p>성과를 무엇으로 정의하느냐에 따라 열심히 일하는 방향도 달라질 수 있다.</p>
+  <h2>알림이 많으면 왜 집중하기 어려울까?</h2>
+  <p>보고서를 작성하다가 메일을 확인하고, 메일에 답하다가 메신저를 확인한다. 다시 보고서로 돌아오면 어디까지 생각했는지부터 떠올려야 한다.</p>
+  <p>2023년 MIS Quarterly에 발표된 연구는 사무 업무를 모사한 실험에서 IT를 통한 방해의 빈도와 관련성이 몰입 경험에 미치는 영향을 살펴보았다.</p>
+  <p>연구가 주목한 것은 방해가 모두 같은 방식으로 작동하지 않는다는 점이다. 얼마나 자주 끊기는지, 지금 하는 일과 관련된 방해인지에 따라 경험이 달라질 수 있다.</p>
+  <p>따라서 알림이 많다는 이유만으로 성과가 반드시 떨어진다고 단정할 수는 없다. 다만 업무에 깊이 몰입하기 어려운 환경인지 살펴볼 필요는 있다.</p>
+  <p>중요한 일을 하는 시간과 요청에 대응하는 시간을 구분하는 것이 도움이 될 수 있다.</p>
+  <h2>서로 도와주는데 왜 모두 시간이 부족할까?</h2>
+  <p>회사에서는 혼자 일하지 않는다. 동료에게 질문하고, 다른 사람의 요청을 처리하고, 필요한 정보를 주고받는다. 협업은 꼭 필요하다.</p>
+  <p>하지만 도움을 주는 일이 계속 늘어난다면 어떨까?</p>
+  <p>2023년 Journal of Business Research에 실린 연구는 장기간에 걸친 협업 과부하와 도움 행동을 살펴보았다. 네 차례에 걸쳐 수집한 종단 자료를 분석한 결과, 도움 요구가 과도하게 쌓이는 현상은 직무요구와 관련되었고, 이를 통해 정서적 소진과 일·가정 갈등으로 이어지는 관계가 관찰되었다.</p>
+  <p>이 연구는 동료를 돕는 행동 자체가 나쁘다는 뜻이 아니다. 중요한 것은 도움 요청이 특정 사람에게 과도하게 집중되는가이다.</p>
+  <p>한 사람에게는 작은 부탁이지만, 여러 사람의 부탁을 받는 사람에게는 하루 전체를 바꾸는 일이 될 수도 있다.</p>
+  <p><strong>바쁨과 성과의 차이는 개인의 집중력뿐 아니라 업무가 어떻게 배분되는지와도 관련된다.</strong></p>
+  <h2>협업이 많으면 생산성도 높아질까?</h2>
+  <p>회의를 자주 하고 서로 정보를 나누면 협업을 잘하고 있다고 느끼기 쉽다. 그런데 협업을 많이 하는 것과 협업의 결과가 좋은 것은 구분해야 한다.</p>
+  <p>2024년 Organization Science에 온라인 발표된 연구는 구성원이 바뀌는 역동적인 팀에서 조정, 학습, 생산성 사이의 관계를 살펴보았다. 연구 대상은 의료 분야의 팀이었다.</p>
+  <p>따라서 그 결과를 일반 사무직에 그대로 적용할 수는 없다. 다만 팀의 생산성을 이해할 때 단순한 활동량뿐 아니라 조정과 학습의 관계도 살펴봐야 한다는 점을 생각하게 한다.</p>
+  <p>회의 횟수를 늘리는 것이 아니라, 어떤 문제를 해결하기 위해 누구와 협력해야 하는지 명확히 하는 일이 중요할 수 있다.</p>
+  <h2>급한 일과 중요한 일은 같은 걸까?</h2>
+  <p>출근할 때는 오늘 해야 할 일을 계획한다. 하지만 “이것부터 빨리 확인해 주세요”라는 요청이 들어오면 계획이 쉽게 바뀐다.</p>
+  <p>급한 요청은 당장 반응하지 않으면 문제가 생길 것 같다. 반면 반복되는 문제의 원인을 분석하거나 업무 방식을 개선하는 일은 조금 미뤄도 큰 문제가 드러나지 않을 수 있다.</p>
+  <p>예를 들어 한 직원은 매일 접수되는 고객 불만을 빠르게 처리한다. 다른 직원은 불만이 반복되는 원인을 찾아 해결책을 마련한다. 두 업무 모두 필요하다.</p>
+  <p>그런데 눈앞의 요청에 모든 시간을 사용한다면 장기적인 개선을 위한 여유는 부족해진다.</p>
+  <p>오늘의 문제를 처리하는 것과 내일도 같은 문제가 생기지 않도록 만드는 것은 다른 종류의 일이다.</p>
+  <h2>성과를 내는 사람은 덜 바쁠까?</h2>
+  <p>그렇지는 않다. 중요한 프로젝트를 맡은 사람은 누구보다 바쁠 수 있다. 성과를 잘 내는 사람에게 더 많은 책임이 주어지기도 한다.</p>
+  <p>그래서 바쁜 사람과 성과를 내는 사람을 서로 반대되는 유형으로 나누는 것은 적절하지 않다.</p>
+  <p>바쁨은 업무에 사용한 시간과 노력을 보여준다. 성과는 그 노력이 어떤 목표에 기여했고 어떤 결과를 만들었는지 살펴봐야 알 수 있다.</p>
+  <p>성과 역시 개인의 노력만으로 결정되지 않는다. 동료의 지원, 업무 난이도, 조직의 자원과 목표도 영향을 준다.</p>
+  <p><strong>성과는 바쁨의 반대말이 아니다. 바쁨만으로는 설명할 수 없는 결과에 가깝다.</strong></p>
+  <h2>중요한 일에 시간을 쓰려면 무엇이 달라져야 할까?</h2>
+  <p>무조건 더 빨리 일하는 것만으로는 부족할 수 있다. 업무를 빨리 끝내도 그 자리에 새로운 요청이 들어오면 여전히 바쁘기 때문이다.</p>
+  <p>먼저 지금 처리하는 일이 어떤 목표와 연결되어 있는지 살펴볼 필요가 있다.</p>
+  <p>반복되는 요청 중 업무 방식을 바꾸면 줄일 수 있는 것은 없는가? 중요한 일을 위해 방해받지 않는 시간을 확보할 수 있는가? 특정 사람에게 도움 요청이 몰리고 있지는 않은가?</p>
+  <p>이 질문에 답한다고 모든 문제가 해결되는 것은 아니다. 업무량과 우선순위를 개인이 결정할 수 없는 조직도 있기 때문이다.</p>
+  <p>따라서 바쁨과 성과의 차이는 개인의 시간 관리 문제이면서 동시에 조직의 업무 설계 문제이기도 하다.</p>
+  <hr>
+  <h2>이건 정말 그럴까?</h2>
+  <p class="quote-line">‘하루 종일 바쁘게 일한 사람은 그만큼 성과도 많이 냈을까?’</p>
+  <p>궁금해서 관련 연구를 찾아보았다.</p>
+  <p>업무 중단과 몰입을 살펴본 연구가 있었고, 도움 행동이 장기간 과도하게 쌓일 때 나타나는 부담을 분석한 연구도 있었다. 팀의 생산성을 조정과 학습의 관점에서 살펴본 연구도 있었다.</p>
+  <p>이 연구들은 서로 다른 환경과 지표를 다룬다. 따라서 하나의 법칙처럼 합쳐 “바쁘면 성과가 낮다”고 말할 수는 없다.</p>
+  <p><strong>그래서 이번 글에서는 ‘바쁜 사람은 성과가 낮다’라고 결론 내리지 않았다.</strong></p>
+  <p>다만 얼마나 바쁘게 움직였는지만으로는 그 사람이 어떤 성과를 냈는지 알기 어렵다는 점을 생각해 볼 수 있었다.</p>
+  <div class="refs"><div class="refs-title">관련 연구</div><ul>
+    <li><div class="paper">What Disrupts Flow in Office Work? The Impact of Frequency and Relevance of IT-Mediated Interruptions</div><div class="note">MIS Quarterly (2023) · 업무 방해의 빈도와 관련성이 몰입 경험에 미치는 영향을 사무 업무 실험으로 살펴본 연구. <a href="https://doi.org/10.25300/MISQ/2023/17200" target="_blank" rel="noopener noreferrer">DOI ↗</a></div></li>
+    <li><div class="paper">The Consequences of Collaborative Overload: A Long-Term Investigation of Helping Behavior</div><div class="note">Kim, Kim &amp; Cho (2023) · Journal of Business Research · 네 차례에 걸친 종단 자료를 통해 협업 과부하, 직무요구, 정서적 소진 및 일·가정 갈등의 관계를 분석한 연구. <a href="https://doi.org/10.1016/j.jbusres.2022.113348" target="_blank" rel="noopener noreferrer">DOI ↗</a></div></li>
+    <li><div class="paper">Coordination in Dynamic Teams: Investigating a Learning–Productivity Trade-Off</div><div class="note">Mayo et al. (2024, 온라인 발표) · Organization Science · 의료 분야의 역동적인 팀에서 조정, 학습, 생산성의 관계를 살펴본 연구. <a href="https://doi.org/10.1287/orsc.2022.16729" target="_blank" rel="noopener noreferrer">DOI ↗</a></div></li>
+    <li><div class="paper">The Cost of Interrupted Work: More Speed and Stress</div><div class="note">Mark, Gudith &amp; Klocke (2008) · CHI · 업무가 중단된 참가자들이 더 빨리 과제를 끝냈지만 스트레스와 시간 압박을 더 느낀 실험연구. <a href="https://doi.org/10.1145/1357054.1357072" target="_blank" rel="noopener noreferrer">DOI ↗</a></div></li>
+  </ul></div>
+  <div class="closing"><h3>한 가지 기억할 것</h3><p><strong>하루 종일 바빴다는 것은 그만큼 많은 요구에 대응했다는 뜻일 수 있다.</strong></p><p>그중에는 조직을 움직이는 데 꼭 필요한 일도 있었을 것이다. 하지만 바쁘게 움직인 시간이 언제나 중요한 결과로 이어지는 것은 아니다.</p><p>그래서 하루를 돌아볼 때는</p><p class="quote-line">“오늘 얼마나 많은 일을 했지?”</p><p>라는 질문과 함께</p><p><strong>“오늘 내가 한 일은 무엇을 달라지게 했을까?”</strong></p><p>라고 물어봐도 좋을 것 같다.</p></div>
+  <div class="cta-box"><div style="font-family:'Gaegu','Gowun Dodum',sans-serif; font-size:16px; color:var(--title);">직장탐구의 다른 이야기도 궁금하다면?</div><a href="https://tamguso.com/work/insights/">다른 탐구글 보러가기</a></div>
+  <a class="back" href="https://tamguso.com/work/insights/">← 탐구 목록으로</a>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div class="name">탐구소</div>
+    <p>가볍게 시작해서, 진지하게 알아가는 곳 · <a href="/about.html">소개</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
