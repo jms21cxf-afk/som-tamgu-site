@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>탐구소 — 가볍지만 진지하게, 알아가는 곳</title>
-<meta name="description" content="심리, 인물, 웹툰, 테크, 여행까지. 탐구소는 여러 분야를 가볍지만 깊이 있게 다루는 곳입니다.">
+<meta name="description" content="심리, 직장, 돈, 인물까지. 탐구소는 여러 분야를 가볍지만 깊이 있게 다루는 곳입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
@@ -22,9 +22,7 @@
     --psy:#FF6F59;    --psy-bg:#FFF1EC;
     --work:#2F6F8F;   --work-bg:#E3F0F6;
     --ppl:#D9A400;    --ppl-bg:#FFF8E3;
-    --toon:#8B5FBF;   --toon-bg:#F4EEFB;
-    --tech:#2E8B7C;   --tech-bg:#E9F6F3;
-    --trvl:#3E7CB1;   --trvl-bg:#EAF3FA;
+    --money:#2E8B7C;  --money-bg:#E9F6F3;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{ scroll-behavior:smooth; }
@@ -118,21 +116,17 @@
   .card[data-cat="psy"] .tab{ background: var(--psy); }
   .card[data-cat="work"] .tab{ background: var(--work); }
   .card[data-cat="ppl"] .tab{ background: var(--ppl); }
-  .card[data-cat="toon"] .tab{ background: var(--toon); }
-  .card[data-cat="tech"] .tab{ background: var(--tech); }
-  .card[data-cat="trvl"] .tab{ background: var(--trvl); }
+  .card[data-cat="money"] .tab{ background: var(--money); }
 
   .card .row1{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
   .card .code{ font-size:10.5px; letter-spacing:0.06em; padding:3px 8px; border-radius:999px; }
   .card[data-cat="psy"] .code{ background: var(--psy-bg); color: var(--psy); }
   .card[data-cat="work"] .code{ background: var(--work-bg); color: var(--work); }
   .card[data-cat="ppl"] .code{ background: var(--ppl-bg); color: var(--ppl); }
-  .card[data-cat="toon"] .code{ background: var(--toon-bg); color: var(--toon); }
-  .card[data-cat="tech"] .code{ background: var(--tech-bg); color: var(--tech); }
-  .card[data-cat="trvl"] .code{ background: var(--trvl-bg); color: var(--trvl); }
+  .card[data-cat="money"] .code{ background: var(--money-bg); color: var(--money); }
 
   .card .status{ font-size:10.5px; color: var(--ink-faint); }
-  .card .status.open{ color: var(--tech); font-weight:700; }
+  .card .status.open{ color: var(--money); font-weight:700; }
 
   .card h3{ font-family:'Do Hyeon', sans-serif; font-size: 19px; margin-bottom: 6px; }
   .card p{ font-size: 12.8px; color: var(--ink-soft); line-height:1.55; }
@@ -169,14 +163,14 @@
   <div class="hero">
     <div class="kicker mono">RESEARCH INDEX</div>
     <h1>가볍게 시작해서,<br><span class="accent">진지하게</span> 알아가는 곳</h1>
-    <p>심리, 직장, 인물, 웹툰, 테크, 여행 — 흥미로 시작한 궁금증이 쓸모 있는 정보로 남도록, 분야별로 나눠 기록합니다.</p>
-    <div class="stamp mono">현재 열람 가능 · <b>2 / 6</b> 분야</div>
+    <p>심리, 직장, 돈, 인물 — 흥미로 시작한 궁금증이 쓸모 있는 정보로 남도록, 분야별로 나눠 기록합니다.</p>
+    <div class="stamp mono">현재 열람 가능 · <b>2 / 4</b> 분야</div>
   </div>
 
   <div class="catalog">
     <div class="catalog-head">
       <h2>탐구 분야</h2>
-      <span class="count mono">6 FIELDS</span>
+      <span class="count mono">4 FIELDS</span>
     </div>
 
     <div class="catalog-grid">
@@ -203,44 +197,24 @@
         <div class="arrow">들어가기 →</div>
       </a>
 
+      <div class="card locked" data-cat="money">
+        <div class="tab"></div>
+        <div class="row1">
+          <span class="code mono">MONEY · 03</span>
+          <span class="status">준비 중</span>
+        </div>
+        <h3>돈</h3>
+        <p>돈이 새는 곳부터 돈 얘기가 어려운 이유까지. 투자 정보가 아니라 돈을 대하는 태도를 봅니다.</p>
+      </div>
+
       <div class="card locked" data-cat="ppl">
         <div class="tab"></div>
         <div class="row1">
-          <span class="code mono">PPL · 03</span>
+          <span class="code mono">PPL · 04</span>
           <span class="status">준비 중</span>
         </div>
         <h3>인물</h3>
         <p>시대를 만든 사람들의 결정적 순간. 일론 머스크부터 BTS까지, 사실 기반으로 풀어냅니다.</p>
-      </div>
-
-      <div class="card locked" data-cat="toon">
-        <div class="tab"></div>
-        <div class="row1">
-          <span class="code mono">TOON · 04</span>
-          <span class="status">준비 중</span>
-        </div>
-        <h3>웹툰</h3>
-        <p>줄거리 요약과 마음을 울린 장면에 대한 감상. 스포는 최소로, 여운은 최대로.</p>
-      </div>
-
-      <div class="card locked" data-cat="tech">
-        <div class="tab"></div>
-        <div class="row1">
-          <span class="code mono">TECH · 05</span>
-          <span class="status">준비 중</span>
-        </div>
-        <h3>물건</h3>
-        <p>온디바이스 AI, 로봇청소기, 스마트폰까지 — 기술이 삶을 바꾸는 방식을 풀어봅니다.</p>
-      </div>
-
-      <div class="card locked" data-cat="trvl">
-        <div class="tab"></div>
-        <div class="row1">
-          <span class="code mono">TRVL · 06</span>
-          <span class="status">준비 중</span>
-        </div>
-        <h3>여행</h3>
-        <p>낯선 나라와 도시를 탐구하는 시간. 정보와 감상을 함께 담습니다.</p>
       </div>
 
     </div>
