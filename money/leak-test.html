@@ -103,6 +103,7 @@
   .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
   .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
   .toast.show{ display:block; }
+  .result .related{ display:block; font-size:13px; color: var(--accent); margin-bottom:14px; text-decoration:underline; text-underline-offset:3px; }
 </style>
 </head>
 <body>
@@ -142,6 +143,7 @@
       <div class="desc" id="rDesc"></div>
       <div class="tip" id="rTip"></div>
       <div class="warn">필요해서 쓴 돈까지 ‘샌 돈’으로 볼 필요는 없어요. 소득과 상황에 따라 달라지고, 재무 상담이 아닙니다.</div>
+      <a class="related" href="articles/payday-anxiety.html">관련 글 · 월급날 지나면 불안한 이유 →</a>
       <div class="actions">
         <button class="share" onclick="copyResult()">결과 링크 복사</button>
         <button class="again" onclick="restartQuiz()">다시하기</button>
