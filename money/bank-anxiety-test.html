@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>통장 앞에서 드는 불안 테스트 — 탐구소</title>
+<meta name="description" content="통장을 열기가 겁나는 사람, 자꾸 들여다보는 사람, 기준이 없는 사람, 남과 비교하는 사람. 나는 어떤 불안에 가까울까? 8문항 유형 테스트. 진단이나 재무 상담이 아닙니다.">
+<meta name="keywords" content="통장 불안 테스트, 돈 불안, 잔고 확인, 돈 걱정, 소비 심리 테스트">
+<meta property="og:title" content="통장 앞에서 드는 불안 테스트 — 탐구소">
+<meta property="og:description" content="통장 앞에 서면 어떤 마음이 들까? 40초 돈 불안 테스트">
+<meta property="og:url" content="https://tamguso.com/money/bank-anxiety-test.html">
+<link rel="canonical" href="https://tamguso.com/money/bank-anxiety-test.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E9F1EE; --paper:#FFFFFF; --line:#C6D6CF;
+    --ink:#1A2622; --ink-soft:#475650; --ink-faint:#8A9892;
+    --accent:#2A7F6E; --accent-dark:#206456; --ok:#3D7A6A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 10% 0%, rgba(42,127,110,0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 100%, rgba(217,164,0,0.06) 0%, transparent 40%);
+    font-family:'Gowun Dodum', sans-serif; color: var(--ink);
+    min-height:100vh; padding: 20px 14px 40px;
+  }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  /* 폰 화면처럼 좁고 길게. 폭을 줄이면 한 줄 글자도 줄어든다 */
+  .shell{ width:100%; max-width:336px; margin:0 auto; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px;
+    font-family:'Do Hyeon', sans-serif; font-size:13px; margin-bottom:14px;
+  }
+  .crumb-bar a{ color: var(--accent); }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: var(--ink); }
+  .panel{
+    background: var(--paper); border: 1.5px solid var(--line);
+    border-radius: 18px; overflow:hidden;
+    box-shadow: 0 12px 28px -18px rgba(26,38,34,0.35);
+  }
+  .panel-head{
+    padding: 16px 18px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+  }
+  .panel-head .mark{
+    width:36px; height:36px; border-radius:10px;
+    background: var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+  .panel-head .title{ font-weight:700; font-size:14.5px; }
+  .panel-head .sub{ font-size:11.5px; color: var(--ink-soft); }
+  .progress{ height:3px; background: var(--line); }
+  .progress > i{ display:block; height:100%; width:0%; background: var(--accent); transition: width .35s ease; }
+  /* 카드 전체를 화면 높이에 가깝게 늘리고, 버튼은 아래로 붙인다 */
+  .panel{ min-height: min(760px, calc(100dvh - 70px)); display:flex; flex-direction:column; }
+  .screen{ padding: 26px 20px 24px; flex:1; display:flex; flex-direction:column; }
+  .cta, .actions{ margin-top:auto; }
+  .hidden{ display:none !important; }
+  .intro .eyebrow{ font-size:11px; letter-spacing:0.1em; color: var(--accent); margin-bottom:12px; }
+  .intro h1{ font-size:28px; line-height:1.35; margin-bottom:12px; }
+  .intro p{ font-size:14px; color: var(--ink-soft); margin-bottom:10px; }
+  .intro .note{
+    font-size:12px; color: var(--ink-faint); margin: 16px 0 22px;
+    padding:10px 12px; border-left:3px solid var(--line);
+  }
+  .cta{
+    display:block; width:100%; background: var(--accent); color:#fff;
+    border:none; border-radius:12px; padding:14px 16px;
+    font-size:15px; font-weight:700; font-family:inherit; cursor:pointer;
+  }
+  .cta:hover{ background: var(--accent-dark); }
+  .q-num{ font-size:11.5px; color: var(--accent); letter-spacing:0.06em; margin-bottom:8px; }
+  .q-text{ font-size:18px; line-height:1.45; margin-bottom:18px; }
+  .opts{ display:flex; flex-direction:column; gap:8px; }
+  .opt{
+    text-align:left; width:100%; background: #F3F8F6; border:1px solid var(--line);
+    border-radius:12px; padding:12px 14px; font-size:14px; font-family:inherit;
+    color: var(--ink); cursor:pointer; transition: border-color .15s, background .15s;
+  }
+  .opt:hover{ border-color: var(--accent); background: #EAF4F0; }
+  .result .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:12px;
+  }
+  .result .name{ font-size:26px; line-height:1.3; margin-bottom:6px; }
+  .result .level{ font-size:13px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .desc{ font-size:14px; color: var(--ink-soft); margin-bottom:14px; }
+  .result .tip{ background:#F3F8F6; border-radius:12px; padding:12px 14px; font-size:13.5px; margin-bottom:12px; }
+  .result .warn{ font-size:12px; color: var(--ink-faint); margin-bottom:18px; }
+  .actions{ display:flex; gap:8px; }
+  .actions button{
+    flex:1; border-radius:12px; padding:12px;
+    font-size:13.5px; font-family:inherit; font-weight:700; cursor:pointer;
+  }
+  .actions .share{ background: var(--accent); color:#fff; border:none; }
+  .actions .again{ background: var(--paper); color: var(--ink); border:1px solid var(--line); }
+  .toast{ display:none; text-align:center; font-size:12px; color: var(--ok); margin-top:10px; }
+  .toast.show{ display:block; }
+  .result .related{ display:block; font-size:13px; color: var(--accent); margin-bottom:14px; text-decoration:underline; text-underline-offset:3px; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="crumb-bar">
+    <a href="../index.html">탐구소</a>
+    <span>/</span>
+    <a href="index.html">돈</a>
+    <span>/</span>
+    <span class="current">통장 불안</span>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="mark">🏦</div>
+      <div>
+        <div class="title">통장 앞에서 드는 불안</div>
+        <div class="sub" id="statusText">시작 전</div>
+      </div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+    <div id="intro" class="screen intro">
+      <div class="eyebrow">돈 불안</div>
+      <h1 class="serif">통장 앞에 서면<br>어떤 마음이 들지?</h1>
+      <p>열어보기가 겁나기도 하고, 괜히 몇 번씩 들여다보기도 하고, 얼마가 있어야 안심인지 모르기도 해요. 불안에도 모양이 있어요.</p>
+      <div class="note">불안을 없애자는 테스트도, 진단도 아니에요. 통장 앞에서 내 마음이 어느 쪽에 가까운지만 보는 테스트예요. 얼마가 있어야 한다는 기준은 없어요.</div>
+      <button class="cta" onclick="startQuiz()">해볼래 →</button>
+    </div>
+    <div id="quiz" class="screen hidden">
+      <div class="q-num mono" id="qNum"></div>
+      <div class="q-text serif" id="qText"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+    <div id="result" class="screen result hidden">
+      <span class="tag">결과</span>
+      <div class="name serif" id="rName"></div>
+      <div class="level" id="rLevel"></div>
+      <div class="desc" id="rDesc"></div>
+      <div class="tip" id="rTip"></div>
+      <div class="warn">통장 앞에서 불안한 건 흔한 일이에요. 진단이나 상담이 아니고, 불안이 오래 이어져 생활이 힘들다면 가까운 사람이나 전문가와 이야기해 보세요.</div>
+      <a class="related" id="rRelated" href="insights/index.html">관련 글 →</a>
+      <div class="actions">
+        <button class="share" onclick="copyResult()">결과 링크 복사</button>
+        <button class="again" onclick="restartQuiz()">다시하기</button>
+      </div>
+      <div class="toast" id="toast">링크가 복사됐어요</div>
+    </div>
+  </div>
+</div>
+<script>
+
+// 통장 앞에서 드는 불안 — 회피 / 확인 / 막연 / 비교
+const questions = [
+  { text: "월급이 들어온 날, 통장 앱을 열면?", options: [
+    { text: "일부러 며칠 뒤에 열어 봄", val:"avoid" },
+    { text: "들어왔는지 하루에도 몇 번 확인함", val:"check" },
+    { text: "얼마가 남는지 계산이 잘 안 됨. 그냥 막연함", val:"vague" },
+    { text: "‘다른 사람들은 이 시기에 얼마나 모았을까’ 싶음", val:"compare" }
+  ]},
+  { text: "잔액이 줄어 있는 걸 봤을 때 먼저 드는 생각은?", options: [
+    { text: "‘보지 말걸’ 하고 앱을 닫음", val:"avoid" },
+    { text: "어디서 나갔는지 내역을 하나하나 확인함", val:"check" },
+    { text: "많이 쓴 건지 적게 쓴 건지 모르겠음", val:"vague" },
+    { text: "‘남들은 이렇게 안 쓰겠지’ 싶음", val:"compare" }
+  ]},
+  { text: "통장 잔액을 확인하는 빈도는?", options: [
+    { text: "가능하면 안 봄. 꼭 필요할 때만", val:"avoid" },
+    { text: "생각날 때마다. 하루에도 여러 번", val:"check" },
+    { text: "보긴 보는데 이 숫자가 어떤 의미인지 모르겠음", val:"vague" },
+    { text: "남들 얘기를 들은 날 갑자기 확인함", val:"compare" }
+  ]},
+  { text: "‘이 정도 있으면 안심’이라는 금액이 있어?", options: [
+    { text: "생각해 본 적 없음. 생각하면 불안해져서", val:"avoid" },
+    { text: "있긴 한데 그 이상이어도 또 확인하게 됨", val:"check" },
+    { text: "딱히 없음. 얼마여도 부족한 느낌", val:"vague" },
+    { text: "또래 평균이 얼마인지부터 궁금함", val:"compare" }
+  ]},
+  { text: "카드값 나가는 날이 다가오면?", options: [
+    { text: "금액을 확인하지 않고 그냥 둠", val:"avoid" },
+    { text: "미리 몇 번이나 총액을 확인함", val:"check" },
+    { text: "대충 이 정도겠지 하고 넘어감", val:"vague" },
+    { text: "다른 사람은 한 달에 얼마나 쓰는지 궁금해짐", val:"compare" }
+  ]},
+  { text: "친구가 집이나 투자 얘기를 꺼내면?", options: [
+    { text: "화제를 돌리고 싶어짐", val:"avoid" },
+    { text: "그날 밤 내 통장을 다시 확인함", val:"check" },
+    { text: "내가 어느 정도인지 감이 안 옴", val:"vague" },
+    { text: "내 숫자와 바로 견주게 됨", val:"compare" }
+  ]},
+  { text: "통장이 불안한 순간에 도움이 될 것 같은 건?", options: [
+    { text: "일단 안 보고 다른 일을 하는 것", val:"avoid" },
+    { text: "확인해서 숫자를 눈으로 보는 것", val:"check" },
+    { text: "기준이 되는 숫자를 하나 갖는 것", val:"vague" },
+    { text: "남들과 비교하지 않는 것", val:"compare" }
+  ]},
+  { text: "지금 내 통장에 대한 마음을 한 줄로 하면?", options: [
+    { text: "‘나중에 보자’", val:"avoid" },
+    { text: "‘한 번만 더 확인’", val:"check" },
+    { text: "‘잘 모르겠다’", val:"vague" },
+    { text: "‘나만 뒤처졌나?’", val:"compare" }
+  ]}
+];
+const results = {
+  avoid:{ name:"열어보기 두려운 사람", level:"회피형",
+    desc: "숫자를 보면 더 불안해질 것 같아서 확인 자체를 미루는 쪽이에요. 열어보지 않으면 잠깐은 편하지만, 모르는 채로 있는 시간이 길수록 막연한 불안이 커지기도 해요. 돈에 무관심한 게 아니라, 마주할 준비가 필요한 거예요.",
+    tip: "전체 잔액 대신 ‘이번 주 나갈 돈 하나’만 확인해 보세요. 일주일에 한 번, 정해 둔 시간에 1분만 여는 것으로 시작해도 충분해요.",
+    rel:{ href:"articles/payday-anxiety.html", title:"월급날 지나면 불안한 이유", more:false } },
+  check:{ name:"자꾸 들여다보는 사람", level:"확인형",
+    desc: "안심하려고 확인하는데, 보고 나면 금방 또 확인하고 싶어지는 쪽이에요. 숫자를 눈으로 봐야 마음이 놓이지만 그 안심은 오래가지 않죠. 꼼꼼해서라기보다 불안을 달래는 방법이 ‘확인’에 몰려 있는 거예요.",
+    tip: "횟수를 줄이려 애쓰기보다 확인하는 시간을 정해 보세요. ‘저녁 9시에 한 번’처럼 정해 두면, 그 외 시간의 확인 충동은 ‘이따가 볼 거야’로 넘길 수 있어요.",
+    rel:{ href:"articles/index.html", title:"돈 탭의 읽을거리 더 보기", more:true } },
+  vague:{ name:"얼마면 안심인지 모르는 사람", level:"막연형",
+    desc: "불안의 이유가 구체적이지 않고, 기준이 되는 숫자가 없는 쪽이에요. 얼마가 있어도 충분한지 모르니 불안이 형체 없이 커지고, 그래서 더 막연하게 느껴져요. 돈이 없어서라기보다 눈금이 없어서 생기는 불안이에요.",
+    tip: "큰 목표 말고 ‘한 달에 대략 얼마 쓰지?’만 적어 보세요. 정확하지 않아도 돼요. 기준이 하나 생기면 막연함이 조금 줄어요.",
+    rel:{ href:"insights/index.html", title:"돈 탭의 탐구 글 더 보기", more:true } },
+  compare:{ name:"남의 통장이 떠오르는 사람", level:"비교형",
+    desc: "내 통장을 볼 때 남의 숫자가 같이 떠오르는 쪽이에요. 또래의 집이나 자산 얘기를 들으면 내 숫자가 갑자기 작아 보이죠. 내 통장이 달라진 건 아닌데 기준이 남에게 옮겨 가 있어요.",
+    tip: "비교 대상을 ‘남’에서 ‘석 달 전의 나’로 바꿔 보세요. 남이 말하는 숫자는 일부일 수 있지만, 내 숫자의 변화는 내가 정확히 알 수 있어요.",
+    rel:{ href:"articles/compare-assets.html", title:"남의 자산 얘기에 초조해지는 이유", more:false } }
+};
+
+let current = 0;
+const scores = Object.fromEntries(Object.keys(results).map(k => [k, 0]));
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  current = 0;
+  Object.keys(scores).forEach(k => scores[k] = 0);
+  renderQuestion();
+}
+function renderQuestion(){
+  const q = questions[current];
+  document.getElementById('statusText').textContent = (current + 1) + ' / ' + questions.length;
+  document.getElementById('qNum').textContent = (current + 1) + '번째';
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
+  const opts = document.getElementById('opts');
+  opts.innerHTML = '';
+  // 선택지 순서를 매번 섞어서, 위치 때문에 결과가 쏠리지 않게 한다
+  shuffle(q.options).forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectAnswer(opt.val);
+    opts.appendChild(btn);
+  });
+}
+function selectAnswer(val){
+  scores[val]++;
+  current++;
+  if (current < questions.length) renderQuestion();
+  else {
+    document.getElementById('progressBar').style.width = '100%';
+    showResult();
+  }
+}
+function showResult(){
+  // 동점이면 동점인 유형 중에서 무작위로 고른다
+  const max = Math.max(...Object.values(scores));
+  const tops = Object.keys(scores).filter(k => scores[k] === max);
+  const top = tops[Math.floor(Math.random() * tops.length)];
+  const r = results[top];
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '결과';
+  document.getElementById('rName').textContent = r.name;
+  document.getElementById('rLevel').textContent = r.level;
+  document.getElementById('rDesc').textContent = r.desc;
+  document.getElementById('rTip').textContent = r.tip;
+  const rel = document.getElementById('rRelated');
+  rel.href = r.rel.href;
+  rel.textContent = (r.rel.more ? '' : '관련 글 · ') + r.rel.title + ' →';
+}
+function restartQuiz(){
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('statusText').textContent = '시작 전';
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('toast').classList.remove('show');
+}
+function copyResult(){
+  // 결과 이름 한 줄, 주소 한 줄만 복사한다
+  const text = document.getElementById('rName').textContent + '\n' + location.href;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  }).catch(() => {});
+}
+
+</script>
+</body>
+</html>
