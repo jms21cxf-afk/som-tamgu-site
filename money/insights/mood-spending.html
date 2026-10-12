@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기분이 나쁜 날 결제 버튼이 가벼운 이유 — 탐구소</title>
+<meta name="description" content="속상한 날 유독 장바구니를 비우게 되는 이유를 관련 연구와 함께 살펴봤습니다. 기분 소비가 무조건 나쁜 것만은 아니라는 점도 함께.">
+<meta name="keywords" content="기분 소비, 감정 소비, 스트레스 쇼핑, 리테일 테라피, 충동구매, 소비 심리">
+<meta name="author" content="탐구소">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="탐구소">
+<meta property="og:title" content="기분이 나쁜 날 결제 버튼이 가벼운 이유 — 탐구소">
+<meta property="og:description" content="속상한 날 결제 버튼이 유독 가벼워지는 이유.">
+<meta property="og:image" content="https://tamguso.com/og-preview-2.jpg">
+<meta property="og:url" content="https://tamguso.com/money/insights/mood-spending.html">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="기분이 나쁜 날 결제 버튼이 가벼운 이유 — 탐구소">
+<meta name="twitter:description" content="속상한 날 결제 버튼이 유독 가벼워지는 이유.">
+<meta name="twitter:image" content="https://tamguso.com/og-preview-2.jpg">
+<link rel="canonical" href="https://tamguso.com/money/insights/mood-spending.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E9F1EE; --paper:#FFFFFF; --line:#C6D6CF;
+    --ink:#1A2622; --ink-soft:#475650; --ink-faint:#8A9892;
+    --accent:#2A7F6E; --accent-dark:#206456; --accent-soft:#E1F1EC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ display:flex; align-items:center; gap:8px; font-size:17px; text-decoration:none; color: inherit; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--accent); flex-shrink:0; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{ flex-direction: column; align-items: flex-start; gap: 10px; }
+    .brand{ white-space: nowrap; }
+    nav{ display: flex; width: 100%; justify-content: center; gap: 18px; }
+    nav a{ margin-left: 0; font-size: 12px; white-space: nowrap; }
+  }
+  main{ padding: 36px 0 60px; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  .crumb-bar .current{ color: #111; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:30px; }
+  h2{ font-size:17px; margin: 34px 0 12px; }
+  p{ font-size:14.8px; margin-bottom: 12px; color: var(--ink); }
+  p strong{ color: #0F1B17; }
+  .quote-line{ font-weight:700; }
+  hr{ border:none; border-top:1px solid var(--line); margin: 32px 0; }
+  ul{ margin: 0 0 14px 20px; }
+  li{ font-size:14.8px; margin-bottom: 6px; }
+
+  .refs{
+    margin-top: 24px; padding: 16px 18px; background: var(--paper);
+    border: 1px dashed var(--line); border-radius:12px;
+  }
+  .refs .refs-title{ font-size:12px; color: var(--ink-faint); margin-bottom:12px; letter-spacing:0.03em; }
+  .refs ul{ list-style:none; margin:0; }
+  .refs li{ margin-bottom:14px; padding-left:14px; position:relative; }
+  .refs li:last-child{ margin-bottom:0; }
+  .refs li::before{ content:'—'; position:absolute; left:0; color: var(--accent); }
+  .refs .paper{ font-size:12.5px; font-weight:700; margin-bottom:4px; line-height:1.55; }
+  .refs .note{ font-size:12.5px; color: var(--ink-soft); line-height:1.65; margin:0; }
+
+  .closing{
+    margin-top: 40px; padding: 20px; background: var(--paper);
+    border: 1.5px solid var(--line); border-radius:16px;
+  }
+  .closing h3{ font-size:15px; margin-bottom:8px; }
+  .closing p{ font-size:13.8px; margin-bottom:8px; }
+  .closing p:last-child{ margin-bottom:0; }
+  .note-box{
+    margin-top: 18px; padding: 12px 14px; background: var(--accent-soft);
+    border-radius:10px; font-size:12.5px; color: var(--ink-soft); line-height:1.7;
+  }
+
+  .cta-box{
+    margin-top: 30px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html"><span class="dot"></span>돈 탐구생활</a>
+    <nav>
+      <a href="../index.html">돈</a>
+      <a href="../articles/index.html">읽을거리</a>
+      <a href="index.html" class="active">탐구</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">돈</a>
+    <span>/</span>
+    <a href="index.html" class="current">탐구</a>
+  </div>
+
+  <span class="tag mono">DEEP DIVE</span>
+  <h1 class="serif">기분이 나쁜 날 결제 버튼이 가벼운 이유</h1>
+  <div class="meta">읽는 시간 약 5분</div>
+
+  <p>오후 6시 40분. 회의에서 한 소리를 들은 날이다. 퇴근길 지하철에서 별생각 없이 쇼핑 앱을 열었는데, 정신을 차려 보니 결제 완료 알림이 와 있다.</p>
+  <p>필요해서 산 건 아니다. 장바구니에는 며칠째 같은 물건이 있었는데, 그날따라 이상하게 망설임이 없었다.</p>
+  <p>그러고 나서 드는 생각은 대개 두 가지다. <span class="quote-line">‘또 이러네’</span> 하는 자책과, 아주 조금 풀린 기분.</p>
+  <p>이 두 가지가 같이 오는 이유가 있을 수 있다.</p>
+
+  <h2>1. 슬플 때는 ‘내 것’이 시시해 보인다</h2>
+  <p>한 실험에서는 참가자에게 슬픈 영상이나 감정이 없는 영상을 보여 준 뒤, 평범한 물건(물병 같은)을 사겠냐고 물었다. 슬픈 영상을 본 사람들은 같은 물건에 더 높은 금액을 제시했다.</p>
+  <p>연구진은 그 차이를 <strong>자기 자신에게 쏠린 마음</strong>으로 설명했다. 슬프면 생각이 자기 쪽으로 향하고, 그러면 지금 가진 것이나 자기 자신의 가치가 낮게 느껴져서 새것을 얻는 데 더 값을 치르려 한다는 것이다.</p>
+  <p>재미있는 건 참가자들이 대체로 영상 때문에 돈을 더 쓴 게 아니라고 답했다는 점이다. 영향을 받은 줄 몰랐다는 얘기다.</p>
+
+  <h2>2. 기분이 가라앉으면 ‘지금’이 더 크게 보인다</h2>
+  <p>다른 연구에서는 슬픈 상태의 참가자가 석 달 뒤에 받을 돈 대신 지금 받을 돈을 고르는 경향을 봤다. 슬픈 상태에서는 지금 당장 받는 쪽을 택하면서 중립 상태의 기준보다 13~34% 적은 금액까지 받아들였다.</p>
+  <p>이 효과는 모든 부정적 감정에서 나타난 것은 아니었다. 역겨움을 느끼게 했을 때는 그렇지 않았다. 슬픔이 유독 ‘지금’에 대한 끌림을 키웠다는 얘기다.</p>
+  <p>속상한 날 “일단 오늘 사자”가 쉬운 이유와 겹친다.</p>
+
+  <h2>3. 그런데 정말로 기분이 나아지기도 한다</h2>
+  <p>여기서 조금 불편한 결과가 하나 더 있다. 쇼핑 선택을 하는 것 자체가 슬픔을 줄여 준다는 연구가 있다.</p>
+  <p>세 번의 실험에서, 쇼핑 상황에서 무엇을 고를지 결정하게 한 참가자는 남아 있던 슬픈 감정이 줄었다. 연구진은 슬픔이 ‘내가 상황을 통제하지 못한다’는 느낌과 이어져 있고, 선택하는 경험이 그 통제감을 되찾아 주기 때문이라고 해석했다.</p>
+  <p>다만 이 효과가 분노에서는 나타나지 않았다. 화가 났을 때는 통제감을 되찾는 것만으로 풀리지 않았다는 뜻이다.</p>
+  <p>그러니까 기분 소비는 그냥 어리석은 습관만은 아니다. 불편한 감정을 다루려는 <strong>꽤 그럴듯한 시도</strong>일 수 있다. 문제는 그 방법이 돈이 든다는 것이다.</p>
+
+  <h2>그래서 다음에는</h2>
+  <p>기분 소비를 아예 끊을 필요는 없다. 다만 돈이 나가는 순간만 한 박자 늦출 수 있다.</p>
+  <ul>
+    <li>결제하기 전에 <strong>지금 어떤 기분인지</strong> 한 단어로 말해 본다. 속상함, 외로움, 지침 같은 단어면 충분하다.</li>
+    <li>장바구니에는 담되 <strong>결제는 내일로</strong> 미룬다. 위 연구에 따르면 선택하는 경험이 통제감을 되돌려 줄 수 있어서, 담아 두는 것만으로도 기분이 조금 풀릴 가능성은 있다. 다만 이건 제가 연구를 이어 본 추측이고, 직접 확인된 방법은 아니다.</li>
+    <li>다음 날에도 여전히 사고 싶다면 그건 기분이 아니라 취향이다. 그때 사도 늦지 않다.</li>
+  </ul>
+
+  <hr>
+
+  <h2>연구가 말하는 것, 말하지 않는 것</h2>
+  <p>위 내용은 모두 실험실에서 이뤄진 연구에 기댄 것이다. 몇 가지는 짚어 두는 게 좋겠다.</p>
+  <ul>
+    <li>슬픈 영상을 본 뒤 물병 가격을 정하는 상황은 실제 쇼핑과 같지 않다. <strong>일상의 결제에서 같은 크기로 나타난다고 말할 수는 없다.</strong></li>
+    <li>쇼핑이 슬픔을 줄여 준다는 결과는 ‘선택하는 경험’에 대한 것이다. 실제로 결제하는 것과 고르기만 하는 것을 직접 비교한 결과는 아니었다.</li>
+    <li>기분 때문에 쓰는 돈이 얼마나 되는지, 그게 장기적으로 이득인지 손해인지는 이 연구들로는 알 수 없다.</li>
+  </ul>
+  <p>그래서 이 글에서는 <strong>‘기분 소비는 나쁘다’도, ‘괜찮다’도 단정하지 않았다.</strong> 연구가 보여 주는 건 속상한 날에는 마음이 ‘나’와 ‘지금’ 쪽으로 쏠리고, 선택하는 경험이 위로가 될 수 있다는 정도다.</p>
+
+  <div class="refs">
+    <div class="refs-title mono">관련 연구</div>
+    <ul>
+      <li>
+        <div class="paper">Misery is not Miserly: Sad and Self-Focused Individuals Spend More (Cryder, Lerner, Gross &amp; Dahl, Psychological Science, 2008)</div>
+        <p class="note">슬픈 영상을 본 참가자가 평범한 물건에 더 높은 금액을 제시했고, 그 차이를 자기에게 쏠린 주의(self-focus)로 설명한 실험 연구다.</p>
+      </li>
+      <li>
+        <div class="paper">The Financial Costs of Sadness (Lerner, Li &amp; Weber, Psychological Science, 2013)</div>
+        <p class="note">슬픈 상태의 참가자가 석 달을 기다리는 대신 지금 받는 돈을 더 많이 선택했고(중립 상태 기준 13~34% 적은 금액을 수용), 역겨움에서는 같은 효과가 나타나지 않았다고 보고한 연구다.</p>
+      </li>
+      <li>
+        <div class="paper">The benefits of retail therapy: Making purchase decisions reduces residual sadness (Rick, Pereira &amp; Burson, Journal of Consumer Psychology, 2014)</div>
+        <p class="note">세 번의 실험에서 쇼핑 선택을 하는 것이 남은 슬픔을 줄였고, 통제감의 회복이 그 이유로 제시됐다. 분노에서는 효과가 없었다.</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="note-box">
+    이 글은 소비 심리를 이해하기 위한 것이며, 특정 소비를 권하거나 막는 글이 아닙니다. 기분 저하가 오래 이어진다면 소비 습관이 아니라 마음 상태를 돌보는 게 먼저일 수 있어요.
+  </div>
+
+  <div class="cta-box">
+    <div class="q serif">내 기분은 어떤 방식으로 결제로 이어질까?</div>
+    <a href="../leak-test.html">돈이 새는 곳 테스트 해보기</a>
+  </div>
+
+  <a class="back" href="index.html">← 탐구 목록으로</a>
+</main>
+
+<footer class="site" style="border-top:1px solid var(--line); padding:26px 0 44px;">
+  <div class="wrap">
+    <div class="mono" style="font-size:11px; color:var(--ink-faint);">© 2026 TAMGUSO · 재미용 콘텐츠이며 재무·투자 상담을 대체하지 않습니다.</div>
+  </div>
+</footer>
+
+</body>
+</html>
