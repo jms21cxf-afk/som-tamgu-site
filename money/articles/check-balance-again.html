@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>통장을 자꾸 확인하게 되는 이유 — 탐구소</title>
+<meta name="description" content="자꾸 통장을 열어보게 되는 이유와, 횟수 대신 시간과 질문을 정해 확인하는 방법을 정리했습니다.">
+<meta name="keywords" content="통장 확인, 잔고 확인, 돈 불안, 자꾸 확인, 입출금 알림">
+<meta property="og:title" content="통장을 자꾸 확인하게 되는 이유 — 탐구소">
+<meta property="og:description" content="확인하면 잠깐 놓이는데 금방 또 열게 될 때">
+<meta property="og:url" content="https://tamguso.com/money/articles/check-balance-again.html">
+<link rel="canonical" href="https://tamguso.com/money/articles/check-balance-again.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E9F1EE; --paper:#FFFFFF; --line:#C6D6CF;
+    --ink:#1A2622; --ink-soft:#475650; --ink-faint:#8A9892;
+    --accent:#2A7F6E; --accent-dark:#206456;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ display:flex; align-items:center; gap:8px; font-size:17px; text-decoration:none; color: inherit; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--accent); flex-shrink:0; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .brand{ white-space: nowrap; }
+    nav{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 18px;
+    }
+    nav a{
+      margin-left: 0;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+  }
+  main{ padding: 36px 0 60px; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:16.5px; margin: 26px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; color: var(--ink); }
+  ul{ margin: 0 0 14px 20px; }
+  li{ font-size:14.5px; margin-bottom: 6px; }
+  .cta-box{
+    margin-top: 34px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html"><span class="dot"></span>돈 탐구생활</a>
+    <nav>
+      <a href="../index.html">돈</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../insights/index.html">탐구</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">돈</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <span class="tag">돈 불안</span>
+  <h1 class="serif">통장을 자꾸 확인하게 되는 이유</h1>
+  <div class="meta">읽는 시간 약 3분</div>
+
+  <p>방금 봤는데 또 앱을 열고 있어요. 달라진 게 없다는 걸 알면서도, 보지 않으면 마음이 불편해요. 왜 자꾸 확인하게 되는 걸까요.</p>
+
+  <h2>확인은 불안을 달래는 가장 빠른 방법이에요</h2>
+  <p>숫자를 눈으로 보면 일단 마음이 놓여요. 모르는 상태보다 아는 상태가 편하니까요. 그런데 그 안심은 오래가지 않아서, 얼마 안 가 다시 확인하고 싶어지기도 해요. 꼼꼼해서라기보다 불안을 달래는 방법이 ‘확인’ 하나에 몰려 있는 경우가 많아요.</p>
+
+  <h2>자주 본다고 새로운 정보가 생기진 않아요</h2>
+  <p>같은 숫자를 다시 보는 거라 알게 되는 건 거의 없어요. 오히려 자주 볼수록 작은 변화가 크게 느껴질 수 있어요.</p>
+  <p>참고로, 투자 실험에서는 수익을 더 자주 확인하는 사람일수록 위험을 더 피하는 경향이 나타났다고 해요(Gneezy &amp; Potters, 1997). 연구진은 짧은 간격으로 결과를 보면 손실이 더 크게 느껴지기 때문이라고 설명해요. 통장 확인을 직접 다룬 연구는 아니고 실험실 투자 상황이라 그대로 적용할 수는 없어요. ‘자주 보는 것이 느낌을 바꿀 수 있다’ 정도의 힌트로만 받아들여 주세요.</p>
+
+  <h2>횟수 대신 시간과 질문을 정해보세요</h2>
+  <p>확인을 아예 끊으려고 하면 오히려 더 신경 쓰여요. 이렇게 바꿔볼 수 있어요.</p>
+  <ul>
+    <li><strong>시간을 정해요.</strong> ‘저녁 9시에 한 번’처럼요. 그 외 시간에 열고 싶어지면 ‘이따가 볼 거야’라고 넘겨보세요.</li>
+    <li><strong>볼 질문을 정해요.</strong> ‘이번 주 나갈 돈이 얼마지?’처럼 질문이 있으면, 답을 찾고 나서 앱을 닫기 쉬워요.</li>
+    <li><strong>알림을 활용해요.</strong> 입출금 알림을 켜 두면 직접 열어보지 않아도 변화는 알 수 있어요.</li>
+  </ul>
+
+  <h2>결론</h2>
+  <p>통장을 자꾸 확인하는 건 돈에 집착해서가 아니라, 마음 놓을 방법을 찾고 있는 거예요. 다만 확인하는 것이 일상이나 잠을 방해할 정도로 길게 이어진다면, 혼자 감당하지 말고 주변이나 전문가에게 이야기해 보세요.</p>
+
+  <div class="cta-box">
+    <div class="q serif">통장 앞에서 나는 어떤 마음일까?</div>
+    <a href="../bank-anxiety-test.html">통장 앞에서 드는 불안 테스트 하러가기</a>
+  </div>
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>

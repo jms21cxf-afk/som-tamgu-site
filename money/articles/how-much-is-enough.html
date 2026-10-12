@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>얼마가 있어야 안심인지 모르겠을 때 — 탐구소</title>
+<meta name="description" content="통장에 얼마가 있어도 막연히 불안할 때, 기준 숫자가 없어서일 수 있다는 이야기와 작은 눈금을 만드는 방법을 정리했습니다.">
+<meta name="keywords" content="안심 금액, 막연한 불안, 돈 불안, 통장 기준, 한 달 지출">
+<meta property="og:title" content="얼마가 있어야 안심인지 모르겠을 때 — 탐구소">
+<meta property="og:description" content="얼마가 있어도 막연하게 불안한 건 눈금이 없어서일 수 있어요">
+<meta property="og:url" content="https://tamguso.com/money/articles/how-much-is-enough.html">
+<link rel="canonical" href="https://tamguso.com/money/articles/how-much-is-enough.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E9F1EE; --paper:#FFFFFF; --line:#C6D6CF;
+    --ink:#1A2622; --ink-soft:#475650; --ink-faint:#8A9892;
+    --accent:#2A7F6E; --accent-dark:#206456;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background: var(--bg); font-family:'Gowun Dodum',sans-serif; color:var(--ink); line-height:1.85; }
+  .serif{ font-family:'Do Hyeon', sans-serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color: var(--accent); }
+  .wrap{ max-width: 640px; margin:0 auto; padding: 0 22px; }
+  header.site{ padding:20px 0; border-bottom:1px solid var(--line); background:var(--paper); }
+  header.site .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .brand{ display:flex; align-items:center; gap:8px; font-size:17px; text-decoration:none; color: inherit; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background: var(--accent); flex-shrink:0; }
+  nav a{ font-size:12.5px; color: var(--ink-soft); margin-left:16px; text-decoration:none; }
+  nav a.active{ color: var(--ink); font-weight:700; }
+  @media (max-width: 720px){
+    header.site{ padding: 16px 0 14px; }
+    header.site .wrap{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .brand{ white-space: nowrap; }
+    nav{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 18px;
+    }
+    nav a{
+      margin-left: 0;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+  }
+  main{ padding: 36px 0 60px; }
+  .crumb-bar{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-family:'Do Hyeon', sans-serif; font-size: 13px; margin-bottom: 18px;
+  }
+  .crumb-bar a{ color: var(--accent); text-decoration:none; }
+  .crumb-bar span{ color: var(--ink-faint); }
+  /* 현재 위치(읽을거리)는 제목과 같은 검정 */
+  .crumb-bar .current{ color: #111; }
+  .tag{
+    display:inline-block; font-size:11px; letter-spacing:0.08em;
+    color: var(--accent); border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; margin-bottom:14px;
+  }
+  h1{ font-size:26px; margin-bottom:10px; line-height:1.4; }
+  .meta{ font-size:12px; color:var(--ink-soft); margin-bottom:28px; }
+  h2{ font-size:16.5px; margin: 26px 0 10px; }
+  p{ font-size:14.5px; margin-bottom: 14px; color: var(--ink); }
+  ul{ margin: 0 0 14px 20px; }
+  li{ font-size:14.5px; margin-bottom: 6px; }
+  .cta-box{
+    margin-top: 34px; background: var(--paper); border:1.5px solid var(--line);
+    border-radius:16px; padding: 20px; text-align:center;
+  }
+  .cta-box .q{ font-size:16px; margin-bottom:10px; }
+  .cta-box a{
+    display:inline-block; background: var(--accent); color:white;
+    padding:11px 24px; border-radius:999px; font-weight:700; font-size:13.5px; text-decoration:none;
+  }
+  .cta-box a:hover{ background: var(--accent-dark); }
+  .back{ display:inline-block; margin-top:30px; font-size:13px; color: var(--ink-soft); text-decoration:none; }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand serif" href="../../index.html"><span class="dot"></span>돈 탐구생활</a>
+    <nav>
+      <a href="../index.html">돈</a>
+      <a href="index.html" class="active">읽을거리</a>
+      <a href="../insights/index.html">탐구</a>
+      <a href="../../about.html">소개</a>
+      <a href="../../privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="crumb-bar">
+    <a href="../../index.html">탐구소</a>
+    <span>/</span>
+    <a href="../index.html">돈</a>
+    <span>/</span>
+    <span class="current">읽을거리</span>
+  </div>
+  <span class="tag">돈 불안</span>
+  <h1 class="serif">얼마가 있어야 안심인지 모르겠을 때</h1>
+  <div class="meta">읽는 시간 약 4분</div>
+
+  <p>통장에 얼마가 있어도 이상하게 마음이 놓이지 않아요. 부족한지 충분한지도 잘 모르겠고, 그냥 막연하게 불안해요. 이럴 때는 숫자의 크기보다 ‘눈금이 없다’는 점이 문제일 수 있어요.</p>
+
+  <h2>눈금이 없으면 어떤 숫자도 충분해 보이지 않아요</h2>
+  <p>온도계에 눈금이 없으면 뜨거운지 따뜻한지 알 수 없어요. 통장도 비슷해서, 기준이 되는 숫자가 없으면 얼마가 있어도 ‘이 정도면 괜찮다’는 판단이 서지 않아요. 그래서 돈이 없어서가 아니라 가늠할 수 없어서 불안한 경우가 있어요.</p>
+
+  <h2>기준이 있으면 막연함이 구체적인 문제로 바뀌어요</h2>
+  <p>심리학 연구에서는 목표가 ‘기준점’처럼 작동한다고 설명해요. 목표를 세우면 그 위와 아래를 이득과 손실처럼 다르게 느끼게 된다는 거예요(Heath, Larrick &amp; Wu, 1999).</p>
+  <p>다만 이 연구는 성과나 노력 같은 목표를 다룬 것이지 통장 불안을 직접 다룬 건 아니에요. 한 가지 생각해 볼 점은, 기준을 너무 높게 잡으면 부족한 만큼이 손실처럼 크게 느껴져서 오히려 부담이 될 수 있다는 거예요. 그래서 처음에는 크고 완벽한 기준보다 <strong>작고 확인할 수 있는 기준</strong>이 더 맞아요.</p>
+
+  <h2>작은 눈금 세 개</h2>
+  <p>‘안심 금액’을 한 번에 정하려고 하지 않아도 돼요. 이 정도부터 해볼 수 있어요.</p>
+  <ul>
+    <li><strong>한 달에 쓰는 돈이 대략 얼마인지.</strong> 정확하지 않아도 ‘이 정도’면 충분해요.</li>
+    <li><strong>다음 큰 결제가 언제, 얼마인지.</strong> 카드값, 월세, 보험처럼 날짜가 정해진 것부터요.</li>
+    <li><strong>‘이 정도면 이번 달은 괜찮다’는 임시 숫자 하나.</strong> 정답이 아니라 지금 내 마음의 기준이에요. 달라지면 바꿔도 돼요.</li>
+  </ul>
+
+  <h2>정답이 되는 금액은 없어요</h2>
+  <p>얼마가 있어야 안심인지는 소득, 가족 상황, 나가는 돈에 따라 사람마다 달라요. 이 글은 어떤 금액을 모아야 한다고 말하지 않아요. 재무 계획이나 상담이 필요하다면 금융 상담 창구나 전문가의 도움을 받아보세요.</p>
+
+  <h2>결론</h2>
+  <p>막연한 불안은 숫자가 적어서가 아니라 가늠할 눈금이 없어서 커지기도 해요. 작은 기준 하나로도 ‘잘 모르겠다’가 ‘이건 알겠다’로 바뀌어요. 그래도 불안이 일상에 영향을 줄 만큼 이어진다면, 혼자 감당하지 말고 주변이나 전문가에게 이야기해 보세요.</p>
+
+  <div class="cta-box">
+    <div class="q serif">통장 앞에서 나는 어떤 마음일까?</div>
+    <a href="../bank-anxiety-test.html">통장 앞에서 드는 불안 테스트 하러가기</a>
+  </div>
+  <a class="back" href="index.html">← 읽을거리로 돌아가기</a>
+</main>
+</body>
+</html>
